@@ -8,7 +8,7 @@ void	to_byte_code(char *filename) {
 int		check_extension(char *filename, char *extension)
 {
 	int len = ft_strlen(filename);
-	return ft_strstr(filename + (len - 2), extension) ? 1 : 0;
+	return ft_strstr(filename + (len - ft_strlen(extension)), extension) ? 1 : 0;
 }
 
 int		main(int argc, char **argv)
