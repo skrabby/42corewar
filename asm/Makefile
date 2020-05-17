@@ -3,7 +3,11 @@ NAME = asm
 # Sources
 SOURCES_DIR = ./src/
 SOURCES_LIST = \
-	asm.c
+	asm.c \
+	parser.c \
+	token.c \
+	utils.c
+	
 SOURCES = $(addprefix $(SOURCES_DIR), $(SOURCES_LIST))
 
 # Objects
@@ -15,6 +19,10 @@ OBJECTS = $(addprefix $(OBJECTS_DIR), $(OBJECTS_LIST))
 HEADERS_DIR = ./includes/
 HEADERS_LIST = \
 	asm.h \
+	error.h \
+	utils.h \
+	config.h
+
 HEADERS = $(addprefix $(HEADERS_DIR), $(HEADERS_LIST))	
 INCLUDES = \
 	-I$(HEADERS_DIR) \

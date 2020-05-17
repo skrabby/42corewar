@@ -7,20 +7,23 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
-typedef struct			s_command
+typedef struct			s_token
 {
-	char				*command;
+	char				*content;
 	unsigned int		row;
 	struct s_command	*next;
-}						t_command;
+}						t_token;
 
 typedef struct			s_parser
 {
 	int					fd;
 	unsigned int		row;
-	t_command			*commands;
+	t_token				*tokens;
 	char				*name;
 	char				*comment;
 }						t_parser;
+
+void					error_exit(char *error);
+void					parse(t_parser *parser);
 
 #endif
