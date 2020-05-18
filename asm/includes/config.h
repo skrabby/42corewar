@@ -1,5 +1,7 @@
 #ifndef CONFIG_H
 
+# define REG_CHAR				'r'
+
 # define COMMAND_CHAR			'.'
 # define COMMENT_CHAR			'#'
 # define ALT_COMMENT_CHAR		';'

@@ -47,7 +47,7 @@ FLAGS =
 all: $(NAME)
 
 $(NAME): $(LIB) $(OBJECTS_DIR) $(OBJECTS)
-	$(CC) $(FLAGS) $(INCLUDES) $(OBJECTS) -o $(NAME) $(LIB)
+	@$(CC) $(FLAGS) $(INCLUDES) $(OBJECTS) -o $(NAME) $(LIB)
 	$(GREEN)
 	@echo "$(NAME) object files were created"
 	@echo "$(NAME) was created"

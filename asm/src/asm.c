@@ -1,5 +1,6 @@
 #include "asm.h"
 #include "error.h"
+#include <stdio.h>
 
 void	error_exit(char *error) {
 	ft_printf("%s", error);
@@ -24,6 +25,7 @@ t_parser	*init_parser(int fd)
 		error_exit(MALLOC_ERR);
 	parser->fd = fd;
 	parser->row = 0;
+	parser->str_parse = 0;
 	parser->name = NULL;
 	parser->comment = NULL;
 	parser->tokens = NULL;
@@ -39,6 +41,11 @@ void		to_byte_code(char *filename) {
 		error_exit(OPEN_FILE_ERR);
 	parser = init_parser(fd);
 	parse(parser);
+	while (parser->tokens)
+	{
+		printf("CONTENT: %s ROW: %d TYPE: %d\n", parser->tokens->content, parser->tokens->row, (int)parser->tokens->type);
+		parser->tokens = parser->tokens->next;
+	}
 	new_fn = change_extension(filename, ".s", ".cor");
 	if ((fd = open(new_fn, O_WRONLY | O_APPEND | O_CREAT, 0644)) == -1)
 		error_exit("FILE CREATE ERROR");
