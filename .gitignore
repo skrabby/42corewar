@@ -1,1 +1,4 @@
 .vscode/*
+[Cc][mM]ake*
+.idea*
+resources

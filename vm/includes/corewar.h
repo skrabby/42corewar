@@ -15,6 +15,7 @@
 */
 
 # define CHAMP_EXT ".cor"
+# define FIRST_CHAMP_ID 1
 
 /*
 ** Structs
@@ -36,7 +37,7 @@ typedef struct			s_player
 typedef struct			s_vm
 {
 	uint8_t				arena[MEM_SIZE];
-	t_player			*players[MAX_PLAYERS];
+	t_player			*players[MAX_PLAYERS + 1];
 	int32_t				players_num;
 	t_player			*last_alive;
 //	t_cursor			*cursors;
@@ -76,5 +77,13 @@ t_player *read_champion_file(char *filename, int id);
 
 t_vm *init_vm();
 t_player *init_player(int id);
+void init_arena(t_vm *vm);
+int load_players_to_vm(t_vm *vm, t_player *players_list);
+
+/*
+** Args and getopts funcs
+*/
+
+void parse_args(int ac, char **av);
 
 #endif

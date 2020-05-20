@@ -20,11 +20,35 @@ t_player *init_player(int id)
 t_vm *init_vm()
 {
 	t_vm *vm;
+	int i;
 
+	i = -1;
 	if (!(vm = ft_memalloc(sizeof(*vm))))
 		error_exit(INTERNAL_ERROR, "");
 	vm->cycles_to_die = CYCLE_TO_DIE;
 	vm->dump_cycle = -1;
 	vm->show_cycle = -1;
+	while (++i <= MAX_PLAYERS)
+		vm->players[i] = NULL;
 	return vm;
+}
+
+void init_arena(t_vm *vm)
+{
+	int id;
+	int code_pos;
+
+	id = FIRST_CHAMP_ID;
+	code_pos = 0;
+	while (id <= MAX_PLAYERS)
+	{
+		if (vm->players[id])
+		{
+			ft_memcpy(&(vm->arena[code_pos]),
+					  vm->players[id]->code,
+					  vm->players[id]->code_size);
+			code_pos += MEM_SIZE / vm->players_num;
+		}
+		id++;
+	}
 }

@@ -9,12 +9,25 @@
 
 // TODO:
 // 	- Implement -n flag and read 3 lines
-int check_player(char **av, int i, t_player **players_list, int id)
+int parse_player(char **av, int i, t_player **players_list, int id)
 {
+	t_player *iter;
+
+	iter = *players_list;
 	if (str_endswith(av[i], CHAMP_EXT))
-		read_champion_file(av[i], id);
+	{
+		if (!*players_list)
+			*players_list = read_champion_file(av[i], id);
+		else
+		{
+			while (iter->next)
+				iter = iter->next;
+			iter->next = read_champion_file(av[i], id);
+		}
+	}
 	else
 		print_usage(av[0]);
+	g_vm->players_num++;
 	return (0);
 }
 
@@ -32,5 +45,6 @@ void parse_args(int ac, char **av)
 			;
 //			ft_getopts(av[i]);
 		else
-			check_player(av, i, &players_list, 0);
+			parse_player(av, i, &players_list, 0);
+	load_players_to_vm(g_vm, players_list);
 }

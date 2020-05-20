@@ -13,6 +13,8 @@
 # define INVALID_FILE_ERROR "Error: File has mistake "
 # define INTERNAL_ERROR "Error: Internal error occurred, can't init memory"
 # define CHAMP_CODE_ERROR "Error: Invalid code size "
+# define DOUBLE_INDEX_ERROR "Error: Two champions have same id"
+# define MANY_CHAMPS_ERROR "Error: Too many champions"
 # define CODE_SIZE_ERROR
 
 #endif

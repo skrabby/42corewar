@@ -3,9 +3,14 @@
 //
 
 #include "corewar.h"
+#include <errno.h>
 
 int main(int ac, char **av)
 {
-	g_vm = ft_memalloc(sizeof(*g_vm));
-    check_args(ac, av);
+	if (ac <= 1)
+		print_usage(av[0]);
+	g_vm = init_vm();
+    parse_args(ac, av);
+    init_arena(g_vm);
+	return (0);
 }

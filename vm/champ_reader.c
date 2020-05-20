@@ -5,10 +5,8 @@
 #include "corewar.h"
 #include <fcntl.h>
 
-#define DEBUG
+//#define DEBUG
 #define BYTES
-
-// TODO: Check for leaks ft_strjoin in error_exit
 
 int32_t bytecode_to_int(const uint8_t *buf)
 {
@@ -50,7 +48,7 @@ uint8_t *read_bytecode(int fd, uint32_t read_size, char *filename)
 		error_exit(INTERNAL_ERROR, "");
 	if ((len = read(fd, buf, read_size)) < 0)
 		error_exit(READ_ERROR, filename);
-	if ((uint8_t)len != read_size)
+	if ((uint32_t)len != read_size)
 		error_exit(INVALID_FILE_ERROR, filename);
 	return buf;
 }
@@ -64,7 +62,7 @@ char *read_string(int fd, uint32_t read_size, char *filename)
 		error_exit(INTERNAL_ERROR, "");
 	if ((len = read(fd, buf, read_size)) < 0)
 		error_exit(READ_ERROR, filename);
-	if ((uint8_t)len != read_size)
+	if ((uint32_t)len != read_size)
 		error_exit(INVALID_FILE_ERROR, filename);
 	return buf;
 }
