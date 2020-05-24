@@ -1,10 +1,16 @@
-NAME = asm
+NAME = vm
 
 # Sources
-SOURCES_DIR = ./src/
+SOURCES_DIR = ./
 SOURCES_LIST = \
 	error_handler.c \
 	main.c \
+	args.c \
+	champ_reader.c \
+	champs_to_vm.c \
+	init_structs.c \
+	messages.c \
+	str_utils.c
 
 SOURCES = $(addprefix $(SOURCES_DIR), $(SOURCES_LIST))
 
@@ -24,6 +30,7 @@ HEADERS = $(addprefix $(HEADERS_DIR), $(HEADERS_LIST))
 INCLUDES = \
 	-I$(HEADERS_DIR) \
 	-I$(LIB_DIR)libft/ \
+	-I$(LIB_DIR)ft_printf/ \
 
 # Lib
 LIB_DIR = ../lib/

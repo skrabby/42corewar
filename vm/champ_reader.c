@@ -90,7 +90,7 @@ t_player *read_champion_file(char *filename, int id)
 	return (player);
 }
 
-#ifdef DEBUG
+/*#ifdef DEBUG
 int main(){
 	int fd;
 
@@ -98,4 +98,4 @@ int main(){
 	ft_printf("%d %d", read_int32(fd, ""), COREWAR_EXEC_MAGIC);
 	read_champion_file("/home/poligon/42school/corewar/vm/champs/barriere.cor", 0);
 }
-#endif
+#endif*/
