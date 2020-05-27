@@ -28,26 +28,36 @@ int		parse_str(t_parser *parser, char *line)
 	return (-1);
 }
 
-t_type	define_type(char c, char c2)
+t_type	skip_symb(char *content)
 {
-	if (c == COMMAND_CHAR)
+	int i;
+	
+}
+
+t_type	define_type(char *content)
+{
+	if (!content)
+		error_exit("UNKNOWN TOKEN");
+	if (content[0] == COMMAND_CHAR)
 		return (COMMAND);
-	else if (c == DIRECT_CHAR)
-		return (c2 == LABEL_CHAR ? DIRECT_LABEL : DIRECT);
-	else if (c == LABEL_CHAR)
+	else if (content[0] == DIRECT_CHAR)
+		return (content[1] == LABEL_CHAR ? DIRECT_LABEL : DIRECT);
+	else if (content[0] == LABEL_CHAR)
 		return (INDIRECT_LABEL);
+	else if (content[0] == LABEL_CHARS)
+		return (skip_symb(content));
 	else
 		return (INDIRECT);
+	
 }
 
 int		parse_token(t_parser *parser, char *line)
 {
 	int		i;
-	int		begin;
+	char	*content;
 	t_type	type;
 
 	i = 0;
-	begin = 0;
 	if (line[i] == '\"' || parser->str_parse)
 		return(parse_str(parser, line));
 	else if (line[i] == COMMENT_CHAR || line[i] == '\0')
@@ -56,11 +66,12 @@ int		parse_token(t_parser *parser, char *line)
 		if (line[i] == SEPARATOR_CHAR) 
 			return (1);
 	}
-	type = define_type(line[i], line[i + 1]);
 	i++;
 	while(!is_delimiter(line[i]))
 		i++;
-	add_token_last(&parser->tokens, init_token(ft_strndup(line + begin, i), parser->row, type));
+	content = ft_strndup(line, i);
+	type = define_type(content);
+	add_token_last(&parser->tokens, init_token(content, parser->row, type));
 	return (i);
 }
 
