@@ -10,5 +10,7 @@
 # define LABEL_CHAR				':'
 # define DIRECT_CHAR			'%'
 # define SEPARATOR_CHAR			','
+# define NAME_LENGTH            128
+# define COMMENT_LENGTH         2048
 
 #endif

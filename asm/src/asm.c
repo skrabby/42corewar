@@ -26,26 +26,34 @@ t_parser	*init_parser(int fd)
 	parser->fd = fd;
 	parser->row = 0;
 	parser->str_parse = 0;
+	parser->body_size = 0;
+	parser->pos = 0;
 	parser->name = NULL;
 	parser->comment = NULL;
 	parser->tokens = NULL;
 	return (parser);
 }
 
-void		to_byte_code(char *filename) {
+void		compile(char *filename) {
 	int			fd;
 	char		*new_fn;
 	t_parser	*parser;
+	t_token		*cur;
 
 	if ((fd = open(filename, O_RDONLY)) == -1)
 		error_exit(OPEN_FILE_ERR);
 	parser = init_parser(fd);
 	parse(parser);
+	cur = parser->tokens;
+	process_description(parser, &cur);
+	process_body(parser, &cur);
+	
 	while (parser->tokens)
 	{
 		printf("CONTENT: %s ROW: %d TYPE: %d\n", parser->tokens->content, parser->tokens->row, (int)parser->tokens->type);
 		parser->tokens = parser->tokens->next;
 	}
+	
 	new_fn = change_extension(filename, ".s", ".cor");
 	if ((fd = open(new_fn, O_WRONLY | O_APPEND | O_CREAT, 0644)) == -1)
 		error_exit("FILE CREATE ERROR");
@@ -61,7 +69,7 @@ int			check_extension(char *name, char *ext)
 int			main(int argc, char **argv)
 {
 	if (argc == 2 && check_extension(argv[1], ".s"))
-		to_byte_code(argv[1]);
+		compile(argv[1]);
 	else
 		ft_printf("USAGE INSTRUCTION HERE");
 }

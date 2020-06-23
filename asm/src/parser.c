@@ -102,6 +102,7 @@ void	parse(t_parser *parser)
 		if (line)
 			parse_tokens(parser, line);
 		free(line);
+		add_token_last(&parser->tokens, init_token("", parser->row, NEW_LINE));
 	}
 	if (read == -1)
 		error_exit(READ_FILE_ERR);

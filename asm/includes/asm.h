@@ -36,6 +36,9 @@ typedef struct			s_parser
 	int					fd;
 	int					str_parse;
 	unsigned			row;
+	int					pos;
+	int					op_pos;
+	int					body_size;
 	t_token				*tokens;
 	char				*name;
 	char				*comment;
@@ -45,5 +48,6 @@ void					error_exit(char *error);
 void					parse(t_parser *parser);
 t_token					*init_token(char *content, unsigned row, t_type type);
 void					add_token_last(t_token **list, t_token *new);
+void    				process_description(t_parser *parser, t_token **cur);
 
 #endif

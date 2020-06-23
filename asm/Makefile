@@ -6,7 +6,9 @@ SOURCES_LIST = \
 	asm.c \
 	parser.c \
 	token.c \
-	utils.c
+	utils.c \
+	process_description.c \
+	process_body.c
 	
 SOURCES = $(addprefix $(SOURCES_DIR), $(SOURCES_LIST))
 
@@ -21,7 +23,8 @@ HEADERS_LIST = \
 	asm.h \
 	error.h \
 	utils.h \
-	config.h
+	config.h \
+	op.h
 
 HEADERS = $(addprefix $(HEADERS_DIR), $(HEADERS_LIST))	
 INCLUDES = \
