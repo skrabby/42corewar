@@ -1,11 +1,5 @@
 #include "asm.h"
 #include "error.h"
-#include <stdio.h>
-
-void	error_exit(char *error) {
-	ft_printf("%s", error);
-	exit (1);	
-}
 
 char*	change_extension(char *filename, char *from, char *to) {
 	char	*filebody;
@@ -45,15 +39,33 @@ void		compile(char *filename) {
 	parser = init_parser(fd);
 	parse(parser);
 	cur = parser->tokens;
+	/*
+		t_token *token = parser->tokens;
+	while (token)
+	{
+		printf("CONTENT: %s ROW: %d TYPE: %s\n", token->content, token->row, g_type[(int)token->type]);
+		token = token->next;
+	}*/
 	process_description(parser, &cur);
 	process_body(parser, &cur);
+
 	
-	while (parser->tokens)
+	t_label *label;
+	t_mention *mention;
+	label = parser->labels;
+	while (label)
 	{
-		printf("CONTENT: %s ROW: %d TYPE: %d\n", parser->tokens->content, parser->tokens->row, (int)parser->tokens->type);
-		parser->tokens = parser->tokens->next;
+		mention = label->mentions;
+		printf("label: %s\n", label->name);
+		while (mention) {
+			printf("%d | ", mention->op_pos);
+			mention = mention->next;
+		}
+		printf("\n");
+		label = label->next;
 	}
-	
+
+
 	new_fn = change_extension(filename, ".s", ".cor");
 	if ((fd = open(new_fn, O_WRONLY | O_APPEND | O_CREAT, 0644)) == -1)
 		error_exit("FILE CREATE ERROR");

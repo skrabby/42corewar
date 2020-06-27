@@ -3,19 +3,28 @@
 
 void	add_token_last(t_token **list, t_token *new)
 {
-	t_token	*cur;
+	t_token	*current;
 
-	if (!list)
-		return ;
-	cur = *list;
-	if (*list)
+	if (list)
 	{
-		while (cur->next)
-			cur = cur->next;
-		cur->next = new;
+		if (*list)
+		{
+			current = *list;
+			while (current->next)
+				current = current->next;
+			if (current->type == NEW_LINE && new->type == NEW_LINE)
+				ft_memdel((void **)&new);
+			else
+				current->next = new;
+		}
+		else
+		{
+			if (new->type == NEW_LINE)
+				ft_memdel((void **)&new);
+			else
+				*list = new;
+		}
 	}
-	else
-		*list = new;
 }
 
 t_token	*init_token(char *content, unsigned row, t_type type)

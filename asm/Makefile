@@ -7,9 +7,13 @@ SOURCES_LIST = \
 	parser.c \
 	token.c \
 	utils.c \
+	error.c \
 	process_description.c \
-	process_body.c
-	
+	process_body.c \
+	process_utils.c \
+	process_arg.c \
+	label.c
+
 SOURCES = $(addprefix $(SOURCES_DIR), $(SOURCES_LIST))
 
 # Objects
