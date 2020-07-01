@@ -28,7 +28,7 @@ static int8_t	process_args(t_parser *parser, t_token **cur, t_op *op)
 	types_code = 0;
 	while (arg_num < op->args_num)
 	{
-
+		printf("parser->pos: %d\n(*cur)->content: %s\n", parser->pos, (*cur)->content);
 		if ((*cur)->type >= REGISTER && (*cur)->type <= INDIRECT_LABEL)
 		{
 			type = process_arg(parser, cur, op, arg_num);
@@ -55,6 +55,7 @@ static void		process_operator(t_parser *parser, t_token **cur)
 
 	if ((op = get_op((*cur)->content)))
 	{
+		printf("parser->pos: %d\n(*cur)->content: %s\n", parser->pos, (*cur)->content);
 		parser->body[parser->pos++] = op->code;
 		(*cur) = (*cur)->next;
 		if (op->args_types_code)
@@ -67,7 +68,36 @@ static void		process_operator(t_parser *parser, t_token **cur)
 		operator_error((*cur)->content, (*cur)->row);
 }
 
-void	process_body(t_parser *parser, t_token **cur)
+void			process_mentions(t_parser *parser)
+{
+	t_label		*label;
+	t_mention	*mention;
+
+	label = parser->labels;
+	while (label)
+	{
+		if (label->op_pos == -1)
+			label_error(label->name, label->mentions);
+		else
+		{
+			mention = label->mentions;
+			while (mention)
+			{
+				if (mention->size == 2)
+					int32_to_bytecode(parser->body, mention->pos,
+								(int16_t)(label->op_pos - mention->op_pos),
+								mention->size);
+				else
+					int32_to_bytecode(parser->body, mention->pos,
+						label->op_pos - mention->op_pos, mention->size);
+				mention = mention->next;
+			}
+		}
+		label = label->next;
+	}
+}
+
+void			process_body(t_parser *parser, t_token **cur)
 {
 	while ((*cur)) {
 		if (parser->pos >= parser->body_size)
@@ -75,6 +105,7 @@ void	process_body(t_parser *parser, t_token **cur)
 		parser->op_pos = parser->pos;
 		if ((*cur)->type == LABEL)
 		{
+		
 			process_label(parser, cur);
 			(*cur) = (*cur)->next;
 		}

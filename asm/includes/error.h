@@ -11,5 +11,6 @@ void	token_error(char *token, unsigned row);
 void	lexical_error(char *token, unsigned row);
 void	argument_error(char *arg, unsigned row);
 void	operator_error(char *token, unsigned row);
+void	label_error(char *label, t_mention *mentions);
 
 #endif

@@ -19,12 +19,12 @@ int		parse_str(t_parser *parser, char *line)
 		s = ft_strlen(s) == 0 ? ft_strndup(line, i) : strjoin_free(1, 1, s, ft_strndup(line, i));
 		add_token_last(&parser->tokens, init_token(s, parser->row, STRING));
 		s = "";
-		parser->str_parse = 0;
+		parser->str_parse = false;
 		return (i); 
 	}
 	s = ft_strlen(s) == 0 ? ft_strndup(line, i) : strjoin_free(1, 1, s, ft_strndup(line, i));
 	s[ft_strlen(s) - 1] = '\n';
-	parser->str_parse = 1;
+	parser->str_parse = true;
 	return (-1);
 }
 
@@ -140,7 +140,7 @@ void	parse(t_parser *parser)
 		if (line) 
 		{
 			parse_tokens(parser, line);
-			add_token_last(&parser->tokens, init_token("", parser->row, NEW_LINE));
+			add_token_last(&parser->tokens, init_token(NULL, parser->row, NEW_LINE));
 		}
 		free(line);
 	}

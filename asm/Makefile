@@ -12,7 +12,8 @@ SOURCES_LIST = \
 	process_body.c \
 	process_utils.c \
 	process_arg.c \
-	label.c
+	label.c \
+	write_bytes.c
 
 SOURCES = $(addprefix $(SOURCES_DIR), $(SOURCES_LIST))
 

@@ -30,10 +30,13 @@ void		process_description(t_parser *parser, t_token **cur)
 {
     while ((!parser->name  || !parser->comment) && (*cur))
     {
-        if (!parser->name && !ft_strcmp((*cur)->content, NAME_CMD_STRING))
-			process_name(parser, cur);
-        else if (!parser->comment && !ft_strcmp((*cur)->content, COMMENT_CMD_STRING))
-			process_comment(parser, cur);
+		if ((*cur)->content)
+		{
+        	if (!parser->name && !ft_strcmp((*cur)->content, NAME_CMD_STRING))
+				process_name(parser, cur);
+        	else if (!parser->comment && !ft_strcmp((*cur)->content, COMMENT_CMD_STRING))
+				process_comment(parser, cur);
+		}
         (*cur) = (*cur)->next;
     }
 }

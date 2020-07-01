@@ -23,6 +23,7 @@ static void		process_mention(t_parser *parser, t_token *cur, t_op *op)
 
 	start = (cur->type == DIRECT_LABEL) ? 2 : 1;
 	size = (cur->type == DIRECT_LABEL) ? op->t_dir_size : IND_SIZE;
+
 	if (!(name = ft_strsub(cur->content,
 				start, ft_strlen(cur->content) - start)))
 		error_exit(MALLOC_ERR);
@@ -46,12 +47,12 @@ static void		process_num(t_parser *parser, t_token *cur, t_op *op)
 	if (size == 2)
 		int32_to_bytecode(parser->body,
 						parser->pos,
-						(int16_t)ft_atoi(&cur->content[start]),
+						(int16_t)ft_atoi32(&cur->content[start]),
 						size);
 	else
 		int32_to_bytecode(parser->body,
 						parser->pos,
-						ft_atoi(&cur->content[start]),
+						ft_atoi32(&cur->content[start]),
 						size);
 	parser->pos += size;
 }

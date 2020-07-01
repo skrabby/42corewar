@@ -107,6 +107,7 @@ LIB_SRCS = ft_memset \
 	   ft_strempty_symb \
 	   ft_negativezero \
 	   ft_putstr_null \
+	   ft_atoi32 \
 	   get_next_line \
 
 OBJ =	$(addprefix obj/, $(addsuffix .o, $(PRINTF_SRCS))) \

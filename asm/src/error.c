@@ -7,6 +7,20 @@ void	lexical_error(char *token, unsigned row)
 	exit (1);
 }
 
+void	label_error(char *label, t_mention *mentions)
+{
+	printf("[ERROR] Undeclared label \"%s\" (row ", label);
+	while (mentions)
+	{
+		printf("%u", mentions->row);
+		mentions = mentions->next;
+		if (mentions != NULL)
+		printf(", ");
+	}
+	printf(")");
+	exit (1);
+}
+
 void	token_error(char *token, unsigned row)
 {
 	printf("[ERROR] Unexpected token \"%s\" (row %u)", token, row);

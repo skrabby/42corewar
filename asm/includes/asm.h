@@ -49,7 +49,6 @@ typedef struct			s_token
 typedef struct			s_mention
 {
 	unsigned			row;
-	unsigned			column;
 	int32_t				pos;
 	int32_t				op_pos;
 	size_t				size;
@@ -68,7 +67,7 @@ typedef struct			s_label
 typedef struct			s_parser
 {
 	int					fd;			// file descriptor
-	int					str_parse;	// whether currently is the string parsing process
+	bool				str_parse;	// whether currently is the string parsing process
 	unsigned			row;		// current row
 	int32_t				pos;		// current parser byte position
 	int32_t				op_pos;		// latest op start byte position
@@ -99,5 +98,7 @@ t_mention				*init_mention(t_parser *parser, t_token *token, size_t size);
 void					add_mention(t_mention **list, t_mention *new);
 void					int32_to_bytecode(char *data, int32_t pos,
 											int32_t value, size_t size);
+void					process_mentions(t_parser *parser);
+void					write_bytes(int fd, t_parser *parser);
 											
 #endif
