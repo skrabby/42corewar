@@ -1,6 +1,7 @@
 #include "utils.h"
 #include "config.h"
 #include "asm.h"
+#include "error.h"
 
 int		is_whitespace(char c)
 {
@@ -24,7 +25,7 @@ int		is_delimiter(char c)
 			|| c == ALT_COMMENT_CHAR);
 }
 
-char	*strjoin_free(int s1_b, int s2_b, char *s1, char *s2)
+char	*strjoin_free(bool s1_b, bool s2_b, char *s1, char *s2)
 {
 	char *s;
 	s = ft_strjoin(s1, s2);
@@ -48,4 +49,9 @@ int		is_register(const char *token)
 		return (!token[i] && ft_atoi(&token[1]) > 0);
 	}
 	return (0);
+}
+
+void	error_exit(char *error) {
+	ft_printf("%s", error);
+	exit (1);	
 }

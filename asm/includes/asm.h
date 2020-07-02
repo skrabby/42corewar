@@ -43,6 +43,7 @@ typedef struct			s_token
 	char				*content;	// content of token
 	unsigned			row;		// row position
 	t_type				type;		// token's type
+	int32_t				pos;		// token position in bytes
 	struct s_token		*next;		// pointer to a next token
 }						t_token;
 
@@ -82,6 +83,11 @@ typedef struct			s_parser
 
 void					error_exit(char *error);
 void					parse(t_parser *parser);
+int						parse_str(t_parser *parser, char *line);
+t_type					get_label(char *content, t_type type);
+t_type					parse_nb(char *content, t_type type);
+t_type					lexical_check(char *content, unsigned row, t_type type);
+t_type					define_type(char *content, unsigned row);
 t_token					*init_token(char *content, unsigned row, t_type type);
 void					add_token_last(t_token **list, t_token *new);
 void    				process_description(t_parser *parser, t_token **cur);
@@ -100,5 +106,6 @@ void					int32_to_bytecode(char *data, int32_t pos,
 											int32_t value, size_t size);
 void					process_mentions(t_parser *parser);
 void					write_bytes(int fd, t_parser *parser);
+void					debug(t_parser *parser);
 											
 #endif

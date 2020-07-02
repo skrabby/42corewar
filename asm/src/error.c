@@ -3,13 +3,13 @@
 
 void	lexical_error(char *token, unsigned row)
 {
-	printf("[ERROR] Lexical error: couldn't parse token \"%s\" (row %u)", token, row);
+	printf("\033[1;31m[ERROR]\033[0m Lexical error: couldn't parse token \"%s\" (row %u)", token, row);
 	exit (1);
 }
 
 void	label_error(char *label, t_mention *mentions)
 {
-	printf("[ERROR] Undeclared label \"%s\" (row ", label);
+	printf("\033[1;31m[ERROR]\033[0m Undeclared label \"%s\" (row ", label);
 	while (mentions)
 	{
 		printf("%u", mentions->row);
@@ -23,23 +23,18 @@ void	label_error(char *label, t_mention *mentions)
 
 void	token_error(char *token, unsigned row)
 {
-	printf("[ERROR] Unexpected token \"%s\" (row %u)", token, row);
+	printf("\033[1;31m[ERROR]\033[0m Unexpected token \"%s\" (row %u)", token, row);
 	exit (1);
 }
 
 void	argument_error(char *arg, unsigned row)
 {
-	printf("[ERROR] Invalid argument \"%s\" (row %u)", arg, row);
+	printf("\033[1;31m[ERROR]\033[0m Invalid argument \"%s\" (row %u)", arg, row);
 	exit (1);
 }
 
 void	operator_error(char *token, unsigned row)
 {
-	printf("[ERROR] Unexpected operator \"%s\" (row %u)", token, row);
+	printf("\033[1;31m[ERROR]\033[0m Unexpected operator \"%s\" (row %u)", token, row);
 	exit (1);
-}
-
-void	error_exit(char *error) {
-	ft_printf("%s", error);
-	exit (1);	
 }

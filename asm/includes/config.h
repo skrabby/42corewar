@@ -1,5 +1,6 @@
 #ifndef CONFIG_H
 
+# define DEBUG_MODE				true
 # define LABEL_CHARS			"abcdefghijklmnopqrstuvwxyz_0123456789"
 # define NAME_CMD_STRING		".name"
 # define COMMENT_CMD_STRING		".comment"
@@ -13,8 +14,7 @@
 
 # define NAME_LENGTH            128
 # define COMMENT_LENGTH         2048
-# define PROG_NAME_LENGTH		128
-# define COREWAR_EXEC_MAGIC		0xea83f3
+# define COREWAR_EXEC_MAGIC		0xCC07C9
 
 # define MEM_SIZE				(4 * 1024)
 # define CHAMP_MAX_SIZE			(MEM_SIZE / 6)

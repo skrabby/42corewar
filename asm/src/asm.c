@@ -45,32 +45,12 @@ void		assemble(char *filename) {
 	process_description(parser, &cur);
 	process_body(parser, &cur);
 	process_mentions(parser);
-	t_label *label;
-	t_mention *mention;
-	label = parser->labels;
-	while (label)
-	{
-		mention = label->mentions;
-		printf("label: %s\n", label->name);
-		while (mention) {
-			printf("%d | ", mention->op_pos);
-			mention = mention->next;
-		}
-		printf("\n");
-		label = label->next;
-	}
 	new_fn = change_extension(filename, ".s", ".cor");
 	if ((fd = open(new_fn, O_CREAT | O_TRUNC | O_WRONLY, 0644)) == -1)
 		error_exit("FILE CREATE ERROR");
 	write_bytes(fd, parser);
-	/*
-	t_token *token = parser->tokens;
-	while (token)
-	{
-		printf("CONTENT: %s ROW: %d TYPE: %s\n", token->content, token->row, g_type[(int)token->type]);
-		token = token->next;
-	}*/
-	ft_printf("%s has been successfully created\n", new_fn);
+	debug(parser);
+	ft_printf("\033[0;32m%s\033[0m has been successfully created\n", new_fn);
 	free(new_fn);
 }
 

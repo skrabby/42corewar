@@ -1,10 +1,12 @@
 #ifndef ERROR_H
 
 # define ERROR_H
-# define MALLOC_ERR			"[ERROR] Failed to allocate memory"
-# define OPEN_FILE_ERR		"[ERROR] Failed to open a file"
-# define CREATE_FILE_ERR	"[ERROR] Failed to create a file"
-# define READ_FILE_ERR		"[ERROR] Failed to read a file"
+# define MALLOC_ERR			"\033[1;31m[ERROR]\033[0m Failed to allocate memory"
+# define OPEN_FILE_ERR		"\033[1;31m[ERROR]\033[0m Failed to open a file"
+# define CREATE_FILE_ERR	"\033[1;31m[ERROR]\033[0m Failed to create a file"
+# define READ_FILE_ERR		"\033[1;31m[ERROR]\033[0m Failed to read a file"
+
+# include "asm.h"
 
 void	error_exit(char *error);
 void	token_error(char *token, unsigned row);

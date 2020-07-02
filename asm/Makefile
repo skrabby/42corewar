@@ -5,6 +5,7 @@ SOURCES_DIR = ./src/
 SOURCES_LIST = \
 	asm.c \
 	parser.c \
+	parser_utils.c \
 	token.c \
 	utils.c \
 	error.c \
@@ -13,7 +14,8 @@ SOURCES_LIST = \
 	process_utils.c \
 	process_arg.c \
 	label.c \
-	write_bytes.c
+	write_bytes.c \
+	debug.c
 
 SOURCES = $(addprefix $(SOURCES_DIR), $(SOURCES_LIST))
 

@@ -15,6 +15,7 @@ static void		process_label(t_parser *parser, t_token **cur)
 		add_label(&(parser->labels), init_label(name, parser->op_pos));
 	if (label && label->op_pos == -1)
 		label->op_pos = parser->pos;
+	(*cur)->pos = parser->pos;
 	ft_strdel(&name);
 }
 
@@ -28,7 +29,7 @@ static int8_t	process_args(t_parser *parser, t_token **cur, t_op *op)
 	types_code = 0;
 	while (arg_num < op->args_num)
 	{
-		printf("parser->pos: %d\n(*cur)->content: %s\n", parser->pos, (*cur)->content);
+		(*cur)->pos = parser->pos;
 		if ((*cur)->type >= REGISTER && (*cur)->type <= INDIRECT_LABEL)
 		{
 			type = process_arg(parser, cur, op, arg_num);
@@ -55,7 +56,7 @@ static void		process_operator(t_parser *parser, t_token **cur)
 
 	if ((op = get_op((*cur)->content)))
 	{
-		printf("parser->pos: %d\n(*cur)->content: %s\n", parser->pos, (*cur)->content);
+		(*cur)->pos = parser->pos;
 		parser->body[parser->pos++] = op->code;
 		(*cur) = (*cur)->next;
 		if (op->args_types_code)
@@ -105,7 +106,6 @@ void			process_body(t_parser *parser, t_token **cur)
 		parser->op_pos = parser->pos;
 		if ((*cur)->type == LABEL)
 		{
-		
 			process_label(parser, cur);
 			(*cur) = (*cur)->next;
 		}

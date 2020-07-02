@@ -37,5 +37,6 @@ t_token	*init_token(char *content, unsigned row, t_type type)
 	token->type = type;
 	token->content = content;
 	token->next = NULL;
+	token->pos = -1;
 	return (token);
 }

@@ -45,31 +45,23 @@ static void		process_num(t_parser *parser, t_token *cur, t_op *op)
 	start = (cur->type == DIRECT) ? 1 : 0;
 	size = (cur->type == DIRECT) ? op->t_dir_size : IND_SIZE;
 	if (size == 2)
-		int32_to_bytecode(parser->body,
-						parser->pos,
-						(int16_t)ft_atoi32(&cur->content[start]),
-						size);
+		int32_to_bytecode(parser->body, parser->pos,
+						(int16_t)ft_atoi32(&cur->content[start]), size);
 	else
-		int32_to_bytecode(parser->body,
-						parser->pos,
-						ft_atoi32(&cur->content[start]),
-						size);
+		int32_to_bytecode(parser->body, parser->pos,
+						ft_atoi32(&cur->content[start]), size);
 	parser->pos += size;
 }
 
 static void		process_register(t_parser *parser, t_token *cur)
 {
-	int32_to_bytecode(parser->body,
-						parser->pos,
-						(int8_t)ft_atoi(&cur->content[1]),
-						1);
+	int32_to_bytecode(parser->body, parser->pos,
+					(int8_t)ft_atoi(&cur->content[1]), 1);
 	parser->pos += 1;
 }
 
-int8_t			process_arg(t_parser *parser,
-							t_token **cur,
-							t_op *op,
-							int arg_num)
+int8_t			process_arg(t_parser *parser, t_token **cur,
+							t_op *op, int arg_num)
 {
 	int8_t	type;
 
