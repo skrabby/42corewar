@@ -84,6 +84,8 @@ int load_players_to_vm(t_vm *vm, t_player *players_list);
 ** Args and getopts funcs
 */
 
-void parse_args(int ac, char **av);
+void	parse_args(int ac, char **av);
+
+int		find_addr(int addr);
 
 #endif
