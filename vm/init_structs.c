@@ -52,3 +52,17 @@ void init_arena(t_vm *vm)
 		id++;
 	}
 }
+
+t_cursor *init_cursor(t_player *player, int pos)
+{
+	t_cursor *cursor;
+	static size_t cursor_id = 0;
+
+	if (!(cursor = ft_memalloc(sizeof(*cursor))))
+		error_exit(INTERNAL_ERROR, "");
+	cursor->id = cursor_id;
+	cursor->pos = pos;
+	cursor->reg[0] = -(player->id);
+	cursor->player = player;
+	return (cursor);
+}
