@@ -12,5 +12,6 @@ int main(int ac, char **av)
 	g_vm = init_vm();
     parse_args(ac, av);
     init_arena(g_vm);
+    set_cursors(g_vm);
 	return (0);
 }

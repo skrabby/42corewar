@@ -26,8 +26,6 @@ t_vm *init_vm()
 	if (!(vm = ft_memalloc(sizeof(*vm))))
 		error_exit(INTERNAL_ERROR, "");
 	vm->cycles_to_die = CYCLE_TO_DIE;
-	vm->dump_cycle = -1;
-	vm->show_cycle = -1;
 	while (++i <= MAX_PLAYERS)
 		vm->players[i] = NULL;
 	return vm;

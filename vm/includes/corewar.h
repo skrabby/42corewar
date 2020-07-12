@@ -87,6 +87,7 @@ t_vm *init_vm();
 t_player *init_player(int id);
 void init_arena(t_vm *vm);
 t_cursor *init_cursor(t_player *player, int pos);
+void set_cursors(t_vm *vm);
 int load_players_to_vm(t_vm *vm, t_player *players_list);
 
 /*
