@@ -35,7 +35,7 @@ int find_addr(int addr)
     return (addr);
 }
 
-int32_t		get_op_arg(t_vm *vm, t_cursor *cursor, int index, int mod)
+int32_t		get_arg(t_vm *vm, t_cursor *cursor, int index, int mod)
 {
 	t_op		*op;
 	int32_t		value;

@@ -7,8 +7,12 @@ void    op_ld(t_vm *vm, t_cursor *cursor)
     int reg;
 
     cursor->step += (OP_CODE_LEN + ARGS_CODE_LEN);
-    value = get_arg();
-    value == 0 ? carry = 1 : carry = 0;
-    reg = get_reg()
-    save_to_reg();
+    value = get_arg(vm, cursor, 1, true);
+    if (value == 0)
+        cursor->carry = 1;
+    else
+        cursor->carry = 0;
+    reg = get_byte(cursor->pc + cursor->step, vm);
+    cursor->reg[reg - 1] = value;
+    cursor->step += REG_LEN;
 } 

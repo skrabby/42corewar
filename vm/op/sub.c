@@ -1,11 +1,23 @@
 #include "corewar.h"
 
-
-void op_sub()
+void op_sub(t_vm *vm, t_cursor *cursor)
 {
-    reg1 = get_reg();
-    reg2 = get_reg();
-    if (reg3 = get_val(reg1) - get_val(reg2));
-
-
+    int reg1;
+    int reg2;
+    int reg3;
+    int val;
+    
+    cursor->step += (OP_CODE_LEN + ARGS_CODE_LEN);
+    reg1 = get_byte(cursor->pc + cursor->step, vm);
+    cursor->step += REG_LEN;
+    reg2 = get_byte(cursor->pc + cursor->step, vm);
+    cursor->step += REG_LEN;
+    val = cursor->reg[reg1 - 1] - cursor->reg[reg2 - 1];
+    if (val == 0)
+        cursor->carry = 1;
+    else
+        cursor->carry = 0;
+    reg3 = get_byte(cursor->pc + cursor->step, vm);
+    cursor->reg[reg3 - 1] = val;
+    cursor->step += REG_LEN;
 }
