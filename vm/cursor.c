@@ -27,3 +27,28 @@ void set_cursors(t_vm *vm)
 		id++;
 	}
 }
+
+void	dupl_cur(t_cursor *cur, int addr)
+{
+	t_cursor *new;
+	int i;
+
+	addr = find_addr(cur->pos + addr);
+	new = init_cursor(cur->player, pos);
+	i = 0;
+	while (i < REG_NUMBER)
+	{
+		new->reg[i] = cur->reg[i];
+		i++;
+	}
+	new->carry = cur->carry;
+	new->last_live = cursor->last_live;
+	return (new);
+}
+
+void	add_cur(t_cursor **list, t_cursor *cur)
+{
+	if (new)
+		cur->next = *list;
+	*list = cur;
+}

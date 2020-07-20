@@ -1,5 +1,13 @@
 #include "corewar.h"
 
+int find_addr(int addr)
+{
+    addr %= MEM_SIZE;
+    if (addr < 0)
+        addr += MEM_SIZE;
+    return (addr);
+}
+
 int32_t		bytecode_to_int32(const uint8_t *arena, int32_t addr, int32_t size)
 {
 	int32_t		result;
@@ -22,24 +30,41 @@ int32_t		bytecode_to_int32(const uint8_t *arena, int32_t addr, int32_t size)
 	return (result);
 }
 
+void		int32_to_bytecode(uint8_t *arena, int32_t addr, int32_t value,
+						int32_t size)
+{
+	int8_t i;
+
+	i = 0;
+	while (size)
+	{
+		arena[find_addr(addr + size - 1)] = (uint8_t)((value >> i) & 0xFF);
+		i += 8;
+		size--;
+	}
+}
+
 int get_byte(int addr, t_vm *vm)
 {
     return (vm->arena[find_addr(addr)]);
 }
 
-int find_addr(int addr)
+int	step_size(uint8_t arg_type, t_op *op)
 {
-    addr %= MEM_SIZE;
-    if (addr < 0)
-        addr += MEM_SIZE;
-    return (addr);
+	if (arg_type & T_REG)
+		return (REG_LEN);
+	else if (arg_type & T_DIR)
+		return (op->t_dir_size);
+	else if (arg_type & T_IND)
+		return (IND_SIZE);
+	return (0);
 }
 
-int32_t		get_arg(t_vm *vm, t_cursor *cursor, int index, int mod)
+int		get_arg(t_vm *vm, t_cursor *cursor, int index, int mod)
 {
 	t_op		*op;
-	int32_t		value;
-	int32_t		addr;
+	int		value;
+	int		addr;
 
 	op = &g_op[cursor->op_code)]; //?
 	value = 0;
