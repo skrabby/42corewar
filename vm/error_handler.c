@@ -3,9 +3,9 @@
 //
 
 #include "corewar.h"
-#include "ft_printf.h"
 #include <errno.h>
 #include <stdio.h>
+
 
 void error_exit(char *message, char *filename)
 {

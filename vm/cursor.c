@@ -4,7 +4,7 @@
 
 #include "corewar.h"
 
-void set_cursors(t_vm *vm)
+void	set_cursors(t_vm *vm)
 {
 	int 	id;
 	size_t 	pos;
@@ -28,13 +28,13 @@ void set_cursors(t_vm *vm)
 	}
 }
 
-void	dupl_cur(t_cursor *cur, int addr)
+t_cursor *dupl_cur(t_cursor *cur, int addr)
 {
 	t_cursor *new;
 	int i;
 
 	addr = find_addr(cur->pos + addr);
-	new = init_cursor(cur->player, pos);
+	new = init_cursor(cur->player, cur->pos);
 	i = 0;
 	while (i < REG_NUMBER)
 	{
@@ -42,13 +42,13 @@ void	dupl_cur(t_cursor *cur, int addr)
 		i++;
 	}
 	new->carry = cur->carry;
-	new->last_live = cursor->last_live;
+	new->last_live = cur->last_live;
 	return (new);
 }
 
 void	add_cur(t_cursor **list, t_cursor *cur)
 {
-	if (new)
+	if (cur)
 		cur->next = *list;
 	*list = cur;
 }

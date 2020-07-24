@@ -1,10 +1,19 @@
 NAME = asm
 
 # Sources
-SOURCES_DIR = ./src/
+SOURCES_DIR = ./
 SOURCES_LIST = \
+	cursor.c \
+	init_structs.c \
+	champs_to_vm.c \
+	champ_reader.c \
+	args.c \
+	messages.c \
 	error_handler.c \
 	main.c \
+	exec.c \
+	output.c \
+	str_utils.c \
 
 SOURCES = $(addprefix $(SOURCES_DIR), $(SOURCES_LIST))
 
