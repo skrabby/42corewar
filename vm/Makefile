@@ -17,6 +17,7 @@ SOURCES_LIST = \
 
 OP_SOURCES_DIR = $(SOURCES_DIR)op/
 OP_SOURCES_LIST = \
+	live.c \
 	add.c \
 	aff.c \
 	and.c \

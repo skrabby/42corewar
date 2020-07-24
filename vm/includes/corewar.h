@@ -258,6 +258,7 @@ void		add_cur(t_cursor **list, t_cursor *cur);
 /*
 ** OP_FUNCTIONS
 */
+void    		op_live(t_vm *vm, t_cursor *cursor);
 void			op_ld(t_vm *vm, t_cursor *cursor);
 void			op_st(t_vm *vm, t_cursor *cursor);
 void			op_add(t_vm *vm, t_cursor *cursor);
