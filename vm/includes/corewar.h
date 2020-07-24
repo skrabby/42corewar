@@ -17,6 +17,8 @@
 # define CHAMP_EXT ".cor"
 # define FIRST_CHAMP_ID 1
 # define REG_LEN		1
+# define OP_CODE_LEN	1
+# define ARGS_CODE_LEN	1
 
 /*
 ** Structs
@@ -63,6 +65,7 @@ typedef struct			s_vm
 	ssize_t				cycles_to_die;
 	ssize_t				cycles_after_check;
 	size_t				checks_num;
+	int					display_aff;
 }						t_vm;
 
 /*
@@ -100,9 +103,7 @@ int			find_addr(int addr);
 
 /*typedef struct	s_op
 {
-	char		*name;
-	uint8_t		code;
-	uint8_t		args_num;
+	char		*name;implicit declaration of function 
 	int			args_types_code;
 	uint8_t		args_types[3];
 	uint8_t		t_dir_size;
@@ -140,12 +141,7 @@ static t_op		g_op[16] = {
 		modify_carry = false,
 		t_dir_size = 4t_cursor *dupl_cur(t_cursor *cur, int addr)
 		cycles = 5,
-		func = &op_st
-	},
-	{
-		name = "add",
-		code = 0x04,
-		args_num = 3,
+		func = &op_stimplicit declaration of function 
 		posargs_types_code = 1,
 		args_types = {T_REG, T_REG, T_REG},
 		modify_carry = true,
@@ -162,12 +158,9 @@ static t_op		g_op[16] = {
 		t_dir_size = 4,
 		cycles = 10,
 		func = &op_sub
-	},# define REG_LEN		1
-		name = "or",
-		code = 0x07,
+	},# define REG_LEN		1implicit declaration of function 
 		args_num = 3,
-		posargs_types_code = 1,
-		args_types = {T_REG | T_DIR | T_IND, T_REG | T_DIR | T_IND, T_REG},
+		posargs_types_implicit declaration of function T_REG | T_DIR | T_IND, T_REG | T_DIR | T_IND, T_REG},
 		modify_carry = true,
 		t_dir_size = 4,
 		cycles = 6,
@@ -179,34 +172,21 @@ static t_op		g_op[16] = {
 		args_num = 3,
 		posargs_types_code = 1,
 		args_types = {T_REG | T_DIR | T_IND, T_REG | T_DIR | T_IND, T_REG},
-		modify_carry = true,
-		t_dir_size = 4,
-		cycles = 6,
-		func = &op_xor
-	},
-	{
-		name = "zjmp",
-		code = 0x09,
-		args_num = 1,
-		posargs_typest_cursor *dupl_cur(t_cursor *cur, int addr)
-		func = &op_zjmp
+		modify_carry = true,implicit declaration of function 
 	},
 	{
 		name = "ldi",
 		code = 0x0A,
 		args_num = 3,
 		posargs_types_code = 1,
-		args_types = {T_REG | T_DIR | T_IND, T_REG | T_DIR, T_REG},
-		modify_carry = false,
-		t_dir_size = 2,void	set_cursors(t_vm *vm)
+	implicit declaration of function ,void	set_cursors(t_vm *vm)
 	{
 		name = "sti",
 		code = 0x0B,
 		args_num = 3,
 		posargs_types_code = 1,
 		args_types = {T_REG, T_REG | Tvoid	set_cursors(t_vm *vm)_DIR | T_IND, T_REG | T_DIR},
-		modify_carry = false,
-		t_dir_size = 2,
+		modify_carry implicit declaration of function 2,
 		cycles = 25,
 		func = &op_sti
 	},
@@ -224,15 +204,13 @@ static t_op		g_op[16] = {
 	{
 		name = "lld",
 		code = 0x0D,
-		args_num = 2,
-		posargs_types_code = 1,
-		args_types = {T_DIR | T_IND,void	set_cursors(t_vm *vm)
+		args_nuimplicit declaration of function pes = {T_DIR | T_IND,void	set_cursors(t_vm *vm)
 		func = &op_lld
 	},
 	{
 		name = "lldi",
 		code = 0x0E,
-		args_num = 3,
+		args_nuimplicit declaration of function m = 3,
 		posargs_types_code = 1,
 		args_types = {T_REG | T_DIR | T_IND, T_REG | T_DIR, T_REG},
 		modify_carry = true,
@@ -242,7 +220,7 @@ static t_op		g_op[16] = {
 	},
 	{
 		name = "lfork",
-		code = 0x0F,du
+		code = 0x0F,duimplicit declaration of function 
 		args_types = {T_DIR, 0, 0},
 		modify_carry = false,
 		t_dir_size = 2,
@@ -259,16 +237,7 @@ static t_op		g_op[16] = {
 	}
 };*/
 
-/*du
-void			op_ld(t_vm *vm, t_cursor *cursor);
-void			op_st(t_vm *vm, t_cursor *cursor);
-void			op_add(t_vm *vm, t_cursor *cursor);
-void			op_sub(t_vm *vm, t_cuvoid	set_cursors(t_vm *vm)rsor *cursor);
-void			op_and(t_vm *vm, t_cursor *cursor);
-void			op_or(t_vm *vm, t_cursor duor *cursor);
-void			op_lldi(t_vm *vm, t_cursor *cursor);
-void			op_lfork(t_vm *vm, t_cursor *cursor);
-void			op_aff(t_vm *vm, t_cursor *cursor);
+
 
 /*
 ** additional functions
@@ -284,4 +253,25 @@ int			step_size(uint8_t arg_type, int dir_size);
 int			get_arg(t_vm *vm, t_cursor *cursor, int index, int mod);
 int			get_dir_size(int op_code);
 t_cursor	*dupl_cur(t_cursor *cur, int addr);
+void		add_cur(t_cursor **list, t_cursor *cur);
+
+/*
+** OP_FUNCTIONS
+*/
+void			op_ld(t_vm *vm, t_cursor *cursor);
+void			op_st(t_vm *vm, t_cursor *cursor);
+void			op_add(t_vm *vm, t_cursor *cursor);
+void			op_sub(t_vm *vm, t_cursor *cursor);
+void			op_and(t_vm *vm, t_cursor *cursor);
+void			op_or(t_vm *vm, t_cursor *cursor);
+void			op_xor(t_vm *vm, t_cursor *cursor);
+void			op_zjmp(t_vm *vm, t_cursor *cursor);
+void			op_ldi(t_vm *vm, t_cursor *cursor);
+void			op_sti(t_vm *vm, t_cursor *cursor);
+void			op_fork(t_vm *vm, t_cursor *cursor);
+void			op_lld(t_vm *vm, t_cursor *cursor);
+void			op_lldi(t_vm *vm, t_cursor *cursor);
+void			op_lfork(t_vm *vm, t_cursor *cursor);
+void			op_aff(t_vm *vm, t_cursor *cursor);
+
 #endif

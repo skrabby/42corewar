@@ -8,8 +8,8 @@ void op_xor(t_vm *vm, t_cursor *cursor)
     int reg;
 
     cursor->step += (OP_CODE_LEN + ARGS_CODE_LEN);
-    val1 = get_arg(vm, cursor, 1,true);
-    val2 = get_arg(vm, cursor, 2, true);
+    val1 = get_arg(vm, cursor, 1, 1);
+    val2 = get_arg(vm, cursor, 2, 1);
     res = val1 ^ val2;
     if (res == 0)
         cursor->carry = 1;

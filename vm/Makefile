@@ -1,4 +1,4 @@
-NAME = asm
+NAME = vm
 
 # Sources
 SOURCES_DIR = ./
@@ -15,12 +15,33 @@ SOURCES_LIST = \
 	output.c \
 	str_utils.c \
 
+OP_SOURCES_DIR = $(SOURCES_DIR)op/
+OP_SOURCES_LIST = \
+	add.c \
+	aff.c \
+	and.c \
+	fork.c \
+	ld.c \
+	ldi.c \
+	lfork.c \
+	lld.c \
+	lldi.c \
+	or.c \
+	st.c \
+	sti.c \
+	sub.c \
+	xor.c \
+	zjmp.c \
+
 SOURCES = $(addprefix $(SOURCES_DIR), $(SOURCES_LIST))
+OP_SOURCES = $(addprefix $(OP_SOURCES_DIR), $(OP_SOURCES_LIST))
 
 # Objects
 OBJECTS_DIR = ./obj/
 OBJECTS_LIST = $(patsubst %.c, %.o, $(SOURCES_LIST))
 OBJECTS = $(addprefix $(OBJECTS_DIR), $(OBJECTS_LIST))
+OP_OBJECTS_LIST = $(patsubst %.c, %.o, $(OP_SOURCES_LIST))
+OP_OBJECTS = $(addprefix $(OBJECTS_DIR), $(OP_OBJECTS_LIST))
 
 # Headers
 HEADERS_DIR = ./includes/
@@ -52,8 +73,8 @@ FLAGS =
 
 all: $(NAME)
 
-$(NAME): $(LIB) $(OBJECTS_DIR) $(OBJECTS)
-	$(CC) $(FLAGS) $(INCLUDES) $(OBJECTS) -o $(NAME) $(LIB)
+$(NAME): $(LIB) $(OBJECTS_DIR) $(OBJECTS) $(OP_OBJECTS)
+	$(CC) $(FLAGS) $(INCLUDES) $(OBJECTS) $(OP_OBJECTS) -o $(NAME) $(LIB)
 	$(GREEN)
 	@echo "$(NAME) object files were created"
 	@echo "$(NAME) was created"
@@ -66,6 +87,12 @@ $(OBJECTS_DIR):
 	@mkdir -p $(OBJECTS_DIR)
 
 $(OBJECTS_DIR)%.o : $(SOURCES_DIR)%.c $(HEADERS)
+	@$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
+	$(CYAN)
+	@echo "+"
+	$(RESET)
+
+$(OBJECTS_DIR)%.o : $(OP_SOURCES_DIR)%.c $(HEADERS)
 	@$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
 	$(CYAN)
 	@echo "+"

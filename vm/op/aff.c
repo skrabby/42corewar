@@ -10,5 +10,5 @@ void    aff(t_vm *vm, t_cursor *cursor)
     val = cursor->reg[reg - 1];
     cursor->step += REG_LEN;
     if (vm->display_aff)
-		  ft_printf("Aff: %c\n", (char)value);
+		  ft_printf("Aff: %c\n", (char)val);
 }

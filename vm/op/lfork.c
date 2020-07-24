@@ -6,8 +6,8 @@ void    op_lfork(t_vm *vm, t_cursor *cursor)
 	t_cursor	*new_cur;
 
 	cursor->step += OP_CODE_LEN;
-	val = get_arg(vm, cursor, 1, true);
+	val = get_arg(vm, cursor, 1, 1);
 	new_cur = dupl_cur(cursor, val);
-	add_cursor(&(vm->cursors), new_cur);
+	add_cur(&(vm->cursors), new_cur);
 	vm->cursors_num++;
 }

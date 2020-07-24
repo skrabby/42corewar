@@ -7,7 +7,7 @@ void    op_ld(t_vm *vm, t_cursor *cursor)
     int reg;
 
     cursor->step += (OP_CODE_LEN + ARGS_CODE_LEN);
-    value = get_arg(vm, cursor, 1, true);
+    value = get_arg(vm, cursor, 1, 1);
     if (value == 0)
         cursor->carry = 1;
     else
