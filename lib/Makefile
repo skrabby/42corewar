@@ -119,11 +119,9 @@ all: $(NAME)
 
 obj/%.o: $(LIBFT_DIR)
 	@gcc -Wall -Wextra -Werror -c $< -o $@
-	@rm -rf ../lem_in
 
 obj/%.o: $(PRINTF_DIR)
 	@gcc -Wall -Wextra -Werror -c $< -o $@
-	@rm -rf ../lem_in
 
 $(NAME): obj $(OBJ)
 	@ar rc $(NAME) $(OBJ)
