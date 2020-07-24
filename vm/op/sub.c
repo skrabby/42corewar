@@ -8,16 +8,16 @@ void op_sub(t_vm *vm, t_cursor *cursor)
     int val;
     
     cursor->step += (OP_CODE_LEN + ARGS_CODE_LEN);
-    reg1 = get_byte(cursor->pc + cursor->step, vm);
+    reg1 = get_byte(cursor->pos + cursor->step, vm);
     cursor->step += REG_LEN;
-    reg2 = get_byte(cursor->pc + cursor->step, vm);
+    reg2 = get_byte(cursor->pos + cursor->step, vm);
     cursor->step += REG_LEN;
     val = cursor->reg[reg1 - 1] - cursor->reg[reg2 - 1];
     if (val == 0)
         cursor->carry = 1;
     else
         cursor->carry = 0;
-    reg3 = get_byte(cursor->pc + cursor->step, vm);
+    reg3 = get_byte(cursor->pos + cursor->step, vm);
     cursor->reg[reg3 - 1] = val;
     cursor->step += REG_LEN;
 }

@@ -12,7 +12,7 @@ void    op_ld(t_vm *vm, t_cursor *cursor)
         cursor->carry = 1;
     else
         cursor->carry = 0;
-    reg = get_byte(cursor->pc + cursor->step, vm);
+    reg = get_byte(cursor->pos + cursor->step, vm);
     cursor->reg[reg - 1] = value;
     cursor->step += REG_LEN;
 } 

@@ -8,7 +8,7 @@ void    op_sti(t_vm *vm, t_cursor *cursor)
     int val;
 
     cursor->step = OP_CODE_LEN + ARGS_CODE_LEN;
-    reg1 = get_byte(cursor->pc + cursor->step, vm);
+    reg1 = get_byte(cursor->pos + cursor->step, vm);
     val = cursor->reg[reg1 - 1];
     cursor->step += REG_LEN;
     val2 = get_arg(vm, cursor, 2, true);

@@ -6,7 +6,7 @@ void    aff(t_vm *vm, t_cursor *cursor)
     int val;
 
     cursor->step += OP_CODE_LEN;
-    reg = get_byte(cursor->pc + cursor->step, vm);
+    reg = get_byte(cursor->pos + cursor->step, vm);
     val = cursor->reg[reg - 1];
     cursor->step += REG_LEN;
     if (vm->display_aff)
