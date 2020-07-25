@@ -13,6 +13,6 @@ void    op_sti(t_vm *vm, t_cursor *cursor)
     cursor->step += REG_LEN;
     val2 = get_arg(vm, cursor, 2, 1);
     val3 = get_arg(vm, cursor, 3, 1);
-    int32_to_bytecode(vm->arena,
+    int_to_bytecode(vm->arena,
 			(cursor->pos + ((val2 + val3) % IDX_MOD)), val, DIR_SIZE);
 }

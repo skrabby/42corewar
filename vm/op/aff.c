@@ -1,6 +1,6 @@
 #include "corewar.h"
 
-void    aff(t_vm *vm, t_cursor *cursor)
+void    op_aff(t_vm *vm, t_cursor *cursor)
 {
     int reg;
     int val;

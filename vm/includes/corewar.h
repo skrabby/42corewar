@@ -200,8 +200,7 @@ static t_op		g_op[16] = {
 		t_dir_size = 2,
 		cycles = 800,
 		func = &op_fork
-	},
-	{
+	},int32_t bytecode_to_int(const uint8_t *buf)
 		name = "lld",
 		code = 0x0D,
 		args_nuimplicit declaration of function pes = {T_DIR | T_IND,void	set_cursors(t_vm *vm)
@@ -245,9 +244,9 @@ static t_op		g_op[16] = {
 
 int			get_arg(t_vm *vm, t_cursor *cursor, int index, int mod);
 int			find_addr(int addr);
-int32_t		bytecode_to_int32(const uint8_t *arena, int32_t addr, int32_t size);
-void		int32_to_bytecode(uint8_t *arena, int32_t addr, int32_t value,
-							int32_t size);
+int			bytecode_to_int_op(uint8_t *arena, int addr, int size);
+void		int_to_bytecode(uint8_t *arena, int addr, int value,
+						int size);
 int 		get_byte(int addr, t_vm *vm);
 int			step_size(uint8_t arg_type, int dir_size);
 int			get_arg(t_vm *vm, t_cursor *cursor, int index, int mod);

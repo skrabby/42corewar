@@ -18,9 +18,9 @@ void    op_st(t_vm *vm, t_cursor *cursor)
     }
     else
     {
-        l_reg = bytecode_to_int32(vm->arena,
+        l_reg = bytecode_to_int_op(vm->arena,
 							cursor->pos + cursor->step, IND_SIZE);
-        int32_to_bytecode(vm->arena, cursor->pos + (l_reg % IDX_MOD),
+        int_to_bytecode(vm->arena, cursor->pos + (l_reg % IDX_MOD),
 							val, DIR_SIZE);
         cursor->step += IND_SIZE;
     }

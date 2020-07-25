@@ -18,10 +18,10 @@ int find_addr(int addr)
     return (addr);
 }
 
-int32_t		bytecode_to_int32(const uint8_t *arena, int32_t addr, int32_t size)
+int		bytecode_to_int_op(uint8_t *arena, int addr, int size)
 {
-	int32_t		result;
-	int		sign;
+	int			result;
+	int			sign;
 	int			i;
 
 	result = 0;
@@ -40,15 +40,15 @@ int32_t		bytecode_to_int32(const uint8_t *arena, int32_t addr, int32_t size)
 	return (result);
 }
 
-void		int32_to_bytecode(uint8_t *arena, int32_t addr, int32_t value,
-						int32_t size)
+void		int_to_bytecode(uint8_t *arena, int addr, int value,
+						int size)
 {
-	int8_t i;
+	int i;
 
 	i = 0;
 	while (size)
 	{
-		arena[find_addr(addr + size - 1)] = (uint8_t)((value >> i) & 0xFF);
+		arena[find_addr(addr + size - 1)] = (int)((value >> i) & 0xFF);
 		i += 8;
 		size--;
 	}
@@ -81,15 +81,15 @@ int		get_arg(t_vm *vm, t_cursor *cursor, int index, int mod)
 	if (cursor->args_types[index - 1] & T_REG)
 		value = cursor->reg[get_byte(cursor->pos + cursor->step, vm)];
 	else if (cursor->args_types[index - 1] & T_DIR)
-		value = bytecode_to_int32(vm->arena,
+		value = bytecode_to_int_op(vm->arena,
 								cursor->pos + cursor->step,
 								dir_size);
 	else if (cursor->args_types[index - 1] & T_IND)
 	{
-		addr = bytecode_to_int32(vm->arena,
+		addr = bytecode_to_int_op(vm->arena,
 								cursor->pos + cursor->step,
 								IND_SIZE);
-		value = bytecode_to_int32(vm->arena,
+		value = bytecode_to_int_op(vm->arena,
 							cursor->pos + (mod ? (addr % IDX_MOD) : addr),
 							DIR_SIZE);
 	}
