@@ -55,6 +55,7 @@ HEADERS = $(addprefix $(HEADERS_DIR), $(HEADERS_LIST))
 INCLUDES = \
 	-I$(HEADERS_DIR) \
 	-I$(LIB_DIR)libft/ \
+	-I$(LIB_DIR)ft_printf/ \
 
 # Lib
 LIB_DIR = ../lib/
