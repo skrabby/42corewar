@@ -13,6 +13,7 @@ void read_op(t_cursor *cursor, t_vm *vm)
 
 void	move_cursor(t_vm *vm, t_cursor *cursor)
 {
+	vm->display_aff = vm->display_aff;
 	cursor->pos += cursor->step;
 	cursor->pos = check_position(cursor->pos);
 	cursor->step = 0;
@@ -31,7 +32,7 @@ static void exec_code(t_cursor *cursor, t_vm *vm)
 	{
 		op = NULL;
 		if (cursor->op_code >= 0x01 && cursor->op_code <= 0x10)
-			op = &g_op[cursor->op_code];
+			op = &g_op[cursor->op_code - 1];
 		if (op)
 		{
 			parse_types_code(vm, cursor, op);

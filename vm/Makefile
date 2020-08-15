@@ -8,6 +8,10 @@ SOURCES_LIST = \
 	champs_to_vm.c \
 	champ_reader.c \
 	args.c \
+	game.c \
+	game_2.c \
+	calculations.c \
+	cycles_to_die.c \
 	messages.c \
 	error_handler.c \
 	main.c \
@@ -70,7 +74,7 @@ RESET = @tput setaf 7;
 .PHONY: all clean fclean re
 
 CC = gcc
-FLAGS =
+FLAGS = -Wall -Werror -Wextra
 
 all: $(NAME)
 
@@ -88,13 +92,13 @@ $(OBJECTS_DIR):
 	@mkdir -p $(OBJECTS_DIR)
 
 $(OBJECTS_DIR)%.o : $(SOURCES_DIR)%.c $(HEADERS)
-	@$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
+	$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
 	$(CYAN)
 	@echo "+"
 	$(RESET)
 
 $(OBJECTS_DIR)%.o : $(OP_SOURCES_DIR)%.c $(HEADERS)
-	@$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
+	$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
 	$(CYAN)
 	@echo "+"
 	$(RESET)

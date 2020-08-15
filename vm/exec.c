@@ -59,7 +59,7 @@ int get_byte(int addr, t_vm *vm)
     return (vm->arena[find_addr(addr)]);
 }
 
-int	step_size(uint8_t arg_type, int dir_size)
+int	step_size_op(uint8_t arg_type, int dir_size)
 {
 	if (arg_type & T_REG)
 		return (REG_LEN);
@@ -93,6 +93,6 @@ int		get_arg(t_vm *vm, t_cursor *cursor, int index, int mod)
 							cursor->pos + (mod ? (addr % IDX_MOD) : addr),
 							DIR_SIZE);
 	}
-	cursor->step += step_size(cursor->args_types[index - 1], dir_size);
+	cursor->step += step_size_op(cursor->args_types[index - 1], dir_size);
 	return (value);
 }

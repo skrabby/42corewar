@@ -3,7 +3,6 @@
 //
 
 #include "corewar.h"
-#include "op.h"
 
 
 uint32_t	step_size(int8_t arg_type, t_op *op)

@@ -8,8 +8,8 @@ static void		reset_lives_nums(t_vm *vm)
 {
 	int32_t		i;
 
-	i = 0;
-	while (i < vm->players_num)
+	i = FIRST_CHAMP_ID;
+	while (i <= vm->players_num)
 	{
 		vm->players[i]->previous_lives_num = vm->players[i]->current_lives_num;
 		vm->players[i]->current_lives_num = 0;
