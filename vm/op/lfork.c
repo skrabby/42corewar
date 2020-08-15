@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lfork.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oelaina <oelaina@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/15 13:13:53 by oelaina           #+#    #+#             */
+/*   Updated: 2020/08/15 13:36:12 by oelaina          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
-void    op_lfork(t_vm *vm, t_cursor *cursor)
+void	op_lfork(t_vm *vm, t_cursor *cursor)
 {
-	int         val;
+	int			val;
 	t_cursor	*new_cur;
 
 	cursor->step += OP_CODE_LEN;
