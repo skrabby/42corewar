@@ -13,5 +13,6 @@ int main(int ac, char **av)
     parse_args(ac, av);
     init_arena(g_vm);
     set_cursors(g_vm);
+    fight
 	return (0);
 }

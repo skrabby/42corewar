@@ -2,3 +2,5 @@
 [Cc][mM]ake*
 .idea*
 resources
+*.a
+*.o
