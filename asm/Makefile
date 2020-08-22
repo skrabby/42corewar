@@ -1,4 +1,7 @@
 NAME = asm
+CC = gcc
+FLAGS = -Wall -Wextra -Werror
+.PHONY: all clean fclean re
 
 # Sources
 SOURCES_DIR = ./src/
@@ -49,11 +52,6 @@ MAGENTA = @tput setaf 5; tput bold;
 CYAN = @tput setaf 6; tput bold;
 RESET = @tput setaf 7;
 
-.PHONY: all clean fclean re
-
-CC = gcc
-FLAGS =
-
 all: $(NAME)
 
 $(NAME): $(LIB) $(OBJECTS_DIR) $(OBJECTS)
@@ -61,7 +59,7 @@ $(NAME): $(LIB) $(OBJECTS_DIR) $(OBJECTS)
 	$(GREEN)
 	@echo "$(NAME) object files were created"
 	@echo "$(NAME) was created"
-	$(RESET)
+	$(RESET)	
 
 $(LIB):
 	@make -C $(LIB_DIR)

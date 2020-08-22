@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   process_body.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: skrabby <skrabby@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/22 12:18:28 by skrabby           #+#    #+#             */
+/*   Updated: 2020/08/22 17:08:13 by skrabby          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "asm.h"
 #include "error.h"
 #include "config.h"
@@ -47,7 +59,6 @@ static int8_t	process_args(t_parser *parser, t_token **cur, t_op *op)
 	}
 	return (types_code);
 }
-
 
 static void		process_operator(t_parser *parser, t_token **cur)
 {
@@ -100,7 +111,8 @@ void			process_mentions(t_parser *parser)
 
 void			process_body(t_parser *parser, t_token **cur)
 {
-	while ((*cur)) {
+	while ((*cur))
+	{
 		if (parser->pos >= parser->body_size)
 			adjust_code_buff(parser);
 		parser->op_pos = parser->pos;
@@ -111,7 +123,8 @@ void			process_body(t_parser *parser, t_token **cur)
 		}
 		if ((*cur)->type == OPERATOR)
 			process_operator(parser, cur);
-		if ((*cur)->type == NEW_LINE) {
+		if ((*cur)->type == NEW_LINE)
+		{
 			(*cur) = (*cur)->next;
 		}
 		else

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   process_arg.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: skrabby <skrabby@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/22 12:18:20 by skrabby           #+#    #+#             */
+/*   Updated: 2020/08/22 17:07:32 by skrabby          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "asm.h"
 #include "error.h"
 #include "op.h"
@@ -23,7 +35,6 @@ static void		process_mention(t_parser *parser, t_token *cur, t_op *op)
 
 	start = (cur->type == DIRECT_LABEL) ? 2 : 1;
 	size = (cur->type == DIRECT_LABEL) ? op->t_dir_size : IND_SIZE;
-
 	if (!(name = ft_strsub(cur->content,
 				start, ft_strlen(cur->content) - start)))
 		error_exit(MALLOC_ERR);

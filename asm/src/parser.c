@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: skrabby <skrabby@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/22 12:18:12 by skrabby           #+#    #+#             */
+/*   Updated: 2020/08/22 17:33:32 by skrabby          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "asm.h"
 #include "error.h"
 #include "utils.h"
@@ -11,18 +23,20 @@ int		parse_token(t_parser *parser, char *line)
 
 	i = 0;
 	if (line[i] == '\"' || parser->str_parse)
-		return(parse_str(parser, line));
+		return (parse_str(parser, line));
 	else if (line[i] == COMMENT_CHAR || line[i] == '\0')
 		return (-1);
-	else if (is_delimiter(line[i])) {
+	else if (is_delimiter(line[i]))
+	{
 		if (line[i] == SEPARATOR_CHAR)
 		{
-			add_token_last(&parser->tokens, init_token("", parser->row, SEPARATOR));
+			add_token_last(&parser->tokens,
+			init_token("", parser->row, SEPARATOR));
 			return (1);
 		}
 	}
 	i++;
-	while(!is_delimiter(line[i]))
+	while (!is_delimiter(line[i]))
 		i++;
 	content = ft_strndup(line, i);
 	type = define_type(content, parser->row);
@@ -36,28 +50,30 @@ void	parse_tokens(t_parser *parser, char *line)
 	int res;
 
 	i = 0;
-	while(line[i] != '\0')
+	while (line[i] != '\0')
 	{
-		while(is_whitespace(line[i]))
+		while (is_whitespace(line[i]))
 			i++;
 		res = parse_token(parser, line + i);
 		if (res == -1)
 			break ;
 		i += res;
-	} 
+	}
 }
 
 void	parse(t_parser *parser)
 {
 	char	*line;
 	int		read;
-	while (read = get_next_line(parser->fd, &line))
+
+	while ((read = get_next_line(parser->fd, &line)))
 	{
 		parser->row += 1;
-		if (line) 
+		if (line)
 		{
 			parse_tokens(parser, line);
-			add_token_last(&parser->tokens, init_token(NULL, parser->row, NEW_LINE));
+			add_token_last(&parser->tokens,
+			init_token(NULL, parser->row, NEW_LINE));
 		}
 		free(line);
 	}

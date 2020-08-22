@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   process_utils.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: skrabby <skrabby@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/22 12:18:38 by skrabby           #+#    #+#             */
+/*   Updated: 2020/08/22 17:58:19 by skrabby          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "asm.h"
 #include "error.h"
 #include "config.h"
@@ -40,10 +52,8 @@ void			update_types_code(int8_t *types_code, int8_t type, int arg_num)
 	(*types_code) |= (get_arg_code(type) << 2 * (4 - arg_num - 1));
 }
 
-void	int32_to_bytecode(char *data,
-							int32_t pos,
-							int32_t value,
-							size_t size)
+void			int32_to_bytecode(char *data, int32_t pos,
+							int32_t value, size_t size)
 {
 	int8_t		i;
 

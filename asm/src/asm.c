@@ -1,14 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   asm.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: skrabby <skrabby@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/22 12:17:49 by skrabby           #+#    #+#             */
+/*   Updated: 2020/08/22 15:41:03 by skrabby          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "asm.h"
 #include "error.h"
 
-char*	change_extension(char *filename, char *from, char *to) {
+bool		check_extension(char *name, char *ext)
+{
+	return (ft_strstr(name + (ft_strlen(name) - ft_strlen(ext)), ext) ?
+	true : false);
+}
+
+char		*change_extension(char *filename, char *from, char *to)
+{
 	char	*filebody;
 	char	*s;
 
 	filebody = ft_strndup(filename, ft_strlen(filename) - ft_strlen(from));
 	s = ft_strjoin(filebody, to);
 	free(filebody);
-	return(s);
+	return (s);
 }
 
 t_parser	*init_parser(int fd)
@@ -31,7 +50,8 @@ t_parser	*init_parser(int fd)
 	return (parser);
 }
 
-void		assemble(char *filename) {
+void		assemble(char *filename)
+{
 	int			fd;
 	char		*new_fn;
 	t_parser	*parser;
@@ -52,11 +72,6 @@ void		assemble(char *filename) {
 	debug(parser);
 	ft_printf("\033[0;32m%s\033[0m has been successfully created\n", new_fn);
 	free(new_fn);
-}
-
-bool			check_extension(char *name, char *ext)
-{
-	return ft_strstr(name + (ft_strlen(name) - ft_strlen(ext)), ext) ? true : false;
 }
 
 int			main(int argc, char **argv)

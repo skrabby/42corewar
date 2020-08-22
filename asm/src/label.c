@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   label.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: skrabby <skrabby@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/22 12:18:08 by skrabby           #+#    #+#             */
+/*   Updated: 2020/08/22 16:41:53 by skrabby          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "asm.h"
 #include "error.h"
 
@@ -15,8 +27,7 @@ t_label		*init_label(char *name, int op_pos)
 	return (label);
 }
 
-
-void	add_label(t_label **list, t_label *new)
+void		add_label(t_label **list, t_label *new)
 {
 	t_label	*current;
 
@@ -34,7 +45,7 @@ void	add_label(t_label **list, t_label *new)
 	}
 }
 
-t_label	*find_label(t_label *list, char *name)
+t_label		*find_label(t_label *list, char *name)
 {
 	t_label	*label;
 
@@ -62,7 +73,7 @@ t_mention	*init_mention(t_parser *parser, t_token *token, size_t size)
 	return (mention);
 }
 
-void	add_mention(t_mention **list, t_mention *new)
+void		add_mention(t_mention **list, t_mention *new)
 {
 	t_mention	*current;
 
