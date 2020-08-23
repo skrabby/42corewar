@@ -26,6 +26,5 @@ int main(int ac, char **av)
 	print_intro(g_vm);
 	fight(g_vm);
     print_last_alive(g_vm);
-	
 	return (0);
 }

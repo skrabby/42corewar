@@ -1,15 +1,5 @@
 #include "corewar.h"
 
-int		get_dir_size(int op_code)
-{
-	if ((op_code >= 0 && op_code <= 7) 
-	|| op_code == 12 
-	|| op_code == 16)
-		return (4);
-	else
-		return (2);
-}
-
 int find_addr(int addr)
 {
     addr %= MEM_SIZE;
@@ -18,7 +8,7 @@ int find_addr(int addr)
     return (addr);
 }
 
-int		bytecode_to_int_op(uint8_t *arena, int addr, int size)
+int		bytecode_to_int_op(const uint8_t *arena, int addr, int size)
 {
 	int			result;
 	int			sign;
@@ -35,7 +25,7 @@ int		bytecode_to_int_op(uint8_t *arena, int addr, int size)
 			result += arena[find_addr(addr + size - 1)] << (i++ * 8);
 		size--;
 	}
-	if (sign)
+	if (sign != 0)
 		result = ~(result);
 	return (result);
 }
@@ -76,7 +66,7 @@ int		get_arg(t_vm *vm, t_cursor *cursor, int index, int mod)
 	int		value;
 	int		addr;
 
-	dir_size = get_dir_size(cursor->op_code);
+	dir_size = g_op[cursor->op_code - 1].t_dir_size;
 	value = 0;
 	if (cursor->args_types[index - 1] & T_REG)
 		value = cursor->reg[get_byte(cursor->pos + cursor->step, vm)];
@@ -93,6 +83,6 @@ int		get_arg(t_vm *vm, t_cursor *cursor, int index, int mod)
 							cursor->pos + (mod ? (addr % IDX_MOD) : addr),
 							DIR_SIZE);
 	}
-	cursor->step += step_size_op(cursor->args_types[index - 1], dir_size);
+        	cursor->step += step_size_op(cursor->args_types[index - 1], dir_size);
 	return (value);
 }

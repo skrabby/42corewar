@@ -13,7 +13,6 @@ void read_op(t_cursor *cursor, t_vm *vm)
 
 void	move_cursor(t_vm *vm, t_cursor *cursor)
 {
-	vm->display_aff = vm->display_aff;
 	cursor->pos += cursor->step;
 	cursor->pos = check_position(cursor->pos);
 	cursor->step = 0;
@@ -44,6 +43,7 @@ static void exec_code(t_cursor *cursor, t_vm *vm)
 		else
 			cursor->step = OP_CODE_LEN;
 		move_cursor(vm, cursor);
+        //vs_map(cursor);
 	}
 }
 
@@ -67,6 +67,8 @@ void fight(t_vm *vm)
 	while (vm->cursors_num)
 	{
 		exec_cycle(vm);
-		cycles_to_die_check(vm);
+        if (vm->cycles_to_die == vm->cycles_after_check
+            || vm->cycles_to_die <= 0)
+            cycles_to_die_check(vm);
 	}
 }

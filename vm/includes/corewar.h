@@ -347,13 +347,12 @@ static t_op		g_op[16] = {
 
 int			get_arg(t_vm *vm, t_cursor *cursor, int index, int mod);
 int			find_addr(int addr);
-int			bytecode_to_int_op(uint8_t *arena, int addr, int size);
+int			bytecode_to_int_op(const uint8_t *arena, int addr, int size);
 void		int_to_bytecode(uint8_t *arena, int addr, int value,
 						int size);
 int 		get_byte(int addr, t_vm *vm);
 int			step_size_op(uint8_t arg_type, int dir_size);
 int			get_arg(t_vm *vm, t_cursor *cursor, int index, int mod);
-int			get_dir_size(int op_code);
 t_cursor	*dupl_cur(t_cursor *cur, int addr);
 void		add_cur(t_cursor **list, t_cursor *cur);
 
@@ -397,7 +396,7 @@ void		fight(t_vm *vm);
 void print_arena(t_vm *vm);
 void print_intro(t_vm *vm);
 void	print_winner(t_vm *vm);
-
+void    vs_map(t_cursor *cursor);
 
 /*
 ** Array

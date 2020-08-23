@@ -17,12 +17,12 @@ int parse_player(char **av, int i, t_player **players_list, int id)
 	if (str_endswith(av[i], CHAMP_EXT))
 	{
 		if (!*players_list)
-			*players_list = read_champion_file(av[i], id);
+			*players_list = read_champion_file(av[i], i);
 		else
 		{
 			while (iter->next)
 				iter = iter->next;
-			iter->next = read_champion_file(av[i], id);
+			iter->next = read_champion_file(av[i], i);
 		}
 	}
 	else

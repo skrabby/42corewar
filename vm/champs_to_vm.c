@@ -23,18 +23,18 @@ int load_players_to_vm(t_vm *vm, t_player *players_list)
 {
 	int i;
 
-	i = FIRST_CHAMP_ID - 1;
+	i = FIRST_CHAMP_ID;
 	place_champs(vm, players_list);
-	while (players_list && ++i <= MAX_PLAYERS)
-	{
-		if (!vm->players[i])
-			vm->players[i] = players_list;
-		else
-			continue ;
-		players_list = players_list->next;
-	}
-	if (players_list)
-		error_exit(MANY_CHAMPS_ERROR, "");
+//	while (players_list && i++ <= MAX_PLAYERS)
+//	{
+//		if (!vm->players[i])
+//			vm->players[i] = players_list;
+//		else
+//			continue ;
+//		players_list = players_list->next;
+//	}
+//	if (players_list)
+//		error_exit(MANY_CHAMPS_ERROR, "");
 	vm->last_alive = vm->players[vm->players_num];
 	return (0);
 }

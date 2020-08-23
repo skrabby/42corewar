@@ -19,4 +19,5 @@ void    op_add(t_vm *vm, t_cursor *cursor)
         cursor->carry = 0;
     reg3 = get_byte(cursor->pos + cursor->step, vm);
     cursor->reg[reg3 - 1] = value;
+    cursor->step += REG_LEN;
 }
