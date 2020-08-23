@@ -16,7 +16,5 @@ void    op_live(t_vm *vm, t_cursor *cursor)
         pl->last_live = vm->cycles;
         pl->current_lives_num++;
         vm->last_alive = pl;
-        if (pl_id == -1)
-            return;
     } 
 }

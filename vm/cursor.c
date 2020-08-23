@@ -34,7 +34,7 @@ t_cursor *dupl_cur(t_cursor *cur, int addr)
 	int i;
 
 	addr = find_addr(cur->pos + addr);
-	new = init_cursor(cur->player, cur->pos);
+	new = init_cursor(cur->player, addr);
 	i = 0;
 	while (i < REG_NUMBER)
 	{
