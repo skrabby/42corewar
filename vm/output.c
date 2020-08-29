@@ -5,7 +5,7 @@
 #include "corewar.h"
 
 #define HEX "0123456789ABCDEF"
-#define PRINT_SIZE 64
+#define PRINT_SIZE 128
 
 void print_arena(t_vm *vm)
 {
@@ -18,7 +18,7 @@ void print_arena(t_vm *vm)
 	{
 		if ((i % (PRINT_SIZE / 2) == 0) && (i / (PRINT_SIZE / 2) > 0))
 			ft_printf("\n");
-		ft_printf("%c%c", hex[vm->arena[i] / 16], hex[vm->arena[i] % 16]);
+		ft_printf("%c%c ", hex[vm->arena[i] / 16], hex[vm->arena[i] % 16]);
 		i++;
 	}
 }

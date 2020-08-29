@@ -10,11 +10,11 @@ void    vs_map(t_cursor *cursor)
 {
     int i = 0;
 
-    while(i < MEM_SIZE)
+    while(i < 100)
     {
         if (i == (int)cursor->pos)
-            ft_printf("-->");
-        if (i % 64 != 0 || i == 0) {
+            ft_printf("%d -->", cursor->id);
+        if (i % 32 != 0 || i == 0) {
             ft_printf("{red}%d{green}(%d) ", g_vm->arena[i], i);
             i++;
         }
@@ -29,4 +29,9 @@ void    vs_map(t_cursor *cursor)
         ft_printf("\n");
         i++;
     }
+}
+
+void loger(t_cursor *cur)
+{
+    //ft_printf("Function id %d %s at cycle %s\n", cur->id, g_op[cur->op_code - 1].name, ft_itoa((int)g_vm->cycles));
 }

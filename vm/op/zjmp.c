@@ -12,5 +12,6 @@ void				op_zjmp(t_vm *vm, t_cursor *cursor)
         cursor->step = 0;
     }
     else
-        return ;
+        return;
+    loger(cursor);
 }

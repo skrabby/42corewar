@@ -14,4 +14,5 @@ void    op_lld(t_vm *vm, t_cursor *cursor)
 	reg = get_byte(cursor->pos + cursor->step, vm);
 	cursor->reg[reg - 1] = val;
 	cursor->step += REG_LEN;
+//    loger(cursor);
 }

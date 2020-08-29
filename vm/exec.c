@@ -38,7 +38,7 @@ void		int_to_bytecode(uint8_t *arena, int addr, int value,
 	i = 0;
 	while (size)
 	{
-		arena[find_addr(addr + size - 1)] = (int)((value >> i) & 0xFF);
+		arena[find_addr(addr + size - 1)] = (uint8_t)((value >> i) & 0xFF);
 		i += 8;
 		size--;
 	}
@@ -69,7 +69,7 @@ int		get_arg(t_vm *vm, t_cursor *cursor, int index, int mod)
 	dir_size = g_op[cursor->op_code - 1].t_dir_size;
 	value = 0;
 	if (cursor->args_types[index - 1] & T_REG)
-		value = cursor->reg[get_byte(cursor->pos + cursor->step, vm)];
+		value = cursor->reg[get_byte(cursor->pos + cursor->step, vm) - 1];
 	else if (cursor->args_types[index - 1] & T_DIR)
 		value = bytecode_to_int_op(vm->arena,
 								cursor->pos + cursor->step,

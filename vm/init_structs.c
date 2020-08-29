@@ -59,7 +59,7 @@ t_cursor *init_cursor(t_player *player, int pos)
 
 	if (!(cursor = ft_memalloc(sizeof(*cursor))))
 		error_exit(INTERNAL_ERROR, "");
-	cursor->id = cursor_id;
+	cursor->id = ++cursor_id;
 	cursor->pos = pos;
 	cursor->reg[0] = -(player->id);
 	cursor->player = player;

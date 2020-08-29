@@ -15,4 +15,5 @@ void    op_sti(t_vm *vm, t_cursor *cursor)
     val3 = get_arg(vm, cursor, 3, 1);
     int_to_bytecode(vm->arena,
 			(cursor->pos + ((val2 + val3) % IDX_MOD)), val, DIR_SIZE);
+    loger(cursor);
 }

@@ -10,4 +10,6 @@ void    op_fork(t_vm *vm, t_cursor *cursor)
 	new_cur = dupl_cur(cursor, val % IDX_MOD);
 	add_cur(&(vm->cursors), new_cur);
 	vm->cursors_num++;
+	//vs_map(cursor);
+    //loger(cursor);
 }

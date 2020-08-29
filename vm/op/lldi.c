@@ -13,4 +13,5 @@ void    op_lldi(t_vm *vm, t_cursor *cursor)
     cursor->reg[reg - 1] = bytecode_to_int_op(vm->arena, 
                             cursor->pos + (val1 + val2), DIR_SIZE);
     cursor->step += REG_LEN;
+    loger(cursor);
 }
