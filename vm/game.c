@@ -11,7 +11,7 @@ void read_op(t_cursor *cursor, t_vm *vm)
 		cursor->cycles_to_exec = g_op[cursor->op_code - 1].cycles;
 }
 
-void	move_cursor(t_vm *vm, t_cursor *cursor)
+void	move_cursor(t_cursor *cursor)
 {
 	cursor->pos += cursor->step;
 	cursor->pos = check_position(cursor->pos);
@@ -34,6 +34,8 @@ static void exec_code(t_cursor *cursor, t_vm *vm)
 			op = &g_op[cursor->op_code - 1];
 		if (op)
 		{
+			if (cursor->id == 5 && g_vm->cycles > 10000)
+				ft_printf("");
 			parse_types_code(vm, cursor, op);
 			if (is_arg_types_valid(cursor, op) && is_args_valid(cursor, vm, op))
 				op->func(vm, cursor);
@@ -42,7 +44,7 @@ static void exec_code(t_cursor *cursor, t_vm *vm)
 		}
 		else
 			cursor->step = OP_CODE_LEN;
-		move_cursor(vm, cursor);
+		move_cursor(cursor);
 	}
 }
 
@@ -50,12 +52,15 @@ static void exec_cycle(t_vm *vm)
 {
 	t_cursor *curr_cursor;
 
+	if (vm->dump_cycles == vm->cycles)
+	    exit(0);
 	vm->cycles++;
-   // ft_printf("Cycles: %d\n", vm->cycles);
+	if (vm->v2 == 1)
+        ft_printf("It is now cycle %d\n", vm->cycles);
 	vm->cycles_after_check++;
 	// logging
 	curr_cursor = vm->cursors;
-   // ft_printf("Cursors_num: %d\n", vm->cursors_num);
+    //ft_printf("Cursors_num: %d\n", vm->cursors_num);
 	while (curr_cursor)
 	{
 		exec_code(curr_cursor, vm);

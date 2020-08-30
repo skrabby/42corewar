@@ -95,7 +95,6 @@ uint8_t		is_args_valid(t_cursor *cursor,t_vm *vm, t_op *op)
 			&& !is_register(vm, cursor->pos, step))
 			return (0);
 		step += step_size(cursor->args_types[i], op);
-		i++;
 	}
 	return (1);
 }

@@ -14,6 +14,14 @@ t_player *init_player(int id)
 	if (!(player = ft_memalloc(sizeof(*player))))
 		error_exit(INTERNAL_ERROR, "");
 	player->id = id;
+	player->name = NULL;
+	player->comment = NULL;
+	player->code_size = 0;
+	player->code = NULL;
+	player->last_live = 0;
+	player->current_lives_num = 0;
+	player->previous_lives_num = 0;
+	player->next = NULL;
 	return player;
 }
 
@@ -27,7 +35,19 @@ t_vm *init_vm()
 		error_exit(INTERNAL_ERROR, "");
 	vm->cycles_to_die = CYCLE_TO_DIE;
 	vm->display_aff = 0; // Здесь какойто иф исходя их флагов
-	vm->loger_on = 1;
+
+	vm->lives_num = 0;
+	vm->last_alive = NULL;
+	vm->cursors = NULL;
+	vm->cursors_num = 0;
+	vm->cycles = 0;
+	vm->cycles_after_check = 0;
+	vm->checks_num = 0;
+	vm->players_num = 0;
+
+	vm->loger_on = 0;
+	vm->v2 = 1;
+	vm->dump_cycles = -1;
 	while (++i <= MAX_PLAYERS)
 		vm->players[i] = NULL;
 	return vm;
@@ -64,5 +84,10 @@ t_cursor *init_cursor(t_player *player, int pos)
 	cursor->pos = pos;
 	cursor->reg[0] = -(player->id);
 	cursor->player = player;
+	cursor->op_code = 0;
+	cursor->last_live = 0;
+	cursor->cycles_to_exec = 0;
+	cursor->next = NULL;
+	cursor->carry = 0;
 	return (cursor);
 }

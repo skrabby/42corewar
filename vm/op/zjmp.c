@@ -11,7 +11,8 @@ void				op_zjmp(t_vm *vm, t_cursor *cursor)
         cursor->pos = find_addr(cursor->pos + (val % IDX_MOD));
         cursor->step = 0;
     }
-    else
-        return;
-    vm->loger_on == 1 ? loger(cursor) : 0;
+    vm->loger_on == 1 ? ft_printf("P %4d | zjmp %d %s\n",
+                                 cursor->id,
+                                 val,
+                                 (cursor->carry) ? "OK" : "FAILED") : 0;
 }

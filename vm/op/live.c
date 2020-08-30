@@ -17,5 +17,5 @@ void    op_live(t_vm *vm, t_cursor *cursor)
         pl->current_lives_num++;
         vm->last_alive = pl;
     }
-    vm->loger_on == 1 ? loger(cursor) : 0;
+    vm->loger_on == 1 ? ft_printf("P %4d | live %d\n", cursor->id, pl_id) : 0;
 }

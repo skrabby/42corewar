@@ -14,6 +14,7 @@ int parse_player(char **av, int i, t_player **players_list, int id)
 	t_player *iter;
 
 	iter = *players_list;
+	id = 0;
 	if (str_endswith(av[i], CHAMP_EXT))
 	{
 		if (!*players_list)

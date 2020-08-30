@@ -24,7 +24,7 @@ uint32_t	calc_step(t_cursor *cursor, t_op *op)
 	i = 0;
 	step = 0;
 	step += OP_CODE_LEN + (op->args_types_code ? ARGS_CODE_LEN : 0);
-	while (i < g_op[cursor->op_code + 1].args_num)
+	while (i < g_op[cursor->op_code - 1].args_num)
 	{
 		step += step_size(cursor->args_types[i], op);
 		i++;

@@ -71,6 +71,8 @@ typedef struct			s_vm
 	size_t				checks_num;
 	int					display_aff;
 	short               loger_on;
+	short               v2;
+	int                 dump_cycles;
 }						t_vm;
 
 typedef struct s_flags

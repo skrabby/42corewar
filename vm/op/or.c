@@ -18,5 +18,5 @@ void op_or(t_vm *vm, t_cursor *cursor)
     reg = get_byte(cursor->pos + cursor->step, vm);
     cursor->reg[reg - 1] = res;
     cursor->step += REG_LEN;
-    vm->loger_on == 1 ? loger(cursor) : 0;
+    vm->loger_on == 1 ? ft_printf("P %4d | or %d %d r%d\n", cursor->id, val1, val2, reg) : 0;
 }
