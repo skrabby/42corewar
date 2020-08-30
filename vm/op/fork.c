@@ -11,5 +11,5 @@ void    op_fork(t_vm *vm, t_cursor *cursor)
 	add_cur(&(vm->cursors), new_cur);
 	vm->cursors_num++;
 	//vs_map(cursor);
-    //loger(cursor);
+    vm->loger_on == 1 ? loger(cursor) : 0;
 }

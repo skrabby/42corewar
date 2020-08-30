@@ -57,7 +57,6 @@ void			cycles_to_die_check(t_vm *vm)
 {
 	vm->checks_num++;
 	delete_died_cursors(vm);
-	ft_printf("Cycles: %d\n", vm->cycles);
 	if (vm->checks_num == MAX_CHECKS || vm->lives_num >= NBR_LIVE)
 	{
 		vm->cycles_to_die -= CYCLE_DELTA;

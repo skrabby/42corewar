@@ -14,5 +14,5 @@ void    op_ldi(t_vm *vm, t_cursor *cursor)
     cursor->reg[reg - 1] = bytecode_to_int_op(vm->arena, 
                             cursor->pos + (val1 + val2) % IDX_MOD, DIR_SIZE);
     cursor->step += REG_LEN;
-//    loger(cursor);
+    vm->loger_on == 1 ? loger(cursor) : 0;
 }

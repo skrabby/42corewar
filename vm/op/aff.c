@@ -11,5 +11,5 @@ void    op_aff(t_vm *vm, t_cursor *cursor)
     cursor->step += REG_LEN;
     if (vm->display_aff)
 		  ft_printf("Aff: %c\n", (char)val);
-    //loger(cursor);
+    vm->loger_on == 1 ? loger(cursor) : 0;
 }

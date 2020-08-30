@@ -24,5 +24,5 @@ void    op_st(t_vm *vm, t_cursor *cursor)
 							val, DIR_SIZE);
         cursor->step += IND_SIZE;
     }
-    loger(cursor);
+    //loger(cursor);
 }

@@ -12,7 +12,7 @@ void    op_add(t_vm *vm, t_cursor *cursor)
     cursor->step += REG_LEN;
     reg2 = get_byte(cursor->pos + cursor->step, vm);
     cursor->step += REG_LEN;
-    value = cursor->reg[reg1] + cursor->reg[reg2];
+    value = cursor->reg[reg1 - 1] + cursor->reg[reg2 - 1];
     if (value == 0) 
         cursor->carry = 1;
     else
@@ -20,5 +20,5 @@ void    op_add(t_vm *vm, t_cursor *cursor)
     reg3 = get_byte(cursor->pos + cursor->step, vm);
     cursor->reg[reg3 - 1] = value;
     cursor->step += REG_LEN;
-    //loger(cursor);
+    vm->loger_on == 1 ? loger(cursor) : 0;
 }

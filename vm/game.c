@@ -43,7 +43,6 @@ static void exec_code(t_cursor *cursor, t_vm *vm)
 		else
 			cursor->step = OP_CODE_LEN;
 		move_cursor(vm, cursor);
-        //vs_map(cursor);
 	}
 }
 
@@ -52,9 +51,11 @@ static void exec_cycle(t_vm *vm)
 	t_cursor *curr_cursor;
 
 	vm->cycles++;
+   // ft_printf("Cycles: %d\n", vm->cycles);
 	vm->cycles_after_check++;
 	// logging
 	curr_cursor = vm->cursors;
+   // ft_printf("Cursors_num: %d\n", vm->cursors_num);
 	while (curr_cursor)
 	{
 		exec_code(curr_cursor, vm);

@@ -70,6 +70,7 @@ typedef struct			s_vm
 	ssize_t				cycles_after_check;
 	size_t				checks_num;
 	int					display_aff;
+	short               loger_on;
 }						t_vm;
 
 

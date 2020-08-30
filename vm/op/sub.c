@@ -20,5 +20,5 @@ void op_sub(t_vm *vm, t_cursor *cursor)
     reg3 = get_byte(cursor->pos + cursor->step, vm);
     cursor->reg[reg3 - 1] = val;
     cursor->step += REG_LEN;
-    loger(cursor);
+    vm->loger_on == 1 ? loger(cursor) : 0;
 }
