@@ -20,5 +20,5 @@ void op_sub(t_vm *vm, t_cursor *cursor)
     reg3 = get_byte(cursor->pos + cursor->step, vm);
     cursor->reg[reg3 - 1] = val;
     cursor->step += REG_LEN;
-    vm->loger_on == 1 ? loger(cursor) : 0;
+    vm->loger_on == 1 ? ft_printf("P %4d | sub r%d r%d r%d\n", cursor->id, reg1, reg2, reg3) : 0;
 }

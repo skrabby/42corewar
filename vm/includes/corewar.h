@@ -71,6 +71,8 @@ typedef struct			s_vm
 	size_t				checks_num;
 	int					display_aff;
 	short               loger_on;
+	short               v2;
+	int                 dump_cycles;
 }						t_vm;
 
 
@@ -398,7 +400,7 @@ void print_arena(t_vm *vm);
 void print_intro(t_vm *vm);
 void	print_winner(t_vm *vm);
 void    vs_map(t_cursor *cursor);
-void    loger(t_cursor *cur);
+void    loger(t_cursor *cur, char *str);
 
 /*
 ** Array

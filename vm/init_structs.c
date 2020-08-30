@@ -28,6 +28,8 @@ t_vm *init_vm()
 	vm->cycles_to_die = CYCLE_TO_DIE;
 	vm->display_aff = 0; // Здесь какойто иф исходя их флагов
 	vm->loger_on = 1;
+	vm->v2 = 0;
+	vm->dump_cycles = -1;
 	while (++i <= MAX_PLAYERS)
 		vm->players[i] = NULL;
 	return vm;

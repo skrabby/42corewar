@@ -31,7 +31,7 @@ void    vs_map(t_cursor *cursor)
     }
 }
 
-void loger(t_cursor *cur)
+void loger(t_cursor *cur, char *str)
 {
-    ft_printf("Function id %d %s at cycle %s\n", cur->id, g_op[cur->op_code - 1].name, ft_itoa((int)g_vm->cycles));
+    ft_printf("P   %d | %s %s\n", cur->id, g_op[cur->op_code - 1].name, str);
 }

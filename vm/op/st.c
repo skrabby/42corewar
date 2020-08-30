@@ -24,5 +24,5 @@ void    op_st(t_vm *vm, t_cursor *cursor)
 							val, DIR_SIZE);
         cursor->step += IND_SIZE;
     }
-    //loger(cursor);
+    vm->loger_on == 1 ? ft_printf("P %4d | st r%d %d\n", cursor->id, reg, l_reg) : 0;
 }

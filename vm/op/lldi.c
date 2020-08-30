@@ -13,5 +13,12 @@ void    op_lldi(t_vm *vm, t_cursor *cursor)
     cursor->reg[reg - 1] = bytecode_to_int_op(vm->arena, 
                             cursor->pos + (val1 + val2), DIR_SIZE);
     cursor->step += REG_LEN;
-    vm->loger_on == 1 ? loger(cursor) : 0;
+    if (vm->loger_on == 1){
+        ft_printf("P %4d | lldi %d %d r%d\n", cursor->id, val1, val2, reg);
+        ft_printf("       | -> load from %d + %d = %d (with pc %d)\n",
+                  val1,
+                  val2,
+                  val1 + val2,
+                  cursor->pos + (val1 + val2));
+    }
 }
