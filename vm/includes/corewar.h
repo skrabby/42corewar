@@ -73,12 +73,21 @@ typedef struct			s_vm
 	short               loger_on;
 }						t_vm;
 
+typedef struct s_flags
+{
+	int8_t	verbal;
+	int		dump;
+	int8_t	stealth;
+	int		player_num;
+}			t_flags;
 
 /*
 ** Globals
 */
 
 t_vm *g_vm;
+t_flags g_flags;
+
 
 /*
 ** Funcs
@@ -382,7 +391,7 @@ void			op_aff(t_vm *vm, t_cursor *cursor);
 /*
 ** VM exec funcs
 */
-void parse_types_code(t_vm *vm, t_cursor *cursor, t_op *op);
+void		parse_types_code(t_vm *vm, t_cursor *cursor, t_op *op);
 uint8_t		is_arg_types_valid(t_cursor *cursor, t_op *op);
 uint8_t		is_args_valid(t_cursor *cursor,t_vm *vm, t_op *op);
 uint32_t	step_size(int8_t arg_type, t_op *op);
@@ -394,14 +403,20 @@ void		fight(t_vm *vm);
 /*
 ** Output funcs
 */
-void print_arena(t_vm *vm);
-void print_intro(t_vm *vm);
-void	print_winner(t_vm *vm);
-void    vs_map(t_cursor *cursor);
-void    loger(t_cursor *cur);
+void		print_arena(t_vm *vm);
+void		print_intro(t_vm *vm);
+void		print_winner(t_vm *vm);
+void    	vs_map(t_cursor *cursor);
+void    	loger(t_cursor *cur);
 
 /*
 ** Array
 */
 
+
+/*
+** Args funcs
+*/
+
+char	*ft_getopts(char **av, int *i);
 #endif

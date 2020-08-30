@@ -42,8 +42,7 @@ void parse_args(int ac, char **av)
 		print_usage(av[0]);
 	while (++i < ac)
 		if (av[i][0] == '-')
-			;
-//			ft_getopts(av[i]);
+			ft_getopts(av, &i);
 		else
 			parse_player(av, i, &players_list, 0);
 	load_players_to_vm(g_vm, players_list);
