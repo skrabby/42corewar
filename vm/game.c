@@ -34,6 +34,8 @@ static void exec_code(t_cursor *cursor, t_vm *vm)
 			op = &g_op[cursor->op_code - 1];
 		if (op)
 		{
+			if (cursor->id == 5 && g_vm->cycles > 10000)
+				ft_printf("");
 			parse_types_code(vm, cursor, op);
 			if (is_arg_types_valid(cursor, op) && is_args_valid(cursor, vm, op))
 				op->func(vm, cursor);

@@ -40,10 +40,6 @@ static void		delete_died_cursors(t_vm *vm)
 				vm->cursors = current;
 			if (previous)
 				previous->next = current;
-//			if (vm->log & DEATH_LOG)
-//				log_cursor_death(vm, delete);
-//			if (vm->vs)
-//				clear_cursor(vm, delete);
 			ft_memdel((void **)&delete);
 		}
 		else
