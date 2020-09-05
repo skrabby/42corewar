@@ -31,7 +31,3 @@ void    vs_map(t_cursor *cursor)
     }
 }
 
-void loger(t_cursor *cur, char *str)
-{
-    ft_printf("P   %d | %s %s\n", cur->id, g_op[cur->op_code - 1].name, str);
-}

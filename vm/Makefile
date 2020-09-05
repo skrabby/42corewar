@@ -18,6 +18,7 @@ SOURCES_LIST = \
 	exec.c \
 	output.c \
 	str_utils.c \
+	options.c \
 
 OP_SOURCES_DIR = $(SOURCES_DIR)op/
 OP_SOURCES_LIST = \
@@ -51,8 +52,10 @@ OP_OBJECTS = $(addprefix $(OBJECTS_DIR), $(OP_OBJECTS_LIST))
 # Headers
 HEADERS_DIR = ./includes/
 HEADERS_LIST = \
-# 	asm.h \
-	errors.h
+	corewar.h \
+	commands.h \
+	errors.h \
+	op.h
 
 
 HEADERS = $(addprefix $(HEADERS_DIR), $(HEADERS_LIST))

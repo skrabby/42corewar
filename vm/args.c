@@ -9,7 +9,7 @@
 
 // TODO:
 // 	- Implement -n flag and read 3 lines
-int parse_player(char **av, int i, t_player **players_list, int id)
+int	parse_player(char **av, int i, t_player **players_list, int id)
 {
 	t_player *iter;
 
@@ -34,8 +34,8 @@ int parse_player(char **av, int i, t_player **players_list, int id)
 
 void parse_args(int ac, char **av)
 {
-	int i;
-	t_player *players_list;
+	int			i;
+	t_player	*players_list;
 
 	i = 0;
 	players_list = NULL;

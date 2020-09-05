@@ -409,7 +409,6 @@ void		print_arena(t_vm *vm);
 void		print_intro(t_vm *vm);
 void		print_winner(t_vm *vm);
 void    	vs_map(t_cursor *cursor);
-void    	loger(t_cursor *cur);
 
 /*
 ** Array

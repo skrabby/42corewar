@@ -26,7 +26,7 @@ int8_t get_byte_from_arena(t_vm *vm, int position, int step)
 	return (vm->arena[check_position(position + step)]);
 }
 
-int8_t pow(int pow, int base)
+int8_t pow_to_cursor_type(int pow, int base)
 {
     int8_t res;
 
@@ -49,13 +49,13 @@ void parse_types_code(t_vm *vm, t_cursor *cursor, t_op *op)
 	{
 		args_types_code = get_byte_from_arena(vm, cursor->pos, 1);
 		if (op->args_num >= 1)
-			cursor->args_types[0] = pow((int8_t) ((args_types_code & FIRST_ARG_MASK)
+			cursor->args_types[0] = pow_to_cursor_type((int8_t) ((args_types_code & FIRST_ARG_MASK)
 					>> 6) - 1, 2);
 		if (op->args_num >= 2)
-			cursor->args_types[1] = pow((int8_t) ((args_types_code & SECOND_ARG_MASK)
+			cursor->args_types[1] = pow_to_cursor_type((int8_t) ((args_types_code & SECOND_ARG_MASK)
                     >> 4) - 1, 2);
 		if (op->args_num >= 3)
-			cursor->args_types[2] = pow((int8_t) ((args_types_code & THIRD_ARG_MASK)
+			cursor->args_types[2] = pow_to_cursor_type((int8_t) ((args_types_code & THIRD_ARG_MASK)
 					>> 2) - 1, 2);
 	} else
 		cursor->args_types[0] = op->args_types[0];
