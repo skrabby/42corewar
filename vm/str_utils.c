@@ -12,7 +12,7 @@
 
 #include "corewar.h"
 
-int str_endswith(char *str, char *end)
+int	str_endswith(char *str, char *end)
 {
 	int str_len;
 	int end_len;

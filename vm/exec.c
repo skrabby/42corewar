@@ -42,20 +42,6 @@ int		bytecode_to_int_op(const uint8_t *arena, int addr, int size)
 	return (result);
 }
 
-void	int_to_bytecode(uint8_t *arena, int addr, int value,
-						int size)
-{
-	int i;
-
-	i = 0;
-	while (size)
-	{
-		arena[find_addr(addr + size - 1)] = (uint8_t)((value >> i) & 0xFF);
-		i += 8;
-		size--;
-	}
-}
-
 int		get_byte(int addr, t_vm *vm)
 {
 	return (vm->arena[find_addr(addr)]);

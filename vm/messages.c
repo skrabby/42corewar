@@ -12,8 +12,8 @@
 
 #include "corewar.h"
 
-void print_usage(char *exec_name)
+void	print_usage(char *exec_name)
 {
-    ft_printf("Usage: %s [-some flags] <champion.cor> <...>", exec_name);
-	exit(0);
+	ft_printf("Usage: %s [-some flags] <champion.cor> <...>", exec_name);
+	exit(1);
 }

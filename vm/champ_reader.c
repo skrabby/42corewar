@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "corewar.h"
+#include "fcntl.h"
 
 int32_t		bytecode_to_int(const uint8_t *buf)
 {

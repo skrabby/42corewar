@@ -10,6 +10,7 @@ SOURCES_LIST = \
 	args.c \
 	game.c \
 	game_2.c \
+	game_3.c \
 	calculations.c \
 	cycles_to_die.c \
 	messages.c \

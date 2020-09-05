@@ -1,6 +1,14 @@
-//
-// Created by poligon on 18.05.2020.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   corewar.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oelaina <oelaina@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/05 14:39:42 by oelaina           #+#    #+#             */
+/*   Updated: 2020/09/05 14:39:43 by oelaina          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef COREWAR_H
 # define COREWAR_H
@@ -23,26 +31,25 @@
 # define OP_CODE_LEN 1
 # define ARGS_CODE_LEN 1
 
-#define FIRST_ARG_MASK 192
-#define SECOND_ARG_MASK 48
-#define THIRD_ARG_MASK 12
-#define CODE_LEN 1
-#define ARGS_LEN 1
+# define FIRST_ARG_MASK 192
+# define SECOND_ARG_MASK 48
+# define THIRD_ARG_MASK 12
+# define CODE_LEN 1
+# define ARGS_LEN 1
 
-#define FT_ABS(x) x > 0 ? x : -x
+# define FT_ABS(x) x > 0 ? x : -x
 
-#define HEX "0123456789abcdef"
-#define PRINT_SIZE 128
-#define ARENA_INDEX_BEGINING "0x"
-#define BASE 16
-#define BASE_0 1
-#define BASE_1 16
-#define BASE_2 256
-#define BASE_3 4096
-#define STEP 2
+# define HEX "0123456789abcdef"
+# define PRINT_SIZE 128
+# define ARENA_INDEX_BEGINING "0x"
+# define BASE 16
+# define BASE_0 1
+# define BASE_1 16
+# define BASE_2 256
+# define BASE_3 4096
+# define STEP 2
 
-#define	BYTES
-
+# define BYTES
 
 /*
 ** Structs
@@ -90,18 +97,18 @@ typedef struct			s_vm
 	ssize_t				cycles_after_check;
 	size_t				checks_num;
 	int					display_aff;
-	short               loger_on;
-	short               v2;
-	int                 dump_cycles;
+	short				loger_on;
+	short				v2;
+	int					dump_cycles;
 }						t_vm;
 
-typedef struct s_flags
+typedef struct			s_flags
 {
-	int8_t	verbal;
-	int		dump;
-	int8_t	stealth;
-	int		player_num;
-}			t_flags;
+	int8_t				verbal;
+	int					dump;
+	int8_t				stealth;
+	int					player_num;
+}						t_flags;
 
 /*
 ** Globals
@@ -110,89 +117,79 @@ typedef struct s_flags
 t_vm *g_vm;
 t_flags g_flags;
 
-
 /*
 ** Funcs
 */
-void print_usage(char *filename);
-void error_exit(char *message, char *filename);
-int str_endswith(char *str, char *end);
-
-t_player *read_champion_file(char *filename, int id);
+void					print_usage(char *filename);
+void					error_exit(char *message, char *filename);
+int						str_endswith(char *str, char *end);
+t_player				*read_champion_file(char *filename, int id);
 
 /*
 ** Init funcs
 */
 
-t_vm		*init_vm();
-t_player	*init_player(int id);
-void		init_arena(t_vm *vm);
-t_cursor	*init_cursor(t_player *player, int pos);
-void		set_cursors(t_vm *vm);
-int			load_players_to_vm(t_vm *vm, t_player *players_list);
+t_vm					*init_vm();
+t_player				*init_player(int id);
+void					init_arena(t_vm *vm);
+t_cursor				*init_cursor(t_player *player, int pos);
+void					set_cursors(t_vm *vm);
+int						load_players_to_vm(t_vm *vm, t_player *players_list);
 
-/*
- *
- */
+void					op_live(t_vm *vm, t_cursor *pc);
 
+void					op_ld(t_vm *vm, t_cursor *pc);
 
+void					op_st(t_vm *vm, t_cursor *pc);
 
-void			op_live(t_vm *vm, t_cursor *pc);
+void					op_add(t_vm *vm, t_cursor *pc);
 
-void			op_ld(t_vm *vm, t_cursor *pc);
+void					op_sub(t_vm *vm, t_cursor *pc);
 
-void			op_st(t_vm *vm, t_cursor *pc);
+void					op_and(t_vm *vm, t_cursor *cursor);
 
-void			op_add(t_vm *vm, t_cursor *pc);
+void					op_or(t_vm *vm, t_cursor *cursor);
 
-void			op_sub(t_vm *vm, t_cursor *pc);
+void					op_xor(t_vm *vm, t_cursor *cursor);
 
-void			op_and(t_vm *vm, t_cursor *cursor);
+void					op_zjmp(t_vm *vm, t_cursor *cursor);
 
-void			op_or(t_vm *vm, t_cursor *cursor);
+void					op_ldi(t_vm *vm, t_cursor *cursor);
 
-void			op_xor(t_vm *vm, t_cursor *cursor);
+void					op_sti(t_vm *vm, t_cursor *cursor);
 
-void			op_zjmp(t_vm *vm, t_cursor *cursor);
+void					op_fork(t_vm *vm, t_cursor *cursor);
 
-void			op_ldi(t_vm *vm, t_cursor *cursor);
+void					op_lld(t_vm *vm, t_cursor *cursor);
 
-void			op_sti(t_vm *vm, t_cursor *cursor);
+void					op_lldi(t_vm *vm, t_cursor *cursor);
 
-void			op_fork(t_vm *vm, t_cursor *cursor);
+void					op_lfork(t_vm *vm, t_cursor *cursor);
 
-void			op_lld(t_vm *vm, t_cursor *cursor);
-
-void			op_lldi(t_vm *vm, t_cursor *cursor);
-
-void			op_lfork(t_vm *vm, t_cursor *cursor);
-
-void			op_aff(t_vm *vm, t_cursor *cursor);
-
-
+void					op_aff(t_vm *vm, t_cursor *cursor);
 
 /*
 ** Args and getopts funcs
 */
 
-void		parse_args(int ac, char **av);
-int			find_addr(int addr);
+void					parse_args(int ac, char **av);
+int						find_addr(int addr);
 
-typedef struct	s_op
+typedef struct			s_op
 {
-	char		*name;
-	uint8_t		code;
-	uint8_t		args_num;
-	short		args_types_code;
-	uint8_t		args_types[3];
-	short		modify_carry;
-	uint8_t		t_dir_size;
-	uint32_t	cycles;
-	void		(*func)(t_vm *, t_cursor *);
+	char				*name;
+	uint8_t				code;
+	uint8_t				args_num;
+	short				args_types_code;
+	uint8_t				args_types[3];
+	short				modify_carry;
+	uint8_t				t_dir_size;
+	uint32_t			cycles;
+	void				(*func)(t_vm *, t_cursor *);
 
-}			t_op;
+}						t_op;
 
-static t_op		g_op[16] = {
+static t_op				g_op[16] = {
 	{
 		.name = "live",
 		.code = 0x01,
@@ -371,73 +368,42 @@ static t_op		g_op[16] = {
 	}
 };
 
-
-
 /*
 ** additional functions
 */
 
-int			get_arg(t_vm *vm, t_cursor *cursor, int index, int mod);
-int			find_addr(int addr);
-int			bytecode_to_int_op(const uint8_t *arena, int addr, int size);
-void		int_to_bytecode(uint8_t *arena, int addr, int value,
+int						get_arg(t_vm *vm, t_cursor *cursor, int index, int mod);
+int						find_addr(int addr);
+int						bytecode_to_int_op(const uint8_t *arena,
+							int addr, int size);
+void					int_to_bytecode(uint8_t *arena, int addr, int value,
 						int size);
-int 		get_byte(int addr, t_vm *vm);
-int			step_size_op(uint8_t arg_type, int dir_size);
-int			get_arg(t_vm *vm, t_cursor *cursor, int index, int mod);
-t_cursor	*dupl_cur(t_cursor *cur, int addr);
-void		add_cur(t_cursor **list, t_cursor *cur);
-
-/*
-** OP_FUNCTIONS
-*/
-void    		op_live(t_vm *vm, t_cursor *cursor);
-void			op_ld(t_vm *vm, t_cursor *cursor);
-void			op_st(t_vm *vm, t_cursor *cursor);
-void			op_add(t_vm *vm, t_cursor *cursor);
-void			op_sub(t_vm *vm, t_cursor *cursor);
-void			op_and(t_vm *vm, t_cursor *cursor);
-void			op_or(t_vm *vm, t_cursor *cursor);
-void			op_xor(t_vm *vm, t_cursor *cursor);
-void			op_zjmp(t_vm *vm, t_cursor *cursor);
-void			op_ldi(t_vm *vm, t_cursor *cursor);
-void			op_sti(t_vm *vm, t_cursor *cursor);
-void			op_fork(t_vm *vm, t_cursor *cursor);
-void			op_lld(t_vm *vm, t_cursor *cursor);
-void			op_lldi(t_vm *vm, t_cursor *cursor);
-void			op_lfork(t_vm *vm, t_cursor *cursor);
-void			op_aff(t_vm *vm, t_cursor *cursor);
-
-
+int						get_byte(int addr, t_vm *vm);
+int8_t					get_byte_from_arena(t_vm *vm, int position, int step);
+int						step_size_op(uint8_t arg_type, int dir_size);
+int						get_arg(t_vm *vm, t_cursor *cursor, int index, int mod);
+t_cursor				*dupl_cur(t_cursor *cur, int addr);
+void					add_cur(t_cursor **list, t_cursor *cur);
 
 /*
 ** VM exec funcs
 */
-void		parse_types_code(t_vm *vm, t_cursor *cursor, t_op *op);
-uint8_t		is_arg_types_valid(t_cursor *cursor, t_op *op);
-uint8_t		is_args_valid(t_cursor *cursor,t_vm *vm, t_op *op);
-uint32_t	step_size(int8_t arg_type, t_op *op);
-uint32_t	calc_step(t_cursor *cursor, t_op *op);
-int			check_position(int position);
-void		cycles_to_die_check(t_vm *vm);
-void		fight(t_vm *vm);
+void					parse_types_code(t_vm *vm, t_cursor *cursor, t_op *op);
+uint8_t					is_arg_types_valid(t_cursor *cursor, t_op *op);
+uint8_t					is_args_valid(t_cursor *cursor, t_vm *vm, t_op *op);
+uint32_t				step_size(int8_t arg_type, t_op *op);
+uint32_t				calc_step(t_cursor *cursor, t_op *op);
+int						check_position(int position);
+void					cycles_to_die_check(t_vm *vm);
+void					fight(t_vm *vm);
 
 /*
 ** Output funcs
 */
-void		print_arena(t_vm *vm);
-void		print_intro(t_vm *vm);
-void		print_winner(t_vm *vm);
-void    	vs_map(t_cursor *cursor);
+void					print_arena(t_vm *vm);
+void					print_intro(t_vm *vm);
+void					print_winner(t_vm *vm);
+void					vs_map(t_cursor *cursor);
 
-/*
-** Array
-*/
-
-
-/*
-** Args funcs
-*/
-
-char	*ft_getopts(char **av, int *i);
+char					*ft_getopts(char **av, int *i);
 #endif
