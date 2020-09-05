@@ -1,14 +1,22 @@
-//
-// Created by poligon on 12.07.2020.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cursor.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oelaina <oelaina@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/05 14:12:17 by oelaina           #+#    #+#             */
+/*   Updated: 2020/09/05 14:12:17 by oelaina          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "corewar.h"
 
-void	set_cursors(t_vm *vm)
+void		set_cursors(t_vm *vm)
 {
-	int 	id;
-	size_t 	pos;
-	t_cursor *cursor_ptr;
+	int			id;
+	size_t		pos;
+	t_cursor	*cursor_ptr;
 
 	id = FIRST_CHAMP_ID;
 	pos = 0;
@@ -28,10 +36,10 @@ void	set_cursors(t_vm *vm)
 	}
 }
 
-t_cursor *dupl_cur(t_cursor *cur, int addr)
+t_cursor	*dupl_cur(t_cursor *cur, int addr)
 {
-	t_cursor *new;
-	int i;
+	t_cursor	*new;
+	int			i;
 
 	addr = find_addr(cur->pos + addr);
 	new = init_cursor(cur->player, addr);
@@ -46,7 +54,7 @@ t_cursor *dupl_cur(t_cursor *cur, int addr)
 	return (new);
 }
 
-void	add_cur(t_cursor **list, t_cursor *cur)
+void		add_cur(t_cursor **list, t_cursor *cur)
 {
 	if (cur)
 		cur->next = *list;

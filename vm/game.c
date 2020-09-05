@@ -1,17 +1,25 @@
-//
-// Created by poligon on 19.07.2020.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   game.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oelaina <oelaina@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/05 14:12:45 by oelaina           #+#    #+#             */
+/*   Updated: 2020/09/05 14:12:46 by oelaina          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "corewar.h"
 
-void read_op(t_cursor *cursor, t_vm *vm)
+void			read_op(t_cursor *cursor, t_vm *vm)
 {
 	cursor->op_code = vm->arena[cursor->pos];
 	if (cursor->op_code >= 0x01 && cursor->op_code <= 0x10)
 		cursor->cycles_to_exec = g_op[cursor->op_code - 1].cycles;
 }
 
-void	move_cursor(t_cursor *cursor)
+void			move_cursor(t_cursor *cursor)
 {
 	cursor->pos += cursor->step;
 	cursor->pos = check_position(cursor->pos);
@@ -19,7 +27,7 @@ void	move_cursor(t_cursor *cursor)
 	ft_bzero(cursor->args_types, 3);
 }
 
-static void exec_code(t_cursor *cursor, t_vm *vm)
+static void		exec_code(t_cursor *cursor, t_vm *vm)
 {
 	t_op *op;
 
@@ -48,19 +56,17 @@ static void exec_code(t_cursor *cursor, t_vm *vm)
 	}
 }
 
-static void exec_cycle(t_vm *vm)
+static void		exec_cycle(t_vm *vm)
 {
 	t_cursor *curr_cursor;
 
 	if (vm->dump_cycles == vm->cycles)
-	    exit(0);
+		exit(0);
 	vm->cycles++;
 	if (vm->v2 == 1)
-        ft_printf("It is now cycle %d\n", vm->cycles);
+		ft_printf("It is now cycle %d\n", vm->cycles);
 	vm->cycles_after_check++;
-	// logging
 	curr_cursor = vm->cursors;
-    //ft_printf("Cursors_num: %d\n", vm->cursors_num);
 	while (curr_cursor)
 	{
 		exec_code(curr_cursor, vm);
@@ -68,13 +74,13 @@ static void exec_cycle(t_vm *vm)
 	}
 }
 
-void fight(t_vm *vm)
+void			fight(t_vm *vm)
 {
 	while (vm->cursors_num)
 	{
 		exec_cycle(vm);
-        if (vm->cycles_to_die == vm->cycles_after_check
-            || vm->cycles_to_die <= 0)
-            cycles_to_die_check(vm);
+		if (vm->cycles_to_die == vm->cycles_after_check
+			|| vm->cycles_to_die <= 0)
+			cycles_to_die_check(vm);
 	}
 }

@@ -1,13 +1,19 @@
-//
-// Created by poligon on 18.05.2020.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error_handler.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oelaina <oelaina@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/05 14:12:26 by oelaina           #+#    #+#             */
+/*   Updated: 2020/09/05 14:12:30 by oelaina          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "corewar.h"
 #include <errno.h>
-#include <stdio.h>
 
-
-void error_exit(char *message, char *filename)
+void	error_exit(char *message, char *filename)
 {
 	if (errno == 0)
 	{

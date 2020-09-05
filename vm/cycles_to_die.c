@@ -1,6 +1,14 @@
-//
-// Created by poligon on 08.08.2020.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cycles_to_die.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oelaina <oelaina@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/05 14:12:22 by oelaina           #+#    #+#             */
+/*   Updated: 2020/09/05 14:12:22 by oelaina          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "corewar.h"
 
@@ -57,9 +65,7 @@ void			cycles_to_die_check(t_vm *vm)
 	{
 		vm->cycles_to_die -= CYCLE_DELTA;
 		if (vm->v2 == 1)
-		    ft_printf("Cycle to die is now %d\n", (int)vm->cycles_to_die);
-//		if (vm->log & CYCLE_LOG)
-//			log_cycles_to_die(vm->cycles_to_die);
+			ft_printf("Cycle to die is now %d\n", (int)vm->cycles_to_die);
 		vm->checks_num = 0;
 	}
 	reset_lives_nums(vm);

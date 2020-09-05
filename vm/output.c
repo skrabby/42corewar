@@ -1,25 +1,22 @@
-//
-// Created by poligon on 12.07.2020.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   output.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oelaina <oelaina@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/05 14:13:15 by oelaina           #+#    #+#             */
+/*   Updated: 2020/09/05 14:13:15 by oelaina          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "corewar.h"
 
-#define HEX "0123456789abcdef"
-#define PRINT_SIZE 128
-#define ARENA_INDEX_BEGINING "0x"
-#define BASE 16
-#define BASE_0 1
-#define BASE_1 16
-#define BASE_2 256
-#define BASE_3 4096
-#define STEP 2
-
-
-char *get_memory_index(int bytes_num)
+char	*get_memory_index(int bytes_num)
 {
-	char symbols[4];
-	char *result;
-	int i;
+	char	symbols[4];
+	char	*result;
+	int		i;
 
 	i = -1;
 	result = ft_strnew(7);
@@ -36,10 +33,10 @@ char *get_memory_index(int bytes_num)
 	return (result);
 }
 
-void print_arena(t_vm *vm)
+void	print_arena(t_vm *vm)
 {
-	int i;
-	char *hex;
+	int		i;
+	char	*hex;
 
 	i = 0;
 	hex = HEX;
@@ -56,7 +53,7 @@ void print_arena(t_vm *vm)
 	}
 }
 
-void print_intro(t_vm *vm)
+void	print_intro(t_vm *vm)
 {
 	int i;
 
@@ -65,16 +62,14 @@ void print_intro(t_vm *vm)
 	while (++i <= vm->players_num)
 	{
 		ft_printf("* Player %d, weighing %d bytes, \"%s\" (\"%s\") !\n",
-				  i,
-				  vm->players[i]->code_size,
-				  vm->players[i]->name,
-				  vm->players[i]->comment);
+				i, vm->players[i]->code_size, vm->players[i]->name,
+					vm->players[i]->comment);
 	}
 }
 
 void	print_winner(t_vm *vm)
 {
 	ft_printf("Contestant %d, \"%s\", has won !\n",
-			  vm->last_alive->id,
-			  vm->last_alive->name);
+				vm->last_alive->id,
+				vm->last_alive->name);
 }

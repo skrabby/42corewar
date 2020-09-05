@@ -1,14 +1,18 @@
-//
-// Created by poligon on 18.05.2020.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   champ_reader.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oelaina <oelaina@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/05 14:12:09 by oelaina           #+#    #+#             */
+/*   Updated: 2020/09/05 14:12:10 by oelaina          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "corewar.h"
-#include <fcntl.h>
 
-//#define DEBUG
-#define BYTES
-
-int32_t bytecode_to_int(const uint8_t *buf)
+int32_t		bytecode_to_int(const uint8_t *buf)
 {
 	uint32_t res;
 	uint8_t sign;
@@ -27,7 +31,7 @@ int32_t bytecode_to_int(const uint8_t *buf)
 	return  res;
 }
 
-int32_t read_int32(int fd, char *filename)
+int32_t		read_int32(int fd, char *filename)
 {
 	int32_t size;
 	uint8_t buf[4];
@@ -39,7 +43,7 @@ int32_t read_int32(int fd, char *filename)
 	return (bytecode_to_int(buf));
 }
 
-uint8_t *read_bytecode(int fd, uint32_t read_size, char *filename)
+uint8_t		*read_bytecode(int fd, uint32_t read_size, char *filename)
 {
 	uint8_t *buf;
 	int len;
@@ -53,7 +57,7 @@ uint8_t *read_bytecode(int fd, uint32_t read_size, char *filename)
 	return buf;
 }
 
-char *read_string(int fd, uint32_t read_size, char *filename)
+char		*read_string(int fd, uint32_t read_size, char *filename)
 {
 	char *buf;
 	int len;
@@ -67,7 +71,7 @@ char *read_string(int fd, uint32_t read_size, char *filename)
 	return buf;
 }
 
-t_player *read_champion_file(char *filename, int id)
+t_player	*read_champion_file(char *filename, int id)
 {
 	t_player *player;
 	int fd;
@@ -89,13 +93,3 @@ t_player *read_champion_file(char *filename, int id)
 	player->code = read_bytecode(fd, player->code_size, filename);
 	return (player);
 }
-
-#ifdef DEBUG
-int main(){
-	int fd;
-
-	fd = open("/home/poligon/42school/corewar/vm/champs/barriere.cor", O_RDONLY);
-	ft_printf("%d %d", read_int32(fd, ""), COREWAR_EXEC_MAGIC);
-	read_champion_file("/home/poligon/42school/corewar/vm/champs/barriere.cor", 0);
-}
-#endif

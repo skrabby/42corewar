@@ -1,47 +1,46 @@
-//
-// Created by poligon on 22.07.2020.
-//
-
-#define FIRST_ARG_MASK 192
-#define SECOND_ARG_MASK 48
-#define THIRD_ARG_MASK 12
-#define CODE_LEN 1
-#define ARGS_LEN 1
-#define REG_LEN 1
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   game_2.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oelaina <oelaina@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/05 14:12:49 by oelaina           #+#    #+#             */
+/*   Updated: 2020/09/05 14:12:49 by oelaina          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "corewar.h"
 #include "op.h"
 
-int check_position(int position)
+int				check_position(int position)
 {
 	position = position % MEM_SIZE;
 	if (position < 0)
 		position += MEM_SIZE;
-	return position;
+	return (position);
 }
 
-int8_t get_byte_from_arena(t_vm *vm, int position, int step)
+int8_t			get_byte_from_arena(t_vm *vm, int position, int step)
 {
 	return (vm->arena[check_position(position + step)]);
 }
 
-int8_t pow_to_cursor_type(int pow, int base)
+int8_t			pow_to_cursor_type(int pow, int base)
 {
-    int8_t res;
+	int8_t res;
 
-    if (pow == -1)
-        return (0);
-    res = 1;
-    while (pow-- > 0)
-    {
-        res *= base;
-    }
-    return (res);
-
+	if (pow == -1)
+		return (0);
+	res = 1;
+	while (pow-- > 0)
+	{
+		res *= base;
+	}
+	return (res);
 }
 
-void parse_types_code(t_vm *vm, t_cursor *cursor, t_op *op)
+void			parse_types_code(t_vm *vm, t_cursor *cursor, t_op *op)
 {
 	int8_t args_types_code;
 
@@ -49,19 +48,20 @@ void parse_types_code(t_vm *vm, t_cursor *cursor, t_op *op)
 	{
 		args_types_code = get_byte_from_arena(vm, cursor->pos, 1);
 		if (op->args_num >= 1)
-			cursor->args_types[0] = pow_to_cursor_type((int8_t) ((args_types_code & FIRST_ARG_MASK)
-					>> 6) - 1, 2);
+			cursor->args_types[0] = pow_to_cursor_type(
+	(int8_t)((args_types_code & FIRST_ARG_MASK) >> 6) - 1, 2);
 		if (op->args_num >= 2)
-			cursor->args_types[1] = pow_to_cursor_type((int8_t) ((args_types_code & SECOND_ARG_MASK)
-                    >> 4) - 1, 2);
+			cursor->args_types[1] = pow_to_cursor_type(
+	(int8_t)((args_types_code & SECOND_ARG_MASK) >> 4) - 1, 2);
 		if (op->args_num >= 3)
-			cursor->args_types[2] = pow_to_cursor_type((int8_t) ((args_types_code & THIRD_ARG_MASK)
-					>> 2) - 1, 2);
-	} else
+			cursor->args_types[2] = pow_to_cursor_type(
+	(int8_t)((args_types_code & THIRD_ARG_MASK) >> 2) - 1, 2);
+	}
+	else
 		cursor->args_types[0] = op->args_types[0];
 }
 
-uint8_t		is_arg_types_valid(t_cursor *cursor, t_op *op)
+uint8_t			is_arg_types_valid(t_cursor *cursor, t_op *op)
 {
 	int i;
 
@@ -80,9 +80,7 @@ static uint8_t	is_register(t_vm *vm, int32_t pos, int32_t step)
 	return (r_id >= 1 && r_id <= REG_NUMBER);
 }
 
-
-
-uint8_t		is_args_valid(t_cursor *cursor,t_vm *vm, t_op *op)
+uint8_t			is_args_valid(t_cursor *cursor, t_vm *vm, t_op *op)
 {
 	int i;
 	int step;

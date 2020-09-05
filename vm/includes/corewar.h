@@ -22,7 +22,27 @@
 
 # define OP_CODE_LEN 1
 # define ARGS_CODE_LEN 1
-# define REG_LEN 1
+
+#define FIRST_ARG_MASK 192
+#define SECOND_ARG_MASK 48
+#define THIRD_ARG_MASK 12
+#define CODE_LEN 1
+#define ARGS_LEN 1
+
+#define FT_ABS(x) x > 0 ? x : -x
+
+#define HEX "0123456789abcdef"
+#define PRINT_SIZE 128
+#define ARENA_INDEX_BEGINING "0x"
+#define BASE 16
+#define BASE_0 1
+#define BASE_1 16
+#define BASE_2 256
+#define BASE_3 4096
+#define STEP 2
+
+#define	BYTES
+
 
 /*
 ** Structs

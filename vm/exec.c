@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exec.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oelaina <oelaina@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/05 14:12:41 by oelaina           #+#    #+#             */
+/*   Updated: 2020/09/05 14:12:42 by oelaina          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
-int find_addr(int addr)
+int		find_addr(int addr)
 {
-    addr %= MEM_SIZE;
-    if (addr < 0)
-        addr += MEM_SIZE;
-    return (addr);
+	addr %= MEM_SIZE;
+	if (addr < 0)
+		addr += MEM_SIZE;
+	return (addr);
 }
 
 int		bytecode_to_int_op(const uint8_t *arena, int addr, int size)
@@ -30,7 +42,7 @@ int		bytecode_to_int_op(const uint8_t *arena, int addr, int size)
 	return (result);
 }
 
-void		int_to_bytecode(uint8_t *arena, int addr, int value,
+void	int_to_bytecode(uint8_t *arena, int addr, int value,
 						int size)
 {
 	int i;
@@ -44,12 +56,12 @@ void		int_to_bytecode(uint8_t *arena, int addr, int value,
 	}
 }
 
-int get_byte(int addr, t_vm *vm)
+int		get_byte(int addr, t_vm *vm)
 {
-    return (vm->arena[find_addr(addr)]);
+	return (vm->arena[find_addr(addr)]);
 }
 
-int	step_size_op(uint8_t arg_type, int dir_size)
+int		step_size_op(uint8_t arg_type, int dir_size)
 {
 	if (arg_type & T_REG)
 		return (REG_LEN);
@@ -83,6 +95,6 @@ int		get_arg(t_vm *vm, t_cursor *cursor, int index, int mod)
 							cursor->pos + (mod ? (addr % IDX_MOD) : addr),
 							DIR_SIZE);
 	}
-        	cursor->step += step_size_op(cursor->args_types[index - 1], dir_size);
+	cursor->step += step_size_op(cursor->args_types[index - 1], dir_size);
 	return (value);
 }

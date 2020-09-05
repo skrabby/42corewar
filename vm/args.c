@@ -1,17 +1,21 @@
-//
-// Created by poligon on 18.05.2020.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   args.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oelaina <oelaina@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/05 14:11:57 by oelaina           #+#    #+#             */
+/*   Updated: 2020/09/05 14:11:58 by oelaina          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "corewar.h"
 #include <fcntl.h>
 
-
-
-// TODO:
-// 	- Implement -n flag and read 3 lines
-int	parse_player(char **av, int i, t_player **players_list, int id)
+int		parse_player(char **av, int i, t_player **players_list, int id)
 {
-	t_player *iter;
+	t_player	*iter;
 
 	iter = *players_list;
 	id = 0;
@@ -32,7 +36,7 @@ int	parse_player(char **av, int i, t_player **players_list, int id)
 	return (0);
 }
 
-void parse_args(int ac, char **av)
+void	parse_args(int ac, char **av)
 {
 	int			i;
 	t_player	*players_list;
