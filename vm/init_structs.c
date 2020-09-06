@@ -51,7 +51,8 @@ t_vm			*init_vm(void)
 	vm->checks_num = 0;
 	vm->players_num = 0;
 	vm->loger_on = 0;
-	vm->v2 = 1;
+	vm->v1 = 1;
+	vm->v2 = 0;
 	vm->dump_cycles = -1;
 	while (++i <= MAX_PLAYERS)
 		vm->players[i] = NULL;

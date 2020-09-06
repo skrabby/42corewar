@@ -100,6 +100,7 @@ typedef struct			s_vm
 	short				loger_on;
 	short				v2;
 	int					dump_cycles;
+	int					v1;
 }						t_vm;
 
 typedef struct			s_flags
