@@ -60,10 +60,13 @@ static void		exec_cycle(t_vm *vm)
 {
 	t_cursor *curr_cursor;
 
-	if (vm->dump_cycles == vm->cycles)
+	if (g_flags.dump == vm->cycles)
+	{
+		print_arena(vm);
 		exit(0);
+	}
 	vm->cycles++;
-	if (vm->v2 == 1)
+	if (g_flags.verbal & V_MASK_1)
 		ft_printf("It is now cycle %d\n", vm->cycles);
 	vm->cycles_after_check++;
 	curr_cursor = vm->cursors;

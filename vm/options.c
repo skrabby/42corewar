@@ -28,6 +28,8 @@ int ft_getopts(char **av, int ac, int *i)
 	{
 		if (av[*i][1] == 'v')
 			parse_verbal_type(ft_atoi(av[++(*i)]));
+		if (av[*i][1] == 'a')
+			g_flags.aff = 1;
 		else if (av[*i][1] == 'd')
 			g_flags.dump = ft_atoi(av[++(*i)]);
 		else if (av[*i][1] == 'n')

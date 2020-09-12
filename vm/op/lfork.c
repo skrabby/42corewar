@@ -22,6 +22,6 @@ void	op_lfork(t_vm *vm, t_cursor *cursor)
 	new_cur = dupl_cur(cursor, val);
 	add_cur(&(vm->cursors), new_cur);
 	vm->cursors_num++;
-	vm->loger_on == 1 ? ft_printf("P %4d | lfork %d (%d)\n",
+	(g_flags.verbal & V_MASK_4) ? ft_printf("P %4d | lfork %d (%d)\n",
 								cursor->id, val, cursor->pos + val) : 0;
 }

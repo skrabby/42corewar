@@ -32,6 +32,6 @@ void	op_add(t_vm *vm, t_cursor *cursor)
 	reg3 = get_byte(cursor->pos + cursor->step, vm);
 	cursor->reg[reg3 - 1] = value;
 	cursor->step += REG_LEN;
-	vm->loger_on == 1 ? ft_printf("P %4d | add r%d r%d r%d\n",
+	(g_flags.verbal & V_MASK_4) ? ft_printf("P %4d | add r%d r%d r%d\n",
 								cursor->id, reg1, reg2, reg3) : 0;
 }

@@ -25,7 +25,7 @@ void	op_ldi(t_vm *vm, t_cursor *cursor)
 	cursor->reg[reg - 1] = bytecode_to_int_op(vm->arena,
 							cursor->pos + (val1 + val2) % IDX_MOD, DIR_SIZE);
 	cursor->step += REG_LEN;
-	if (vm->loger_on == 1)
+	if (g_flags.verbal & V_MASK_4)
 	{
 		ft_printf("P %4d | ldi %d %d r%d\n", cursor->id, val1, val2, reg);
 		ft_printf("       | -> load from %d + %d = %d (with pc and mod %d)\n",

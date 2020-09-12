@@ -30,6 +30,6 @@ void	op_and(t_vm *vm, t_cursor *cursor)
 	reg = get_byte(cursor->pos + cursor->step, vm);
 	cursor->reg[reg - 1] = res;
 	cursor->step += REG_LEN;
-	vm->loger_on == 1 ? ft_printf("P %4d | and %d %d r%d\n",
+	(g_flags.verbal & V_MASK_4) ? ft_printf("P %4d | and %d %d r%d\n",
 									cursor->id, val1, val2, reg) : 0;
 }

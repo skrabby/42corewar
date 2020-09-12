@@ -27,7 +27,7 @@ void	op_sti(t_vm *vm, t_cursor *cursor)
 	val3 = get_arg(vm, cursor, 3, 1);
 	int_to_bytecode(vm->arena,
 			(cursor->pos + ((val2 + val3) % IDX_MOD)), val, DIR_SIZE);
-	if (vm->loger_on == 1)
+	if (g_flags.verbal & V_MASK_4)
 	{
 		ft_printf("P %4d | sti r%d %d %d\n",
 					cursor->id, reg1, val2, val3);
