@@ -46,6 +46,14 @@
 
 # define BYTES
 
+# define V_MASK_0 0
+# define V_MASK_1 1
+# define V_MASK_2 2
+# define V_MASK_4 4
+# define V_MASK_8 8
+# define V_MASK_16 16
+
+
 /*
 ** Structs
 */
@@ -100,9 +108,10 @@ typedef struct			s_vm
 
 typedef struct			s_flags
 {
-	int8_t				verbal;
-	int					dump;
+	uint8_t				verbal;
+	unsigned int		dump;
 	int8_t				stealth;
+	int8_t				aff;
 	int					player_num;
 }						t_flags;
 

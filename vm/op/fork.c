@@ -22,6 +22,6 @@ void	op_fork(t_vm *vm, t_cursor *cursor)
 	new_cur = dupl_cur(cursor, val % IDX_MOD);
 	add_cur(&(vm->cursors), new_cur);
 	vm->cursors_num++;
-	vm->loger_on == 1 ? ft_printf("P %4d | fork %d (%d)\n", cursor->id, val,
+	(g_flags.verbal & V_MASK_4) ? ft_printf("P %4d | fork %d (%d)\n", cursor->id, val,
 									cursor->pos + val % IDX_MOD) : 0;
 }

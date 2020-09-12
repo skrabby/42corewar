@@ -23,7 +23,7 @@ void	op_zjmp(t_vm *vm, t_cursor *cursor)
 		cursor->pos = find_addr(cursor->pos + (val % IDX_MOD));
 		cursor->step = 0;
 	}
-	if (vm->loger_on == 1)
+	if (g_flags.verbal & V_MASK_4)
 	{
 		ft_printf("P %4d | zjmp %d %s\n",
 					cursor->id,

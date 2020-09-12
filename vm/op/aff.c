@@ -21,6 +21,6 @@ void	op_aff(t_vm *vm, t_cursor *cursor)
 	reg = get_byte(cursor->pos + cursor->step, vm);
 	val = cursor->reg[reg - 1];
 	cursor->step += REG_LEN;
-	if (vm->display_aff)
+	if (g_flags.aff)
 		ft_printf("Aff: %c\n", (char)val);
 }
