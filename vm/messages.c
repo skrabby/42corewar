@@ -12,7 +12,7 @@
 
 #include "corewar.h"
 
-# define MESSAGE "Usage: %s [-d N -s N -v N | -b --stealth |" \
+# define MESSAGE "Usage: %s [-d N -s N -v N |" \
 "-n --stealth] [-a] <champion1.cor> <...>\n" \
 "    -a        : Prints output from \"aff\" (Default is to hide it)\n" \
 "#### TEXT OUTPUT MODE ####################################################\n" \
@@ -23,9 +23,8 @@
 "                - 1 : Show lives\n" \
 "                - 2 : Show cycles\n" \
 "                - 4 : Show operations (Params are NOT litteral ...)\n" \
-"#### BINARY OUTPUT MODE ##################################################\n" \
-"    -b        : Binary output mode for corewar.42.fr\n" \
-"    --stealth : Hides the real contents of the memory\n" \
+"#### SELECT PLAYERS NUMBER ################################################\n" \
+"    -n N cahmp.cor: Gives number N to the champion\n" \
 "##########################################################################"
 
 void	print_usage(char *exec_name)
