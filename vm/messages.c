@@ -23,7 +23,7 @@
 "                - 1 : Show lives\n" \
 "                - 2 : Show cycles\n" \
 "                - 4 : Show operations (Params are NOT litteral ...)\n" \
-"#### SELECT PLAYERS NUMBER ################################################\n" \
+"#### SELECT PLAYERS NUMBER ###############################################\n" \
 "    -n N cahmp.cor: Gives number N to the champion\n" \
 "##########################################################################"
 
