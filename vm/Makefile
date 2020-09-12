@@ -1,4 +1,4 @@
-NAME = vm
+NAME = corewar
 
 # Sources
 SOURCES_DIR = ./
@@ -96,13 +96,13 @@ $(OBJECTS_DIR):
 	@mkdir -p $(OBJECTS_DIR)
 
 $(OBJECTS_DIR)%.o : $(SOURCES_DIR)%.c $(HEADERS)
-	$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
+	@$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
 	$(CYAN)
 	@echo "+"
 	$(RESET)
 
 $(OBJECTS_DIR)%.o : $(OP_SOURCES_DIR)%.c $(HEADERS)
-	$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
+	@$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
 	$(CYAN)
 	@echo "+"
 	$(RESET)
