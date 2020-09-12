@@ -54,15 +54,13 @@ RESET = @tput setaf 7;
 
 all: $(NAME)
 
-$(NAME): $(LIB) $(OBJECTS_DIR) $(OBJECTS)
+$(NAME): $(OBJECTS_DIR) $(OBJECTS)
+	@make -C $(LIB_DIR)
 	@$(CC) $(FLAGS) $(INCLUDES) $(OBJECTS) -o $(NAME) $(LIB)
 	$(GREEN)
 	@echo "$(NAME) object files were created"
 	@echo "$(NAME) was created"
 	$(RESET)	
-
-$(LIB):
-	@make -C $(LIB_DIR)
 
 $(OBJECTS_DIR):
 	@mkdir -p $(OBJECTS_DIR)
