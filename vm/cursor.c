@@ -18,10 +18,12 @@ void		set_cursors(t_vm *vm)
 	size_t		pos;
 	t_cursor	*cursor_ptr;
 
-	id = FIRST_CHAMP_ID;
+	id = FIRST_CHAMP_ID - 1;
 	pos = 0;
-	while (id <= vm->players_num)
+	while (++id <= MAX_PLAYERS)
 	{
+		if (!(vm->players[id]))
+			continue ;
 		if (!vm->cursors)
 			vm->cursors = init_cursor(vm->players[id], pos);
 		else
@@ -32,7 +34,6 @@ void		set_cursors(t_vm *vm)
 		}
 		vm->cursors_num++;
 		pos += MEM_SIZE / vm->players_num;
-		id++;
 	}
 }
 

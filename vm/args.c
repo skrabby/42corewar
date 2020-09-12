@@ -18,21 +18,21 @@ int		parse_player(char **av, int i, t_player **players_list, int id)
 	t_player	*iter;
 
 	iter = *players_list;
-	id = 0;
 	if (str_endswith(av[i], CHAMP_EXT))
 	{
 		if (!*players_list)
-			*players_list = read_champion_file(av[i], i);
+			*players_list = read_champion_file(av[i], id);
 		else
 		{
 			while (iter->next)
 				iter = iter->next;
-			iter->next = read_champion_file(av[i], i);
+			iter->next = read_champion_file(av[i], id);
 		}
 	}
 	else
 		print_usage(av[0]);
 	g_vm->players_num++;
+	g_flags.player_num = 0;
 	return (0);
 }
 
@@ -46,9 +46,9 @@ void	parse_args(int ac, char **av)
 	if (ac == 1)
 		print_usage(av[0]);
 	while (++i < ac)
-		if (av[i][0] == '-')
-			ft_getopts(av, &i);
+		if ((av[i][0] == '-') && ft_getopts(av, ac, &i))
+			;
 		else
-			parse_player(av, i, &players_list, 0);
+			parse_player(av, i, &players_list, g_flags.player_num);
 	load_players_to_vm(g_vm, players_list);
 }

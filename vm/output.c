@@ -11,6 +11,10 @@
 /* ************************************************************************** */
 
 #include "corewar.h"
+# define BASE_0 1
+# define BASE_1 16
+# define BASE_2 256
+# define BASE_3 4096
 
 char	*get_memory_index(int bytes_num)
 {
@@ -59,8 +63,10 @@ void	print_intro(t_vm *vm)
 
 	i = FIRST_CHAMP_ID - 1;
 	ft_printf("Introducing contestants...\n");
-	while (++i <= vm->players_num)
+	while (++i <= MAX_PLAYERS)
 	{
+		if (!(vm->players[i]))
+			continue ;
 		ft_printf("* Player %d, weighing %d bytes, \"%s\" (\"%s\") !\n",
 				i, vm->players[i]->code_size, vm->players[i]->name,
 					vm->players[i]->comment);

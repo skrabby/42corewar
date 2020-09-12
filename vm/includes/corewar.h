@@ -42,11 +42,6 @@
 # define HEX "0123456789abcdef"
 # define PRINT_SIZE 128
 # define ARENA_INDEX_BEGINING "0x"
-# define BASE 16
-# define BASE_0 1
-# define BASE_1 16
-# define BASE_2 256
-# define BASE_3 4096
 # define STEP 2
 
 # define BYTES
@@ -406,5 +401,5 @@ void					print_intro(t_vm *vm);
 void					print_winner(t_vm *vm);
 void					vs_map(t_cursor *cursor);
 
-char					*ft_getopts(char **av, int *i);
+int ft_getopts(char **av, int ac, int *i);
 #endif

@@ -22,8 +22,10 @@ void	op_live(t_vm *vm, t_cursor *cursor)
 	vm->lives_num++;
 	cursor->last_live = vm->cycles;
 	pl = NULL;
-	if (pl_id <= -1 && pl_id >= -(vm->players_num))
+	//  Обсудить
+	if (pl_id <= -1 && pl_id >= -(MAX_PLAYERS) && vm->players[pl_id])
 	{
+
 		pl = vm->players[pl_id < 0 ? -(pl_id) : pl_id];
 		pl->last_live = vm->cycles;
 		pl->current_lives_num++;

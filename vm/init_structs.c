@@ -15,9 +15,7 @@
 t_player		*init_player(int id)
 {
 	t_player	*player;
-	int			i;
 
-	i = 0;
 	if (!(player = ft_memalloc(sizeof(*player))))
 		error_exit(INTERNAL_ERROR, "");
 	player->id = id;
