@@ -6,7 +6,7 @@
 /*   By: skrabby <skrabby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 12:18:12 by skrabby           #+#    #+#             */
-/*   Updated: 2020/08/22 17:33:32 by skrabby          ###   ########.fr       */
+/*   Updated: 2020/09/12 16:41:18 by skrabby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		parse_token(t_parser *parser, char *line)
 		if (line[i] == SEPARATOR_CHAR)
 		{
 			add_token_last(&parser->tokens,
-			init_token("", parser->row, SEPARATOR));
+			init_token(NULL, parser->row, SEPARATOR));
 			return (1);
 		}
 	}

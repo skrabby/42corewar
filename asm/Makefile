@@ -18,6 +18,7 @@ SOURCES_LIST = \
 	process_arg.c \
 	label.c \
 	write_bytes.c \
+	memfree.c \
 	debug.c
 
 SOURCES = $(addprefix $(SOURCES_DIR), $(SOURCES_LIST))

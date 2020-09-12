@@ -6,7 +6,7 @@
 /*   By: skrabby <skrabby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 12:24:33 by skrabby           #+#    #+#             */
-/*   Updated: 2020/08/22 18:00:02 by skrabby          ###   ########.fr       */
+/*   Updated: 2020/09/12 17:15:36 by skrabby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,7 @@ void					int32_to_bytecode(char *data, int32_t pos,
 											int32_t value, size_t size);
 void					process_mentions(t_parser *parser);
 void					write_bytes(int fd, t_parser *parser);
+void					free_helper(t_parser *parser);
 void					debug(t_parser *parser);
 
 #endif

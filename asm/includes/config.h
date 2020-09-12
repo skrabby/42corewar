@@ -6,14 +6,14 @@
 /*   By: skrabby <skrabby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 12:24:40 by skrabby           #+#    #+#             */
-/*   Updated: 2020/08/22 17:38:53 by skrabby          ###   ########.fr       */
+/*   Updated: 2020/09/12 16:39:14 by skrabby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONFIG_H
 # define CONFIG_H
 
-# define DEBUG_MODE				true
+# define DEBUG_MODE				false
 # define LABEL_CHARS			"abcdefghijklmnopqrstuvwxyz_0123456789"
 # define NAME_CMD_STRING		".name"
 # define COMMENT_CMD_STRING		".comment"
