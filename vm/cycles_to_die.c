@@ -65,7 +65,7 @@ void			cycles_to_die_check(t_vm *vm)
 	if (vm->checks_num == MAX_CHECKS || vm->lives_num >= NBR_LIVE)
 	{
 		vm->cycles_to_die -= CYCLE_DELTA;
-		if (vm->v2 == 1)
+		if (g_flags.verbal & V_MASK_2)
 			ft_printf("Cycle to die is now %d\n", (int)vm->cycles_to_die);
 		vm->checks_num = 0;
 	}

@@ -66,7 +66,7 @@ static void		exec_cycle(t_vm *vm)
 		exit(0);
 	}
 	vm->cycles++;
-	if (g_flags.verbal & V_MASK_1)
+	if (g_flags.verbal & V_MASK_2)
 		ft_printf("It is now cycle %d\n", vm->cycles);
 	vm->cycles_after_check++;
 	curr_cursor = vm->cursors;
