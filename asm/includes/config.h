@@ -26,7 +26,7 @@
 # define SEPARATOR_CHAR			','
 # define NAME_LENGTH            128
 # define COMMENT_LENGTH         2048
-# define COREWAR_EXEC_MAGIC		0xCC07C9
+# define COREWAR_EXEC_MAGIC		0xea83f3
 # define MEM_SIZE				(4 * 1024)
 # define CHAMP_MAX_SIZE			(MEM_SIZE / 6)
 # define MAX_STATEMENT_SIZE		14
