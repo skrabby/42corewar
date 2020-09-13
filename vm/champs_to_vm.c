@@ -52,6 +52,6 @@ int				load_players_to_vm(t_vm *vm, t_player *players_list)
 	i = FIRST_CHAMP_ID - 1;
 	while (++i < MAX_PLAYERS)
 		vm->last_alive = vm->players[i] ? vm->players[vm->players_num] :
-				vm->last_alive ;
+				vm->last_alive;
 	return (0);
 }

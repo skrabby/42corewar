@@ -11,10 +11,6 @@
 /* ************************************************************************** */
 
 #include "corewar.h"
-# define BASE_0 1
-# define BASE_1 16
-# define BASE_2 256
-# define BASE_3 4096
 
 char	*get_memory_index(int bytes_num)
 {

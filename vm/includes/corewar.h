@@ -22,6 +22,11 @@
 ** Consts
 */
 
+# define BASE_0 1
+# define BASE_1 16
+# define BASE_2 256
+# define BASE_3 4096
+
 # define CHAMP_EXT ".cor"
 # define FIRST_CHAMP_ID 1
 # define REG_LEN		1
@@ -52,7 +57,6 @@
 # define V_MASK_4 4
 # define V_MASK_8 8
 # define V_MASK_16 16
-
 
 /*
 ** Structs
@@ -410,5 +414,5 @@ void					print_intro(t_vm *vm);
 void					print_winner(t_vm *vm);
 void					vs_map(t_cursor *cursor);
 
-int ft_getopts(char **av, int ac, int *i);
+int						ft_getopts(char **av, int ac, int *i);
 #endif

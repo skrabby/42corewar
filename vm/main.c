@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "corewar.h"
-#include <errno.h>
 
 static void	print_last_alive(t_vm *vm)
 {
@@ -20,7 +19,7 @@ static void	print_last_alive(t_vm *vm)
 				vm->last_alive->name);
 }
 
-static void init_flags()
+static void	init_flags(void)
 {
 	g_flags.dump = -1;
 	g_flags.verbal = 0;

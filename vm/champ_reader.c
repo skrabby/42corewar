@@ -15,9 +15,9 @@
 
 int32_t		bytecode_to_int(const uint8_t *buf)
 {
-	uint32_t res;
-	uint8_t sign;
-	int i;
+	uint32_t	res;
+	uint8_t		sign;
+	int			i;
 
 	res = 0;
 	sign = (buf[0] & 128);
@@ -29,7 +29,7 @@ int32_t		bytecode_to_int(const uint8_t *buf)
 			res += buf[i] << ((BYTES - i - 1) * 8);
 	if (sign)
 		res = ~res;
-	return  res;
+	return (res);
 }
 
 int32_t		read_int32(int fd, char *filename)
@@ -46,8 +46,8 @@ int32_t		read_int32(int fd, char *filename)
 
 uint8_t		*read_bytecode(int fd, uint32_t read_size, char *filename)
 {
-	uint8_t *buf;
-	int len;
+	uint8_t	*buf;
+	int		len;
 
 	if (!(buf = ft_memalloc(read_size)))
 		error_exit(INTERNAL_ERROR, "");
@@ -55,13 +55,13 @@ uint8_t		*read_bytecode(int fd, uint32_t read_size, char *filename)
 		error_exit(READ_ERROR, filename);
 	if ((uint32_t)len != read_size)
 		error_exit(INVALID_FILE_ERROR, filename);
-	return buf;
+	return (buf);
 }
 
 char		*read_string(int fd, uint32_t read_size, char *filename)
 {
-	char *buf;
-	int len;
+	char	*buf;
+	int		len;
 
 	if (!(buf = ft_memalloc(read_size)))
 		error_exit(INTERNAL_ERROR, "");
@@ -69,13 +69,13 @@ char		*read_string(int fd, uint32_t read_size, char *filename)
 		error_exit(READ_ERROR, filename);
 	if ((uint32_t)len != read_size)
 		error_exit(INVALID_FILE_ERROR, filename);
-	return buf;
+	return (buf);
 }
 
 t_player	*read_champion_file(char *filename, int id)
 {
-	t_player *player;
-	int fd;
+	t_player	*player;
+	int			fd;
 
 	player = init_player(id);
 	if ((fd = open(filename, O_RDONLY)) < 0)
