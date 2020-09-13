@@ -4,50 +4,35 @@ FLAGS=""
 
 rm -rf 1.txt
 rm -rf 2.txt
-CHAMP="42.cor"
-./corewar $FLAGS ./champs_for_etalon/$CHAMP > 1.txt
-./vm $FLAGS ./champs_for_our_project/$CHAMP > 2.txt
-echo Diff 1 1 42.cor
+./corewar $FLAGS ./valid_champs_etalon/katchup.cor > 1.txt
+./vm $FLAGS ./valid_champs_our/katchup.cor > 2.txt
+echo Diff 1 1 katchup.cor
 diff -u 1.txt 2.txt
 echo Diff 1 1 end
 
 
 rm -rf 1.txt
 rm -rf 2.txt
-CHAMP="bee_gees.cor"
-./corewar $FLAGS ./champs_for_etalon/$CHAMP > 1.txt
-./vm $FLAGS ./champs_for_our_project/$CHAMP > 2.txt
+./corewar $FLAGS ./valid_champs_etalon/tchupka.cor > 1.txt
+./vm $FLAGS ./valid_champs_our/tchupka.cor > 2.txt
 echo Diff 1 2 tchupka.cor
 diff -u 1.txt 2.txt
 echo Diff 1 2 end
 
 
-rm -rf 1.txt
-rm -rf 2.txt
-CHAMP="mortel.cor"
-./corewar $FLAGS ./champs_for_etalon/$CHAMP > 1.txt
-./vm $FLAGS ./champs_for_our_project/$CHAMP > 2.txt
+rm -rf 3.txt
+rm -rf 4.txt
+./corewar $FLAGS ./valid_champs_etalon/kamelkaze.cor > 3.txt
+./vm $FLAGS ./valid_champs_our/kamelkaze.cor > 4.txt
 echo Diff 1 3 kamelkaze.cor
 diff -u 1.txt 2.txt
 echo Diff 1 3 end
 
-
+FLAGS="-v"
 rm -rf 1.txt
 rm -rf 2.txt
-CHAMP="jumper.cor"
-./corewar $FLAGS ./champs_for_etalon/$CHAMP > 1.txt
-./vm $FLAGS ./champs_for_our_project/$CHAMP > 2.txt
-echo Diff 1 4 bee_gees.cor
-diff -u 1.txt 2.txt
-echo Diff 1 4 end
-
-
-rm -rf 1.txt
-rm -rf 2.txt
-CHAMP1="mortel.cor"
-CHAMP2="toto.cor"
-./corewar $FLAGS ./champs_for_etalon/$CHAMP1 ./champs_for_etalon/$CHAMP2  > 1.txt
-./vm $FLAGS ./champs_for_our_project/$CHAMP1 ./champs_for_our_project/$CHAMP2 > 2.txt
+./corewar $FLAGS ./valid_champs_etalon/katchup.cor ./valid_champs_etalon/bee_gees.cor  > 1.txt
+./vm $FLAGS ./valid_champs_our/katchup.cor ./valid_champs_our/bee_gees.cor > 2.txt
 echo Diff 2 1
 diff -u 1.txt 2.txt
 echo Diff 2 1 end
@@ -55,10 +40,8 @@ echo Diff 2 1 end
 
 rm -rf 1.txt
 rm -rf 2.txt
-CHAMP1="bee_gees.cor"
-CHAMP2="barriere.cor"
-./corewar $FLAGS ./champs_for_etalon/$CHAMP1 ./champs_for_etalon/$CHAMP2  > 1.txt
-./vm $FLAGS ./champs_for_our_project/$CHAMP1 ./champs_for_our_project/$CHAMP2 > 2.txt
+./corewar $FLAGS ./valid_champs_etalon/katchup.cor ./valid_champs_etalon/tchupka.cor  > 1.txt
+./vm $FLAGS ./valid_champs_our/katchup.cor ./valid_champs_our/tchupka.cor > 2.txt
 echo Diff 2 2
 diff -u 1.txt 2.txt
 echo Diff 2 2 end
@@ -66,11 +49,8 @@ echo Diff 2 2 end
 
 rm -rf 1.txt
 rm -rf 2.txt
-CHAMP1="bigzork.cor"
-CHMAP2="sebc.cor"
-CHAMP3="jumper.cor"
-./corewar $FLAGS ./champs_for_etalon/$CHAMP1 ./champs_for_etalon/$CHAMP2 ./champs_for_etalon/$CHAMP3 > 1.txt
-./vm $FLAGS ./champs_for_our_project/$CHAMP1 ./champs_for_our_project/$CHAMP2 ./champs_for_our_project/$CHAMP3 > 2.txt
+./corewar $FLAGS ./valid_champs_etalon/kamelkaze.cor ./valid_champs_etalon/bee_gees.cor ./valid_champs_etalon/tchupka.cor > 1.txt
+./vm $FLAGS ./valid_champs_our/kamelkaze.cor ./valid_champs_our/bee_gees.cor ./valid_champs_our/tchupka.cor > 2.txt
 echo Diff 3 1
 diff -u 1.txt 2.txt
 echo Diff 3 1 end
@@ -78,11 +58,8 @@ echo Diff 3 1 end
 
 rm -rf 1.txt
 rm -rf 2.txt
-CHAMP1="bee_gees.cor"
-CHAMP2="new.cor"
-CHAMP3="toto.cor"
-./corewar $FLAGS ./champs_for_etalon/$CHAMP1 ./champs_for_etalon/$CHAMP2 ./champs_for_etalon/$CHAMP3 > 1.txt
-./vm $FLAGS ./champs_for_our_project/$CHAMP1 ./champs_for_our_project/$CHAMP2 ./champs_for_our_project/$CHAMP3 > 2.txt
+./corewar $FLAGS ./valid_champs_etalon/katchup.cor ./valid_champs_etalon/tchupka.cor ./valid_champs_etalon/bee_gees.cor > 1.txt
+./vm $FLAGS ./valid_champs_our/katchup.cor ./valid_champs_our/tchupka.cor ./valid_champs_our/bee_gees.cor > 2.txt
 echo Diff 3 2
 diff -u 1.txt 2.txt
 echo Diff 3 2 end
