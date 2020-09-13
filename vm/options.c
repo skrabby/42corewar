@@ -19,6 +19,7 @@ void	parse_verbal_type(int verbal_type)
 
 int ft_getopts(char **av, int ac, int *i)
 {
+	g_flags.dump = 0;
 	if (av[*i][1] == '-')
 	{
 		if (ft_strequ(&av[*i][2], "stealth"))

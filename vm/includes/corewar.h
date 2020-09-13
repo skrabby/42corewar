@@ -47,7 +47,7 @@
 # define BYTES
 
 # define V_MASK_0 0
-# define V_MASK_1 1
+# define V_MASK_1 2
 # define V_MASK_2 2
 # define V_MASK_4 4
 # define V_MASK_8 8
