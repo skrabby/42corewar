@@ -38,7 +38,10 @@ int				load_players_to_vm(t_vm *vm, t_player *players_list)
 		if (!vm->players[i])
 		{
 			if (players_list->id == 0)
+			{
 				vm->players[i] = players_list;
+				vm->players[i]->id = i;
+			}
 			players_list = players_list->next;
 		}
 		else

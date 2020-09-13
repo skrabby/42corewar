@@ -29,7 +29,7 @@ void	op_live(t_vm *vm, t_cursor *cursor)
 		pl->last_live = vm->cycles;
 		pl->current_lives_num++;
 		vm->last_alive = pl;
-		if(vm->v1 == 1)
+		if(g_flags.verbal & V_MASK_1)
 			ft_printf("A process shows that player %d (%s) is alive\n",
 													pl->id, pl->name);
 	}
