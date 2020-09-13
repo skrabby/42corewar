@@ -20,12 +20,21 @@ static void	print_last_alive(t_vm *vm)
 				vm->last_alive->name);
 }
 
+static void init_flags()
+{
+	g_flags.dump = -1;
+	g_flags.verbal = 0;
+	g_flags.aff = 0;
+	g_flags.player_num = 0;
+}
+
 int			main(int ac, char **av)
 {
 	if (ac <= 1)
 		print_usage(av[0]);
 	g_vm = init_vm();
 	parse_args(ac, av);
+	init_flags();
 	init_arena(g_vm);
 	set_cursors(g_vm);
 	print_intro(g_vm);

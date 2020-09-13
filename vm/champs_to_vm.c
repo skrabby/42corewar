@@ -46,6 +46,9 @@ int				load_players_to_vm(t_vm *vm, t_player *players_list)
 	}
 	if (players_list)
 		error_exit(MANY_CHAMPS_ERROR, "");
-	vm->last_alive = vm->players[vm->players_num];
+	i = FIRST_CHAMP_ID - 1;
+	while (++i < MAX_PLAYERS)
+		vm->last_alive = vm->players[i] ? vm->players[vm->players_num] :
+				vm->last_alive ;
 	return (0);
 }

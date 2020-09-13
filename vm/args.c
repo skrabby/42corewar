@@ -50,5 +50,10 @@ void	parse_args(int ac, char **av)
 			;
 		else
 			parse_player(av, i, &players_list, g_flags.player_num);
+	if (g_vm->players_num == 0)
+	{
+		print_usage(av[0]);
+		exit(1);
+	}
 	load_players_to_vm(g_vm, players_list);
 }

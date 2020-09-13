@@ -109,7 +109,7 @@ typedef struct			s_vm
 typedef struct			s_flags
 {
 	uint8_t				verbal;
-	unsigned int		dump;
+	int					dump;
 	int8_t				stealth;
 	int8_t				aff;
 	int					player_num;

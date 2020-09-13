@@ -6,3 +6,4 @@ resources
 *.o
 vm_42
 vm/vm
+.DS_Store
