@@ -1,0 +1,1 @@
+Can't read source file ./champs_for_etalon/new.cor
