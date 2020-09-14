@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: oelaina <oelaina@student.42.fr>            +#+  +:+       +#+         #
+#    By: skrabby <skrabby@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/05 11:23:44 by skrabby           #+#    #+#              #
-#    Updated: 2019/11/27 22:41:22 by oelaina          ###   ########.fr        #
+#    Updated: 2020/09/12 15:52:24 by skrabby          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -107,6 +107,7 @@ LIB_SRCS = ft_memset \
 	   ft_strempty_symb \
 	   ft_negativezero \
 	   ft_putstr_null \
+	   ft_atoi32 \
 	   get_next_line \
 
 OBJ =	$(addprefix obj/, $(addsuffix .o, $(PRINTF_SRCS))) \
@@ -119,12 +120,10 @@ all: $(NAME)
 
 obj/%.o: $(LIBFT_DIR)
 	@gcc -Wall -Wextra -Werror -c $< -o $@
-	@rm -rf ../lem_in
 
 obj/%.o: $(PRINTF_DIR)
 	@gcc -Wall -Wextra -Werror -c $< -o $@
-	@rm -rf ../lem_in
-
+	
 $(NAME): obj $(OBJ)
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)

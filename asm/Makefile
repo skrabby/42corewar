@@ -1,13 +1,26 @@
 NAME = asm
+CC = gcc
+FLAGS = -Wall -Wextra -Werror
+.PHONY: all clean fclean re
 
 # Sources
 SOURCES_DIR = ./src/
 SOURCES_LIST = \
 	asm.c \
 	parser.c \
+	parser_utils.c \
 	token.c \
-	utils.c
-	
+	utils.c \
+	error.c \
+	process_description.c \
+	process_body.c \
+	process_utils.c \
+	process_arg.c \
+	label.c \
+	write_bytes.c \
+	memfree.c \
+	debug.c
+
 SOURCES = $(addprefix $(SOURCES_DIR), $(SOURCES_LIST))
 
 # Objects
@@ -21,7 +34,8 @@ HEADERS_LIST = \
 	asm.h \
 	error.h \
 	utils.h \
-	config.h
+	config.h \
+	op.h
 
 HEADERS = $(addprefix $(HEADERS_DIR), $(HEADERS_LIST))	
 INCLUDES = \
@@ -39,22 +53,15 @@ MAGENTA = @tput setaf 5; tput bold;
 CYAN = @tput setaf 6; tput bold;
 RESET = @tput setaf 7;
 
-.PHONY: all clean fclean re
-
-CC = gcc
-FLAGS =
-
 all: $(NAME)
 
-$(NAME): $(LIB) $(OBJECTS_DIR) $(OBJECTS)
-	$(CC) $(FLAGS) $(INCLUDES) $(OBJECTS) -o $(NAME) $(LIB)
+$(NAME): $(OBJECTS_DIR) $(OBJECTS)
+	@make -C $(LIB_DIR)
+	@$(CC) $(FLAGS) $(INCLUDES) $(OBJECTS) -o $(NAME) $(LIB)
 	$(GREEN)
 	@echo "$(NAME) object files were created"
 	@echo "$(NAME) was created"
-	$(RESET)
-
-$(LIB):
-	@make -C $(LIB_DIR)
+	$(RESET)	
 
 $(OBJECTS_DIR):
 	@mkdir -p $(OBJECTS_DIR)
