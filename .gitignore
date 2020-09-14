@@ -2,3 +2,9 @@
 cmake-build-debug
 *.txt
 .idea/*
+corewar42
+resources
+*.o
+*.a
+.DS*
+CMakeLists.txt
