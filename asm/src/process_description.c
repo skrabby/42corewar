@@ -6,7 +6,7 @@
 /*   By: skrabby <skrabby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 12:18:31 by skrabby           #+#    #+#             */
-/*   Updated: 2020/08/22 17:22:34 by skrabby          ###   ########.fr       */
+/*   Updated: 2020/09/19 16:18:39 by skrabby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ static void	process_comment(t_parser *parser, t_token **cur)
 
 void		process_description(t_parser *parser, t_token **cur)
 {
+	if (*cur == NULL)
+		error_exit(EMPTY_FILE);
 	while ((!parser->name || !parser->comment) && (*cur))
 	{
 		if ((*cur)->content)
@@ -49,6 +51,8 @@ void		process_description(t_parser *parser, t_token **cur)
 			else if (!parser->comment &&
 				!ft_strcmp((*cur)->content, COMMENT_CMD_STRING))
 				process_comment(parser, cur);
+			else
+				lexical_error((*cur)->content, (*cur)->row);
 		}
 		(*cur) = (*cur)->next;
 	}

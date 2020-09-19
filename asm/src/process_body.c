@@ -6,7 +6,7 @@
 /*   By: skrabby <skrabby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 12:18:28 by skrabby           #+#    #+#             */
-/*   Updated: 2020/08/22 17:08:13 by skrabby          ###   ########.fr       */
+/*   Updated: 2020/09/19 16:38:23 by skrabby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,10 @@ void			process_mentions(t_parser *parser)
 
 void			process_body(t_parser *parser, t_token **cur)
 {
+	while ((*cur) && (*cur)->type == NEW_LINE)
+		(*cur) = (*cur)->next;
+	if (*cur == NULL)
+		error_exit(CHAMPION_NO_CMD);
 	while ((*cur))
 	{
 		if (parser->pos >= parser->body_size)
@@ -124,9 +128,7 @@ void			process_body(t_parser *parser, t_token **cur)
 		if ((*cur)->type == OPERATOR)
 			process_operator(parser, cur);
 		if ((*cur)->type == NEW_LINE)
-		{
 			(*cur) = (*cur)->next;
-		}
 		else
 			token_error((*cur)->content, (*cur)->row);
 	}

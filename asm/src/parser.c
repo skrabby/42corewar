@@ -6,7 +6,7 @@
 /*   By: skrabby <skrabby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 12:18:12 by skrabby           #+#    #+#             */
-/*   Updated: 2020/09/12 16:41:18 by skrabby          ###   ########.fr       */
+/*   Updated: 2020/09/19 15:28:59 by skrabby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,14 @@
 #include "utils.h"
 #include "config.h"
 
-int		parse_token(t_parser *parser, char *line)
+static int	check_comment_end(char *line, int i)
+{
+	return (line[i] == COMMENT_CHAR ||
+			line[i] == COMMENT_CHAR_ALT ||
+			line[i] == '\0');
+}
+
+int			parse_token(t_parser *parser, char *line)
 {
 	int		i;
 	char	*content;
@@ -24,7 +31,7 @@ int		parse_token(t_parser *parser, char *line)
 	i = 0;
 	if (line[i] == '\"' || parser->str_parse)
 		return (parse_str(parser, line));
-	else if (line[i] == COMMENT_CHAR || line[i] == '\0')
+	else if (check_comment_end(line, i))
 		return (-1);
 	else if (is_delimiter(line[i]))
 	{
@@ -44,7 +51,7 @@ int		parse_token(t_parser *parser, char *line)
 	return (i);
 }
 
-void	parse_tokens(t_parser *parser, char *line)
+void		parse_tokens(t_parser *parser, char *line)
 {
 	int i;
 	int res;
@@ -61,7 +68,7 @@ void	parse_tokens(t_parser *parser, char *line)
 	}
 }
 
-void	parse(t_parser *parser)
+void		parse(t_parser *parser)
 {
 	char	*line;
 	int		read;
