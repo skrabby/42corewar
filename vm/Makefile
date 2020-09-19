@@ -1,4 +1,4 @@
-NAME = vm
+NAME = corewar
 
 # Sources
 SOURCES_DIR = ./

@@ -21,6 +21,6 @@ void	error_exit(char *message, char *filename)
 		ft_putendl_fd(filename, 2);
 	}
 	else
-		ft_fprintf(2, message);
+		write(2, message, ft_strlen(message));
 	exit(1);
 }

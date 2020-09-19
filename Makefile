@@ -1,39 +1,41 @@
-NAME = ./vm
+NAME = full
 
-all: $(NAME)
-
-# Lib
-LIB_DIR = lib/
+# lib
+LIB_DIR	= lib/
 LIBFT	= $(LIB_DIR)libft.a
-LIB = -lft -L$(LIB_DIR)
+LIB		= -lft -L$(LIB_DIR)
 
-CORE_WAR_DIR = ./vm/
-ASM_DIR = ./asm/
+# core_war
+COREWAR_DIR	= vm/
+COREWAR		= $(COREWAR_DIR)corewar
+
+# asm
+ASM_DIR = asm/
+ASM 	= $(ASM_DIR)asm
 
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(corewar) $(asm)
-
-
-$(LIBFT):
+$(NAME):  
 	@make -C $(LIB_DIR)
-
-corewar:
-	@make -C $(CORE_WAR_DIR)
-
-asm:
 	@make -C $(ASM_DIR)
+	@make -C $(COREWAR_DIR)
+	cp $(ASM) ./asm1
+	cp $(ASM) ./Test_core
+	cp $(COREWAR) ./corewar
+	cp $(COREWAR) ./Test_core/vm
 
 clean:
 	@make -C $(LIB_DIR) clean
 	@make -C $(ASM_DIR) clean
-	@make -C $(CORE_WAR_DIR) clean
+	@rm -f asm1
+	@make -C $(COREWAR_DIR) clean
+	@rm -f corewar
 
 fclean: clean
 	@make -C $(LIB_DIR) fclean
 	@make -C $(ASM_DIR) fclean
-	@make -C $(CORE_WAR_DIR) fclean
+	@make -C $(COREWAR_DIR) fclean
 
 re:
 	@make fclean
