@@ -1,7 +1,7 @@
 .vscode/*
 cmake-build-debug
 *.txt
-.idea/*
+.idea
 corewar42
 resources
 *.o
