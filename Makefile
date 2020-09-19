@@ -3,7 +3,8 @@ NAME = ./vm
 all: $(NAME)
 
 # Lib
-LIB_DIR = ./lib/
+LIB_DIR = lib/
+LIBFT	= $(LIB_DIR)libft.a
 LIB = -lft -L$(LIB_DIR)
 
 CORE_WAR_DIR = ./vm/
@@ -12,10 +13,10 @@ ASM_DIR = ./asm/
 
 all: $(NAME)
 
-$(NAME): $(lib) $(corewar) $(asm)
+$(NAME): $(LIBFT) $(corewar) $(asm)
 
 
-lib:
+$(LIBFT):
 	@make -C $(LIB_DIR)
 
 corewar:

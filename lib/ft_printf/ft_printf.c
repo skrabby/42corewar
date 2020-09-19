@@ -3,51 +3,112 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oelaina <oelaina@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cchadwic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/27 16:13:35 by skrabby           #+#    #+#             */
-/*   Updated: 2019/11/02 19:10:48 by oelaina          ###   ########.fr       */
+/*   Created: 2020/09/15 20:09:22 by cchadwic          #+#    #+#             */
+/*   Updated: 2020/09/15 20:09:23 by cchadwic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *s, ...)
+int		ft_printf(const char *format, ...)
 {
-	t_flags	*flags;
-	va_list arg;
-	char	*str;
-	int		countnull;
-	int		count;
+	t_printf	p;
 
-	str = NULL;
-	flags = NULL;
-	countnull = 0;
-	va_start(arg, s);
-	str = read_str(flags, s, arg, &countnull);
-	va_end(arg);
-	ft_putstr(str);
-	count = ft_strlen(str) + countnull;
-	ft_memdel((void**)&str);
-	return (count);
+	ft_bzero(&p, sizeof(p));
+	p.fd = 1;
+	p.format = (char *)format;
+	va_start(p.ap, format);
+	while (*p.format)
+	{
+		if (*p.format == '%')
+		{
+			++p.format;
+			if (!*p.format)
+				break ;
+			parse_optionals(&p);
+		}
+		else
+			buffer(&p, p.format, 1);
+		++p.format;
+	}
+	write(p.fd, p.buff, p.buffer_index);
+	va_end(p.ap);
+	return (p.len);
 }
 
-int	ft_fprintf(int fd, const char *s, ...)
+int		ft_dprintf(int fd, const char *format, ...)
 {
-	t_flags	*flags;
-	va_list arg;
-	char	*str;
-	int		countnull;
-	int		count;
+	t_printf	p;
 
-	str = NULL;
-	flags = NULL;
-	countnull = 0;
-	va_start(arg, s);
-	str = read_str(flags, s, arg, &countnull);
-	va_end(arg);
-	ft_putstr_fd(str, fd);
-	count = ft_strlen(str) + countnull;
-	ft_memdel((void**)&str);
-	return (count);
+	ft_bzero(&p, sizeof(p));
+	p.fd = fd;
+	p.format = (char *)format;
+	va_start(p.ap, format);
+	while (*p.format)
+	{
+		if (*p.format == '%')
+		{
+			++p.format;
+			if (!*p.format)
+				break ;
+			parse_optionals(&p);
+		}
+		else
+			buffer(&p, p.format, 1);
+		++p.format;
+	}
+	write(p.fd, p.buff, p.buffer_index);
+	va_end(p.ap);
+	return (p.len);
+}
+
+void	buffer(t_printf *p, void *new, size_t size)
+{
+	int			diff;
+	long long	new_i;
+
+	new_i = 0;
+	while (PF_BUF_SIZE - p->buffer_index < (int)size)
+	{
+		diff = PF_BUF_SIZE - p->buffer_index;
+		ft_memcpy(&(p->buff[p->buffer_index]), &(new[new_i]), diff);
+		size -= diff;
+		new_i += diff;
+		p->buffer_index += diff;
+		p->len += diff;
+		write(p->fd, p->buff, p->buffer_index);
+		p->buffer_index = 0;
+	}
+	ft_memcpy(&(p->buff[p->buffer_index]), &(new[new_i]), size);
+	p->buffer_index += size;
+	p->len += size;
+}
+
+void	print_pointer_address(t_printf *p)
+{
+	void	*pointer;
+
+	pointer = va_arg(p->ap, void *);
+	p->f &= ~F_SHARP;
+	p->min_length -= (p->f & F_ZERO ? 2 : 0);
+	p->padding = (p->printed > p->min_length - 3) ? 0 :
+		p->min_length - 3 - p->printed;
+	p->f |= F_SHARP;
+	p->f |= F_POINTER;
+	itoa_base_printf((uintmax_t)pointer, 16, p);
+}
+
+void	padding(t_printf *p, int n)
+{
+	if (!p->padding)
+		return ;
+	p->c = 32 | (p->f & F_ZERO);
+	if (!n && !(p->f & F_MINUS))
+		while (p->padding--)
+			buffer(p, &p->c, 1);
+	else if (n && (p->f & F_MINUS))
+		while (p->padding--)
+			buffer(p, &p->c, 1);
 }

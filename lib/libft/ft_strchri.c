@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_strchri.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oelaina <oelaina@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cchadwic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/07 19:58:12 by skrabby           #+#    #+#             */
-/*   Updated: 2019/11/06 20:18:46 by oelaina          ###   ########.fr       */
+/*   Created: 2020/09/15 20:05:36 by cchadwic          #+#    #+#             */
+/*   Updated: 2020/09/15 20:05:41 by cchadwic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnew(size_t size)
+int		ft_strchri(char *s, int c, int i)
 {
-	char	*mem;
+	while (s[++i])
+		if (s[i] == c)
+			return (i);
+	return (-1);
+}
 
-	mem = (char*)malloc(sizeof(char) * (size + 1));
-	if (!mem)
-		exit(0);
-	ft_bzero(mem, size + 1);
-	return (mem);
+int		ft_strchri_lu(char *s, int c, int i)
+{
+	i = -1;
+	while (s[++i])
+		if (s[i] == c || s[i] == c + 32)
+			return (i);
+	return (-1);
 }

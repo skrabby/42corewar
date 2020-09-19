@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_pow.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oelaina <oelaina@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cchadwic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/07 19:58:12 by skrabby           #+#    #+#             */
-/*   Updated: 2019/11/06 20:18:46 by oelaina          ###   ########.fr       */
+/*   Created: 2020/09/15 20:06:19 by cchadwic          #+#    #+#             */
+/*   Updated: 2020/09/15 20:06:21 by cchadwic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnew(size_t size)
+double	ft_pow(double n, int pow)
 {
-	char	*mem;
-
-	mem = (char*)malloc(sizeof(char) * (size + 1));
-	if (!mem)
-		exit(0);
-	ft_bzero(mem, size + 1);
-	return (mem);
+	return (pow ? n * ft_pow(n, pow - 1) : 1);
 }

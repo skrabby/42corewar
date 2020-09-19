@@ -48,6 +48,8 @@ char				*ft_strcat(char *dest, const char *src);
 char				*ft_strncat(char *dest, const char *src, size_t nb);
 size_t				ft_strlcat(char *dst, const char *src, size_t size);
 char				*ft_strchr(const char *s, int c);
+int					ft_strchri(char *s, int c, int i);
+int					ft_strchri_lu(char *s, int c, int i);
 char				*ft_strrchr(const char *s, int c);
 char				*ft_strstr(const char *str, const char *to_find);
 char				*ft_strnstr(const char *str, const char *to_find,
@@ -112,6 +114,8 @@ void				ft_putstr_null(char *str, int len);
 int					get_next_line(const int fd, char **line);
 int					ft_printf(const char *s, ...);
 int					ft_fprintf(int fd, const char *s, ...);
-
+size_t				ft_wcharlen(unsigned c);
+size_t				ft_wstrlen(unsigned *s);
+double				ft_pow(double n, int pow);
 
 #endif

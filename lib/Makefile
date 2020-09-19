@@ -16,28 +16,10 @@ PRINTF_DIR = ./ft_printf/%.c
 LIBFT_DIR = ./libft/%.c
 
 PRINTF_SRCS = ft_printf \
-	   flags \
-	   type_checker \
-	   adapt_charflags \
-	   adapt_gridflag \
-	   adapt_nbflags \
-	   ll_itoa_base_func \
-	   ll_itoa_base \
-	   llu_itoa_base \
-	   finalstr \
-	   color \
-	   ld_handler \
-	   str_multiplier \
-	   return_result \
-	   new_functions \
-	   type_checker_func \
-	   clear_create_flags \
-	   grid_types \
-	   ld_optimize \
-	   ld_round \
-	   ld_precision \
-	   egflag_handler \
-	   check_star \
+		  parse_arguments \
+		  handle_numbers \
+		  handle_strings \
+		  bonus_functions
 
 LIB_SRCS = ft_memset \
 	   ft_bzero \
@@ -54,6 +36,7 @@ LIB_SRCS = ft_memset \
 	   ft_strncat \
 	   ft_strlcat \
 	   ft_strchr \
+	   ft_strchri \
 	   ft_strrchr \
 	   ft_strstr \
 	   ft_strnstr \
@@ -109,9 +92,11 @@ LIB_SRCS = ft_memset \
 	   ft_putstr_null \
 	   ft_atoi32 \
 	   get_next_line \
+	   ft_wcharlen \
+	   ft_wstrlen \
+	   ft_pow \
 
-OBJ =	$(addprefix obj/, $(addsuffix .o, $(PRINTF_SRCS))) \
-		$(addprefix obj/, $(addsuffix .o, $(LIB_SRCS)))
+OBJ =	$(addprefix obj/, $(addsuffix .o, $(LIB_SRCS))) $(addprefix obj/, $(addsuffix .o, $(PRINTF_SRCS)))
 
 LIB_HEADER = ./srcs/libft/libft.h
 PRINTF_HEADER = ./srcs/ft_printf/ft_printf.h
@@ -120,9 +105,11 @@ all: $(NAME)
 
 obj/%.o: $(LIBFT_DIR)
 	@gcc -Wall -Wextra -Werror -c $< -o $@
+	@echo "\033[34m\033[1mCompilation of \t\033[0m\033[36m$(notdir $<)\033[1m\033[34m done.\033[0m"
 
 obj/%.o: $(PRINTF_DIR)
 	@gcc -Wall -Wextra -Werror -c $< -o $@
+	@echo "\033[34m\033[1mCompilation of \t\033[0m\033[36m$(notdir $<)\033[1m\033[34m done.\033[0m"
 	
 $(NAME): obj $(OBJ)
 	@ar rc $(NAME) $(OBJ)
