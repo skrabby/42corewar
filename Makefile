@@ -21,7 +21,7 @@ $(NAME):
 	@make -C $(ASM_DIR)
 	@make -C $(COREWAR_DIR)
 	@cp $(ASM) ./asm1
-	@cp $(ASM) ./Test_core
+	@cp $(ASM) ./Test_core/asm1
 	@cp $(COREWAR) ./corewar
 	@cp $(COREWAR) ./Test_core/vm
 
