@@ -6,7 +6,7 @@
 /*   By: skrabby <skrabby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 12:18:45 by skrabby           #+#    #+#             */
-/*   Updated: 2020/08/22 17:24:26 by skrabby          ###   ########.fr       */
+/*   Updated: 2020/09/19 15:29:28 by skrabby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		is_delimiter(char c)
 			|| c == DIRECT_CHAR
 			|| c == SEPARATOR_CHAR
 			|| c == COMMENT_CHAR
-			|| c == ALT_COMMENT_CHAR);
+			|| c == COMMENT_CHAR_ALT);
 }
 
 char	*strjoin_free(bool s1_b, bool s2_b, char *s1, char *s2)

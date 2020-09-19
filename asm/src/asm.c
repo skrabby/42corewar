@@ -6,12 +6,13 @@
 /*   By: skrabby <skrabby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 12:17:49 by skrabby           #+#    #+#             */
-/*   Updated: 2020/09/12 17:12:10 by skrabby          ###   ########.fr       */
+/*   Updated: 2020/09/19 16:07:27 by skrabby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 #include "error.h"
+#include "config.h"
 
 bool		check_extension(char *name, char *ext)
 {
@@ -67,7 +68,7 @@ void		assemble(char *filename)
 	process_mentions(parser);
 	new_fn = change_extension(filename, ".s", ".cor");
 	if ((fd = open(new_fn, O_CREAT | O_TRUNC | O_WRONLY, 0644)) == -1)
-		error_exit("FILE CREATE ERROR");
+		error_exit(CREATE_FILE_ERR);
 	write_bytes(fd, parser);
 	debug(parser);
 	ft_printf("\033[0;32m%s\033[0m has been successfully created\n", new_fn);
@@ -80,5 +81,5 @@ int			main(int argc, char **argv)
 	if (argc == 2 && check_extension(argv[1], ".s"))
 		assemble(argv[1]);
 	else
-		ft_printf("USAGE INSTRUCTION HERE");
+		ft_printf(USAGE_INSTRUCTION);
 }
