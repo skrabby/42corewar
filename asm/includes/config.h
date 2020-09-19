@@ -6,7 +6,7 @@
 /*   By: skrabby <skrabby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 12:24:40 by skrabby           #+#    #+#             */
-/*   Updated: 2020/09/12 16:39:14 by skrabby          ###   ########.fr       */
+/*   Updated: 2020/09/19 16:06:29 by skrabby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 # define CONFIG_H
 
 # define DEBUG_MODE				false
+# define USAGE_INSTRUCTION		"Usage: ./asm [champion.s]\n"
 # define LABEL_CHARS			"abcdefghijklmnopqrstuvwxyz_0123456789"
 # define NAME_CMD_STRING		".name"
 # define COMMENT_CMD_STRING		".comment"
 # define REG_CHAR				'r'
 # define COMMAND_CHAR			'.'
 # define COMMENT_CHAR			'#'
-# define ALT_COMMENT_CHAR		';'
+# define COMMENT_CHAR_ALT		';'
 # define LABEL_CHAR				':'
 # define DIRECT_CHAR			'%'
 # define SEPARATOR_CHAR			','
