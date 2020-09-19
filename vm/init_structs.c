@@ -6,7 +6,7 @@
 /*   By: oelaina <oelaina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 14:12:53 by oelaina           #+#    #+#             */
-/*   Updated: 2020/09/05 14:12:53 by oelaina          ###   ########.fr       */
+/*   Updated: 2020/09/19 15:04:11 by oelaina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ t_cursor		*init_cursor(t_player *player, int pos)
 	t_cursor		*cursor;
 	static size_t	cursor_id;
 
-	cursor_id = 0;
+	cursor_id = g_vm->cursors_num;
 	if (!(cursor = ft_memalloc(sizeof(*cursor))))
 		error_exit(INTERNAL_ERROR, "");
 	cursor->id = ++cursor_id;

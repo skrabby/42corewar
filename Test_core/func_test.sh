@@ -1,6 +1,6 @@
 #!/bin/sh
 
-FLAGS=""
+FLAGS="-v 1"
 
 rm -rf 1.txt
 rm -rf 2.txt
