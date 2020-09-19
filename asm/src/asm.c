@@ -14,7 +14,7 @@
 #include "error.h"
 #include "config.h"
 
-bool		check_extension(char *name, char *ext)
+t_bool		check_extension(char *name, char *ext)
 {
 	return (ft_strstr(name + (ft_strlen(name) - ft_strlen(ext)), ext) ?
 	true : false);

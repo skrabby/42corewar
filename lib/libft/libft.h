@@ -24,7 +24,7 @@ typedef enum
 {
 	false,
 	true
-}					bool;
+}	t_bool;
 
 typedef struct		s_list
 {

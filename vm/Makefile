@@ -83,7 +83,7 @@ FLAGS = -Wall -Werror -Wextra
 all: $(NAME)
 
 $(NAME): $(LIB) $(OBJECTS_DIR) $(OBJECTS) $(OP_OBJECTS)
-	$(CC) $(FLAGS) $(INCLUDES) $(OBJECTS) $(OP_OBJECTS) -o $(NAME) $(LIB)
+	@$(CC) $(FLAGS) $(INCLUDES) $(OBJECTS) $(OP_OBJECTS) -o $(NAME) $(LIB)
 	$(GREEN)
 	@echo "$(NAME) object files were created"
 	@echo "$(NAME) was created"

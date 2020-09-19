@@ -17,7 +17,7 @@
 
 int		is_whitespace(char c);
 int		is_delimiter(char c);
-char	*strjoin_free(bool s1_b, bool s2_b, char *s1, char *s2);
+char	*strjoin_free(t_bool s1_b, t_bool s2_b, char *s1, char *s2);
 int		is_register(const char *token);
 
 #endif

@@ -20,10 +20,10 @@ $(NAME):
 	@make -C $(LIB_DIR)
 	@make -C $(ASM_DIR)
 	@make -C $(COREWAR_DIR)
-	cp $(ASM) ./asm1
-	cp $(ASM) ./Test_core
-	cp $(COREWAR) ./corewar
-	cp $(COREWAR) ./Test_core/vm
+	@cp $(ASM) ./asm1
+	@cp $(ASM) ./Test_core
+	@cp $(COREWAR) ./corewar
+	@cp $(COREWAR) ./Test_core/vm
 
 clean:
 	@make -C $(LIB_DIR) clean

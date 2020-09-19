@@ -37,7 +37,7 @@ int		is_delimiter(char c)
 			|| c == COMMENT_CHAR_ALT);
 }
 
-char	*strjoin_free(bool s1_b, bool s2_b, char *s1, char *s2)
+char	*strjoin_free(t_bool s1_b, t_bool s2_b, char *s1, char *s2)
 {
 	char *s;
 

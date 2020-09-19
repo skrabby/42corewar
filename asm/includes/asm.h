@@ -100,7 +100,7 @@ typedef struct			s_label
 typedef struct			s_parser
 {
 	int					fd;
-	bool				str_parse;
+	t_bool				str_parse;
 	unsigned			row;
 	int32_t				pos;
 	int32_t				op_pos;
