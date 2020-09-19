@@ -9,3 +9,6 @@ test_valid:
 
 test_not_valid:
 	@sh func_test_not_valid.sh
+
+test_wrong:
+	@sh create_wrong.sh
