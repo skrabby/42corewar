@@ -75,14 +75,15 @@ MAGENTA = @tput setaf 5; tput bold;
 CYAN = @tput setaf 6; tput bold;
 RESET = @tput setaf 7;
 
-.PHONY: all clean fclean re
+
 
 CC = gcc
 FLAGS = -Wall -Werror -Wextra
 
 all: $(NAME)
 
-$(NAME): $(LIB) $(OBJECTS_DIR) $(OBJECTS) $(OP_OBJECTS)
+$(NAME): $(OBJECTS_DIR) $(OBJECTS) $(OP_OBJECTS)
+	@make -C $(LIB_DIR)
 	@$(CC) $(FLAGS) $(INCLUDES) $(OBJECTS) $(OP_OBJECTS) -o $(NAME) $(LIB)
 	$(GREEN)
 	@echo "$(NAME) object files were created"
@@ -122,3 +123,5 @@ fclean:	clean
 re:
 	@$(MAKE) fclean
 	@$(MAKE) all
+
+.PHONY: all clean fclean re
