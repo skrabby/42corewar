@@ -12,7 +12,7 @@
 
 #include "corewar.h"
 
-static void	find_free_place(t_vm *vm, t_player *players)
+static void find_free_place(t_vm *vm, t_player *players)
 {
 	int id;
 
@@ -33,7 +33,8 @@ static void place_champs(t_vm *vm, t_player *iter)
 	{
 		if (iter->id != 0)
 		{
-			if (!(vm->players[iter->id]))
+			if (!(vm->players[iter->id]) && iter->id > 0 &&
+				iter->id < MAX_PLAYERS)
 				vm->players[iter->id] = iter;
 			else
 			{
@@ -61,8 +62,7 @@ int load_players_to_vm(t_vm *vm, t_player *players_list)
 				vm->players[i]->id = i;
 			}
 			players_list = players_list->next;
-		}
-		else
+		} else
 			i++;
 	}
 	if (vm->players_num > MAX_PLAYERS)
