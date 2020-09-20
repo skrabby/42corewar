@@ -52,17 +52,17 @@ int load_players_to_vm(t_vm *vm, t_player *players_list)
 	{
 		if (!vm->players[i])
 		{
-			if (players_list->id == 0 ||
-				(players_list->id <= 0 || players_list->id > MAX_PLAYERS))
+			if (players_list->id <= 0 || players_list->id > MAX_PLAYERS)
 			{
 				vm->players[i] = players_list;
 				vm->players[i]->id = i;
 			}
 			players_list = players_list->next;
-		} else
+		}
+		else
 			i++;
 	}
-	if (players_list)
+	if (vm->players_num > MAX_PLAYERS)
 		error_exit(MANY_CHAMPS_ERROR, "");
 	i = FIRST_CHAMP_ID - 1;
 	while (++i < MAX_PLAYERS)
