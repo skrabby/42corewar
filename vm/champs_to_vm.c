@@ -24,7 +24,7 @@ static void	find_free_place(t_vm *vm, t_player *players)
 	if (id > 0 && id <= MAX_PLAYERS)
 		players->id = id;
 	else
-		error_exit(MANY_CHAMPS_ERROR, "");
+		error_exit(MANY_CHAMPS_ERROR, "Find free place");
 }
 
 static void place_champs(t_vm *vm, t_player *iter)
