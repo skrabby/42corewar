@@ -1,5 +1,5 @@
 .name "nagibator228"
-.comment "Napishi 4to nibud ivan mne len"
+.comment "Ivan ne zabud napisat comment"
 
 live %1
 live %1
