@@ -8,3 +8,4 @@ resources
 *.a
 .DS*
 CMakeLists.txt
+*.run*
