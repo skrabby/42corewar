@@ -12,7 +12,7 @@
 
 #include "corewar.h"
 
-static void find_free_place(t_vm *vm, t_player *players)
+static void	find_free_place(t_vm *vm, t_player *players)
 {
 	int id;
 
@@ -27,14 +27,14 @@ static void find_free_place(t_vm *vm, t_player *players)
 		error_exit(MANY_CHAMPS_ERROR, "");
 }
 
-static void place_champs(t_vm *vm, t_player *iter)
+static void	place_champs(t_vm *vm, t_player *iter)
 {
 	while (iter)
 	{
 		if (iter->id != 0)
 		{
-			if (!(vm->players[iter->id]) && iter->id > 0 &&
-				iter->id < MAX_PLAYERS)
+			if (iter->id > 0 &&
+				iter->id < MAX_PLAYERS && !(vm->players[iter->id]))
 				vm->players[iter->id] = iter;
 			else
 			{
@@ -46,7 +46,7 @@ static void place_champs(t_vm *vm, t_player *iter)
 	}
 }
 
-int load_players_to_vm(t_vm *vm, t_player *players_list)
+int			load_players_to_vm(t_vm *vm, t_player *players_list)
 {
 	int i;
 
@@ -62,7 +62,8 @@ int load_players_to_vm(t_vm *vm, t_player *players_list)
 				vm->players[i]->id = i;
 			}
 			players_list = players_list->next;
-		} else
+		}
+		else
 			i++;
 	}
 	if (vm->players_num > MAX_PLAYERS)
@@ -70,6 +71,6 @@ int load_players_to_vm(t_vm *vm, t_player *players_list)
 	i = FIRST_CHAMP_ID - 1;
 	while (++i < MAX_PLAYERS)
 		vm->last_alive = vm->players[i] ? vm->players[vm->players_num] :
-						 vm->last_alive;
+								vm->last_alive;
 	return (0);
 }
