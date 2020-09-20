@@ -6,7 +6,7 @@
 /*   By: oelaina <oelaina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 14:13:12 by oelaina           #+#    #+#             */
-/*   Updated: 2020/09/05 14:13:12 by oelaina          ###   ########.fr       */
+/*   Updated: 2020/09/20 17:12:54 by oelaina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ int		ft_getopts(char **av, int ac, int *i)
 	}
 	else if ((*i + 1) < ac)
 	{
-		if (av[*i][1] == 'v')
+		if (ft_strequ(&av[*i][1], "v"))
 			parse_verbal_type(ft_atoi(av[++(*i)]));
-		if (av[*i][1] == 'a')
+		if (ft_strequ(&av[*i][1], "a"))
 			g_flags.aff = 1;
-		else if (av[*i][1] == 'd')
+		else if (ft_strequ(&av[*i][1], "d") || ft_strequ(&av[*i][1], "dump"))
 			g_flags.dump = ft_atoi(av[++(*i)]);
-		else if (av[*i][1] == 'n')
+		else if (ft_strequ(&av[*i][1], "n"))
 			g_flags.player_num = ft_atoi(av[++(*i)]);
 	}
 	else
