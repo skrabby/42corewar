@@ -56,3 +56,6 @@ echo "Diff tchupka.cor"
 echo "=================================================="
 diff -u hex1.txt hex2.txt
 echo "=================================================="
+
+rm hex1.txt
+rm hex2.txt

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-FLAGS="-v 4"
+FLAGS="-d 1500"
 
 rm -rf 1.txt
 rm -rf 2.txt
@@ -33,11 +33,11 @@ diff -u 1.txt 2.txt
 echo Diff 1 3 end
 echo "------------------------------------------------------------------------------"
 
-FLAGS=""
+FLAGS="-d 25000"
 rm -rf 1.txt
 rm -rf 2.txt
 ./corewar $FLAGS ./valid_champs_etalon/katchup.cor ./valid_champs_etalon/bee_gees.cor  > 1.txt
-./vm $FLAGS ./valid_champs_our/katchup.cor ./valid_champs_our/bee_gees.cor > 2.txt
+./vm $FLAGS ./valid_champs_our/katchup.cor ./valid_champs_our/bee_gees.cor > 2.txt 
 echo "------------------------------------------------------------------------------"
 echo Diff 2 1
 diff -u 1.txt 2.txt

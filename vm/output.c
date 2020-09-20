@@ -6,7 +6,7 @@
 /*   By: oelaina <oelaina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 14:13:15 by oelaina           #+#    #+#             */
-/*   Updated: 2020/09/05 14:13:15 by oelaina          ###   ########.fr       */
+/*   Updated: 2020/09/20 12:46:14 by oelaina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	print_arena(t_vm *vm)
 		ft_printf("%c%c ", hex[vm->arena[i] / 16], hex[vm->arena[i] % 16]);
 		i++;
 	}
+	ft_printf("\n");
 }
 
 void	print_intro(t_vm *vm)
