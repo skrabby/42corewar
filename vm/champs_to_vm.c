@@ -36,7 +36,10 @@ static void place_champs(t_vm *vm, t_player *iter)
 			if (!(vm->players[iter->id]))
 				vm->players[iter->id] = iter;
 			else
+			{
 				find_free_place(vm, iter);
+				vm->players[iter->id] = iter;
+			}
 		}
 		iter = iter->next;
 	}
