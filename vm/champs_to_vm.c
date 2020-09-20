@@ -16,7 +16,7 @@ static void	find_free_place(t_vm *vm, t_player *players)
 {
 	int id;
 
-	id = players->id;
+	id = FIRST_CHAMP_ID;
 	while (!vm->players[id])
 	{
 		id++;
