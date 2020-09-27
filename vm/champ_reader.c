@@ -47,11 +47,13 @@ int32_t		read_int32(int fd, char *filename)
 uint8_t		*read_bytecode(int fd, uint32_t read_size, char *filename)
 {
 	uint8_t	*buf;
+	char	oversize_flag[1];
 	int		len;
 
 	if (!(buf = ft_memalloc(read_size)))
 		error_exit(INTERNAL_ERROR, "");
-	if ((len = read(fd, buf, read_size)) < 0)
+	if ((len = read(fd, buf, read_size)) < 0 ||
+	(read(fd, oversize_flag, 1)) != 0)
 		error_exit(READ_ERROR, filename);
 	if ((uint32_t)len != read_size)
 		error_exit(INVALID_FILE_ERROR, filename);
