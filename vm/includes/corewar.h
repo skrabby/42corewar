@@ -6,14 +6,13 @@
 /*   By: oelaina <oelaina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 14:39:42 by oelaina           #+#    #+#             */
-/*   Updated: 2020/09/05 14:39:43 by oelaina          ###   ########.fr       */
+/*   Updated: 2020/10/04 12:13:34 by oelaina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COREWAR_H
 # define COREWAR_H
 
-# include <stdint.h>
 # include <libft.h>
 # include "op.h"
 # include "errors.h"

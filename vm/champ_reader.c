@@ -6,7 +6,7 @@
 /*   By: oelaina <oelaina@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 14:12:09 by oelaina           #+#    #+#             */
-/*   Updated: 2020/09/05 14:12:10 by oelaina          ###   ########.fr       */
+/*   Updated: 2020/10/04 14:00:45 by oelaina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int32_t		bytecode_to_int(const uint8_t *buf)
 
 int32_t		read_int32(int fd, char *filename)
 {
-	int32_t size;
-	uint8_t buf[4];
+	int32_t 		size;
+	unsigned char 	buf[4];
 
 	if ((size = read(fd, buf, 4)) < 0)
 		error_exit(READ_ERROR, filename);
